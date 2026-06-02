@@ -1,0 +1,1 @@
+<view class="container data-v-741f07e9"><custom-nav-bar wx:if="{{a}}" class="data-v-741f07e9" u-i="741f07e9-0" bind:__l="__l" u-p="{{a}}"/><view class="nav-bar-placeholder data-v-741f07e9"></view><view class="data-v-741f07e9"><rich-text class="data-v-741f07e9" nodes="{{b}}"></rich-text></view></view>

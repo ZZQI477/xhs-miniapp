@@ -1,0 +1,37 @@
+{
+  "description": "项目配置文件。",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "minified": false,
+    "urlCheck": false,
+    "es6": true,
+    "postcss": false,
+    "newFeature": true,
+    "bigPackageSizeSupport": true,
+    "useNewCompiler": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "3.133.1",
+  "appid": "697c9d276cf804000158613e",
+  "projectname": "makeFriends",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": []
+    }
+  }
+}

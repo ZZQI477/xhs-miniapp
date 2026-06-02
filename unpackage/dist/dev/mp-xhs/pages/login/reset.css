@@ -1,0 +1,106 @@
+
+.container.data-v-1157eb0a {
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  padding: 0 50rpx;
+}
+
+/* 标题区域 */
+.header.data-v-1157eb0a {
+  padding-top: 100rpx;
+  margin-bottom: 60rpx;
+}
+.title.data-v-1157eb0a {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+}
+.subtitle.data-v-1157eb0a {
+  display: block;
+  font-size: 28rpx;
+  color: #999999;
+}
+
+/* 表单区域 */
+.form-section.data-v-1157eb0a {
+  margin-bottom: 40rpx;
+}
+.input-group.data-v-1157eb0a {
+  margin-bottom: 30rpx;
+}
+.input-label.data-v-1157eb0a {
+  display: block;
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 15rpx;
+  font-weight: 500;
+}
+.input-wrapper.data-v-1157eb0a {
+  display: flex;
+  align-items: center;
+  border: 2rpx solid #E8E8E8;
+  border-radius: 16rpx;
+  padding: 0 20rpx;
+  height: 100rpx;
+  background-color: #FAFAFA;
+}
+.country-code.data-v-1157eb0a {
+  font-size: 30rpx;
+  color: #333333;
+  padding-right: 20rpx;
+  border-right: 2rpx solid #E8E8E8;
+  margin-right: 20rpx;
+}
+.input-field.data-v-1157eb0a {
+  flex: 1;
+  font-size: 30rpx;
+  color: #333333;
+}
+.code-wrapper.data-v-1157eb0a {
+  justify-content: space-between;
+}
+.code-btn.data-v-1157eb0a {
+  background-color: #FF4D4F;
+  color: #FFFFFF;
+  font-size: 24rpx;
+  padding: 15rpx 25rpx;
+  border-radius: 30rpx;
+  border: none;
+  line-height: 1.5;
+  min-width: 180rpx;
+}
+.code-btn[disabled].data-v-1157eb0a {
+  background-color: #CCCCCC;
+}
+.eye-icon.data-v-1157eb0a {
+  font-size: 36rpx;
+  padding: 10rpx;
+}
+
+/* 提交按钮 */
+.submit-btn.data-v-1157eb0a {
+  width: 100%;
+  height: 100rpx;
+  background: linear-gradient(135deg, #FF6B81 0%, #FF4D4F 100%);
+  color: #FFFFFF;
+  font-size: 34rpx;
+  font-weight: bold;
+  border-radius: 50rpx;
+  border: none;
+  margin-top: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 返回登录 */
+.back-login.data-v-1157eb0a {
+  text-align: center;
+  margin-top: 40rpx;
+}
+.back-login text.data-v-1157eb0a {
+  font-size: 28rpx;
+  color: #FF4D4F;
+}

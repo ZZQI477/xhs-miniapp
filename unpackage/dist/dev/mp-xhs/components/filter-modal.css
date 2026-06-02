@@ -1,0 +1,123 @@
+
+.modal-overlay.data-v-c4fad269 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 9999;
+}
+.modal-card.data-v-c4fad269 {
+  width: 100%;
+  max-height: 80vh;
+  background-color: #FFFFFF;
+  border-radius: 24rpx 24rpx 0 0;
+  padding: 40rpx;
+  animation: slideUp-c4fad269 0.3s ease-out;
+  overflow-y: auto;
+}
+@keyframes slideUp-c4fad269 {
+from {
+    transform: translateY(100%);
+}
+to {
+    transform: translateY(0);
+}
+}
+.modal-header.data-v-c4fad269 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+.modal-title.data-v-c4fad269 {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+.modal-close.data-v-c4fad269 {
+  font-size: 36rpx;
+  color: #999999;
+  padding: 10rpx;
+}
+.filter-section.data-v-c4fad269 {
+  margin-bottom: 36rpx;
+}
+.section-label.data-v-c4fad269 {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+.option-list.data-v-c4fad269 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+.option-item.data-v-c4fad269 {
+  padding: 14rpx 30rpx;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  color: #666666;
+  background-color: #F5F5F5;
+  transition: all 0.2s;
+}
+.option-item.active.data-v-c4fad269 {
+  background-color: #FF4D4F;
+  color: #FFFFFF;
+}
+
+/* 展开按钮样式 */
+.expand-btn.data-v-c4fad269 {
+  background-color: #F0F0F0;
+  color: #999999;
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+}
+.expand-btn .expand-icon.data-v-c4fad269 {
+  font-size: 20rpx;
+}
+
+/* 城市列表样式 */
+.city-option-list.data-v-c4fad269 {
+  align-items: flex-start;
+}
+.modal-buttons.data-v-c4fad269 {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 50rpx;
+  padding-bottom: 40rpx;
+}
+.btn-reset.data-v-c4fad269 {
+  flex: 1;
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #F5F5F5;
+  color: #666666;
+  font-size: 32rpx;
+  border-radius: 44rpx;
+  border: none;
+}
+.btn-reset.data-v-c4fad269::after {
+  border: none;
+}
+.btn-confirm.data-v-c4fad269 {
+  flex: 2;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: linear-gradient(90deg, #FF4D4F, #FF7875);
+  color: #FFFFFF;
+  font-size: 32rpx;
+  font-weight: 500;
+  border-radius: 44rpx;
+  border: none;
+}
+.btn-confirm.data-v-c4fad269::after {
+  border: none;
+}

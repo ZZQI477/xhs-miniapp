@@ -1,0 +1,8 @@
+
+.container.data-v-f4e37d4b {
+  background-color: #dedeff;
+  min-height: 100vh;
+}
+.nav-bar-placeholder.data-v-f4e37d4b {
+    height: 165rpx;
+}

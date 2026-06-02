@@ -1,0 +1,114 @@
+
+.container.data-v-91e813c8 {
+  background-color: #F8F8F8;
+  min-height: 100vh;
+}
+
+/* 导航栏占位 */
+.nav-bar-placeholder.data-v-91e813c8 {
+  height: 170rpx;
+}
+.gender-icon.data-v-91e813c8 {
+	width: 40rpx;
+	height: 40rpx;
+}
+/* 空状态 */
+.empty.data-v-91e813c8 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 200rpx;
+}
+.empty-icon.data-v-91e813c8 {
+  font-size: 100rpx;
+  margin-bottom: 30rpx;
+}
+.empty-text.data-v-91e813c8 {
+  font-size: 32rpx;
+  color: #333333;
+  margin-bottom: 15rpx;
+}
+.empty-tip.data-v-91e813c8 {
+  font-size: 26rpx;
+  color: #999999;
+  margin-bottom: 40rpx;
+}
+.empty-btn.data-v-91e813c8 {
+  background-color: #FF4D4F;
+  color: #FFFFFF;
+  padding: 20rpx 60rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+}
+
+/* 列表 */
+.list.data-v-91e813c8 {
+  padding: 20rpx;
+}
+.list-item.data-v-91e813c8 {
+  display: flex;
+  align-items: center;
+  background-color: #FFFFFF;
+  padding: 25rpx;
+  margin-bottom: 20rpx;
+  border-radius: 15rpx;
+}
+.avatar.data-v-91e813c8 {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 25rpx;
+  background-color: #F5F5F5;
+}
+.info.data-v-91e813c8 {
+  flex: 1;
+}
+.info-top.data-v-91e813c8 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.nickname.data-v-91e813c8 {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-right: 15rpx;
+}
+.gender.data-v-91e813c8 {
+  font-size: 24rpx;
+  color: #1890FF;
+}
+.gender.female.data-v-91e813c8 {
+  color: #FF85C0;
+}
+.desc.data-v-91e813c8 {
+  font-size: 24rpx;
+  color: #666666;
+  display: block;
+  margin-bottom: 8rpx;
+}
+.time.data-v-91e813c8 {
+  font-size: 22rpx;
+  color: #999999;
+}
+.want-type.data-v-91e813c8 {
+  font-size: 24rpx;
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+}
+.want-type.wechat.data-v-91e813c8 {
+  background-color: #E6F7FF;
+  color: #1890FF;
+}
+.want-type.images.data-v-91e813c8 {
+  background-color: #FFF0F0;
+  color: #FF4D4F;
+}
+
+/* 加载更多 */
+.load-more.data-v-91e813c8 {
+  text-align: center;
+  padding: 30rpx;
+  font-size: 26rpx;
+  color: #999999;
+}

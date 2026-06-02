@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "单身库",
+  "usingComponents": {
+    "profile-check-modal": "../../components/profile-check-modal",
+    "filter-modal": "../../components/filter-modal",
+    "qrcode-modal": "../../components/qrcode-modal"
+  }
+}

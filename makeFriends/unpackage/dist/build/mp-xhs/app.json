@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/login/reset",
+    "pages/index/index",
+    "pages/single/index",
+    "pages/message/index",
+    "pages/mine/index",
+    "pages/soul/questions",
+    "pages/setting/index",
+    "pages/coin/index",
+    "pages/like/index",
+    "pages/fans/index",
+    "pages/visited/index",
+    "pages/profile/edit",
+    "pages/profile/guide",
+    "pages/auth/index",
+    "pages/auth/idcard",
+    "pages/auth/face",
+    "pages/auth/callback",
+    "pages/auth/edu",
+    "pages/want/my",
+    "pages/want/me",
+    "pages/request/index",
+    "pages/group/index",
+    "pages/user/detail"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "告白时刻Daily",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FF4D4F",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "推荐"
+      },
+      {
+        "pagePath": "pages/single/index",
+        "text": "单身库"
+      },
+      {
+        "pagePath": "pages/message/index",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

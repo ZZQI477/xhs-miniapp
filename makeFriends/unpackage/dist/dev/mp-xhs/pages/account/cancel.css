@@ -1,0 +1,246 @@
+
+.container.data-v-c8f50f4c {
+  min-height: 100vh;
+  background-color: #F8F8F8;
+  padding: 30rpx;
+}
+
+/* 警告提示 */
+.warning-section.data-v-c8f50f4c {
+  background: linear-gradient(135deg, #FFE5E5 0%, #FFF0F0 100%);
+  border-radius: 20rpx;
+  padding: 40rpx;
+  text-align: center;
+  margin-bottom: 30rpx;
+  border: 2rpx solid #FFD4D4;
+}
+.warning-icon.data-v-c8f50f4c {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+.warning-title.data-v-c8f50f4c {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #FF4D4F;
+  margin-bottom: 15rpx;
+}
+.warning-desc.data-v-c8f50f4c {
+  display: block;
+  font-size: 26rpx;
+  color: #FF6B6B;
+}
+
+/* 注销说明 */
+.notice-section.data-v-c8f50f4c {
+  background-color: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+.notice-title.data-v-c8f50f4c {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25rpx;
+}
+.notice-icon.data-v-c8f50f4c {
+  font-size: 32rpx;
+  margin-right: 10rpx;
+}
+.notice-text.data-v-c8f50f4c {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+}
+.notice-list.data-v-c8f50f4c {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+.notice-item.data-v-c8f50f4c {
+  display: flex;
+  align-items: flex-start;
+}
+.notice-dot.data-v-c8f50f4c {
+  font-size: 28rpx;
+  color: #FF4D4F;
+  margin-right: 15rpx;
+  line-height: 1.6;
+}
+.notice-content.data-v-c8f50f4c {
+  flex: 1;
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* 注销原因 */
+.reason-section.data-v-c8f50f4c {
+  background-color: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+.reason-title.data-v-c8f50f4c {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 25rpx;
+}
+.reason-options.data-v-c8f50f4c {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+.reason-item.data-v-c8f50f4c {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25rpx;
+  background-color: #F8F8F8;
+  border-radius: 15rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s;
+}
+.reason-item.selected.data-v-c8f50f4c {
+  background-color: #FFF0F0;
+  border-color: #FF4D4F;
+}
+.reason-text.data-v-c8f50f4c {
+  font-size: 28rpx;
+  color: #333333;
+}
+.check-icon.data-v-c8f50f4c {
+  font-size: 32rpx;
+  color: #FF4D4F;
+  font-weight: bold;
+}
+.other-reason.data-v-c8f50f4c {
+  margin-top: 20rpx;
+  position: relative;
+}
+.reason-input.data-v-c8f50f4c {
+  width: 100%;
+  min-height: 200rpx;
+  padding: 20rpx;
+  background-color: #F8F8F8;
+  border-radius: 15rpx;
+  font-size: 28rpx;
+  color: #333333;
+  box-sizing: border-box;
+}
+.char-count.data-v-c8f50f4c {
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+/* 确认协议 */
+.agreement-section.data-v-c8f50f4c {
+  display: flex;
+  align-items: flex-start;
+  background-color: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+.checkbox-wrapper.data-v-c8f50f4c {
+  padding: 5rpx;
+}
+.checkbox.data-v-c8f50f4c {
+  width: 40rpx;
+  height: 40rpx;
+  border: 2rpx solid #CCCCCC;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15rpx;
+}
+.checkbox.checked.data-v-c8f50f4c {
+  background-color: #FF4D4F;
+  border-color: #FF4D4F;
+}
+.checkbox.checked text.data-v-c8f50f4c {
+  color: #FFFFFF;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.agreement-text.data-v-c8f50f4c {
+  flex: 1;
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* 按钮区域 */
+.button-section.data-v-c8f50f4c {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+.cancel-btn.data-v-c8f50f4c {
+  width: 100%;
+  height: 100rpx;
+  background: linear-gradient(135deg, #FF6B81 0%, #FF4D4F 100%);
+  color: #FFFFFF;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 50rpx;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cancel-btn[disabled].data-v-c8f50f4c {
+  background: #CCCCCC;
+  opacity: 0.6;
+}
+.cancel-btn.data-v-c8f50f4c:active:not([disabled]) {
+  opacity: 0.9;
+}
+.back-btn.data-v-c8f50f4c {
+  width: 100%;
+  height: 100rpx;
+  background-color: #FFFFFF;
+  color: #666666;
+  font-size: 32rpx;
+  border-radius: 50rpx;
+  border: 2rpx solid #E8E8E8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.back-btn.data-v-c8f50f4c:active {
+  background-color: #F8F8F8;
+}
+
+/* 客服提示 */
+.service-tip.data-v-c8f50f4c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  padding: 30rpx 0;
+}
+.tip-text.data-v-c8f50f4c {
+  font-size: 26rpx;
+  color: #999999;
+}
+.service-btn.data-v-c8f50f4c {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+.service-text.data-v-c8f50f4c {
+  font-size: 26rpx;
+  color: #FF4D4F;
+  text-decoration: underline;
+}

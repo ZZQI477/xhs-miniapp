@@ -1,0 +1,258 @@
+
+.container.data-v-780fc0ad {
+  background-color: #F8F8F8;
+  min-height: 100vh;
+}
+
+/* Tab栏 */
+.tabs.data-v-780fc0ad {
+  display: flex;
+  background-color: #FFFFFF;
+  border-bottom: 1rpx solid #F0F0F0;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.tab-item.data-v-780fc0ad {
+  flex: 1;
+  text-align: center;
+  padding: 25rpx 0;
+  font-size: 26rpx;
+  color: #666666;
+  position: relative;
+}
+.tab-item.active.data-v-780fc0ad {
+  color: #FF4D4F;
+  font-weight: bold;
+}
+.tab-item.active.data-v-780fc0ad::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40rpx;
+  height: 4rpx;
+  background-color: #FF4D4F;
+  border-radius: 2rpx;
+}
+.badge.data-v-780fc0ad {
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+  background-color: #FF4D4F;
+  color: #FFFFFF;
+  font-size: 18rpx;
+  padding: 2rpx 8rpx;
+  border-radius: 20rpx;
+  min-width: 28rpx;
+  text-align: center;
+  font-weight: normal;
+}
+
+/* 操作栏 */
+.action-bar.data-v-780fc0ad {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15rpx 30rpx;
+  background-color: #FFFFFF;
+  gap: 30rpx;
+}
+.action-btn.data-v-780fc0ad {
+  font-size: 24rpx;
+  color: #666666;
+}
+.action-btn.danger.data-v-780fc0ad {
+  color: #FF4D4F;
+}
+
+/* 空状态 */
+.empty.data-v-780fc0ad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 200rpx;
+}
+.empty-icon.data-v-780fc0ad {
+  font-size: 100rpx;
+  margin-bottom: 30rpx;
+}
+.empty-text.data-v-780fc0ad {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+/* 消息列表 */
+.list.data-v-780fc0ad {
+  padding: 20rpx;
+}
+.message-item.data-v-780fc0ad {
+  display: flex;
+  align-items: flex-start;
+  background-color: #FFFFFF;
+  padding: 25rpx;
+  margin-bottom: 15rpx;
+  border-radius: 15rpx;
+  position: relative;
+}
+.message-item.unread.data-v-780fc0ad {
+  background-color: #FFF9F9;
+}
+
+/* 消息图标 */
+.message-icon.data-v-780fc0ad {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+.message-icon.request.data-v-780fc0ad {
+  background-color: #FFF0F0;
+}
+.message-icon.want.data-v-780fc0ad {
+  background-color: #E6F7FF;
+}
+.message-icon.system.data-v-780fc0ad {
+  background-color: #F6FFED;
+}
+
+/* 消息内容 */
+.message-content.data-v-780fc0ad {
+  flex: 1;
+  min-width: 0;
+}
+.message-header.data-v-780fc0ad {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+.message-title.data-v-780fc0ad {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+}
+.message-time.data-v-780fc0ad {
+  font-size: 22rpx;
+  color: #999999;
+}
+.message-desc.data-v-780fc0ad {
+  font-size: 26rpx;
+  color: #666666;
+  display: block;
+  margin-bottom: 15rpx;
+  line-height: 1.5;
+}
+
+/* 来源用户 */
+.from-user.data-v-780fc0ad {
+  display: flex;
+  align-items: center;
+  background-color: #F8F8F8;
+  padding: 15rpx 20rpx;
+  border-radius: 10rpx;
+}
+
+/* 微信号信息 */
+.wechat-info.data-v-780fc0ad {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20rpx 25rpx;
+  border-radius: 12rpx;
+  margin-bottom: 15rpx;
+}
+.wechat-label.data-v-780fc0ad {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+.wechat-icon.data-v-780fc0ad {
+  font-size: 28rpx;
+  margin-right: 10rpx;
+}
+.wechat-text.data-v-780fc0ad {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.9);
+}
+.wechat-value.data-v-780fc0ad {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 15rpx 20rpx;
+  border-radius: 8rpx;
+}
+.wechat-number.data-v-780fc0ad {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+  letter-spacing: 2rpx;
+}
+.copy-btn.data-v-780fc0ad {
+  font-size: 24rpx;
+  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+}
+.from-avatar.data-v-780fc0ad {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 15rpx;
+  background-color: #EEEEEE;
+}
+.from-name.data-v-780fc0ad {
+  font-size: 26rpx;
+  color: #333333;
+  flex: 1;
+}
+.view-btn.data-v-780fc0ad {
+  font-size: 24rpx;
+  color: #FF4D4F;
+}
+
+/* 未读标记 */
+.unread-dot.data-v-780fc0ad {
+  position: absolute;
+  top: 25rpx;
+  right: 25rpx;
+  width: 16rpx;
+  height: 16rpx;
+  background-color: #FF4D4F;
+  border-radius: 50%;
+}
+
+/* 加载更多 */
+.load-more.data-v-780fc0ad {
+  text-align: center;
+  padding: 30rpx;
+  font-size: 26rpx;
+  color: #999999;
+}
+
+/* 想看信息 */
+.want-info.data-v-780fc0ad {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20rpx 25rpx;
+  border-radius: 12rpx;
+  margin-bottom: 15rpx;
+}
+.want-label.data-v-780fc0ad {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+.want-icon.data-v-780fc0ad {
+  font-size: 28rpx;
+  margin-right: 10rpx;
+}
+.want-type-text.data-v-780fc0ad {
+  font-size: 26rpx;
+  color: #FFFFFF;
+}

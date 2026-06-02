@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "告白时刻Daily",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "center-modal": "../../components/center-modal",
+    "custom-nav-bar": "../../components/custom-nav-bar"
+  }
+}

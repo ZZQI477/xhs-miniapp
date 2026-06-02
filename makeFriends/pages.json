@@ -1,0 +1,240 @@
+{
+	"pages": [
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/login/reset",
+			"style": {
+				"navigationBarTitleText": "重置密码"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "告白时刻Daily",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/single/index",
+			"style": {
+				"navigationBarTitleText": "单身库",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/message/index",
+			"style": {
+				"navigationBarTitleText": "消息"
+			}
+		},
+		{
+			"path": "pages/mine/index",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/soul/questions",
+			"style": {
+				"navigationBarTitleText": "灵魂三问",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/setting/index",
+			"style": {
+				"navigationBarTitleText": "设置"
+			}
+		},
+		{
+			"path": "pages/coin/index",
+			"style": {
+				"navigationBarTitleText": "我的脱单币"
+			}
+		},
+		{
+			"path": "pages/like/index",
+			"style": {
+				"navigationBarTitleText": "我喜欢的人"
+			}
+		},
+		{
+			"path": "pages/fans/index",
+			"style": {
+				"navigationBarTitleText": "喜欢我的人"
+			}
+		},
+		{
+			"path": "pages/visited/index",
+			"style": {
+				"navigationBarTitleText": "最近来访"
+			}
+		},
+		{
+			"path": "pages/profile/edit",
+			"style": {
+				"navigationBarTitleText": "编辑资料",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/guide",
+			"style": {
+				"navigationBarTitleText": "完善资料"
+			}
+		},
+		{
+			"path": "pages/profile/core-info",
+			"style": {
+				"navigationBarTitleText": "核心资料",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/signup/guide",
+			"style": {
+				"navigationBarTitleText": "编辑资料",
+				"navigationStyle": "default"
+			}
+		},
+		{
+			"path": "pages/auth/index",
+			"style": {
+				"navigationBarTitleText": "认证中心"
+			}
+		},
+		{
+			"path": "pages/auth/idcard",
+			"style": {
+				"navigationBarTitleText": "实名真人认证"
+			}
+		},
+		{
+			"path": "pages/auth/face",
+			"style": {
+				"navigationBarTitleText": "人脸核身"
+			}
+		},
+		{
+			"path": "pages/auth/callback",
+			"style": {
+				"navigationBarTitleText": "认证结果"
+			}
+		},
+		{
+			"path": "pages/auth/edu",
+			"style": {
+				"navigationBarTitleText": "学历认证"
+			}
+		},
+		{
+			"path": "pages/want/my",
+			"style": {
+				"navigationBarTitleText": "我想看的",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/want/me",
+			"style": {
+				"navigationBarTitleText": "想看我的",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/request/index",
+			"style": {
+				"navigationBarTitleText": "好友申请",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/group/index",
+			"style": {
+				"navigationBarTitleText": "同城单身群",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/user/detail",
+			"style": {
+				"navigationBarTitleText": "用户详情"
+			}
+		},
+		{
+			"path": "pages/agreement/user",
+			"style": {
+				"navigationBarTitleText": "用户协议"
+			}
+		},
+		{
+			"path": "pages/agreement/privacy",
+			"style": {
+				"navigationBarTitleText": "隐私政策"
+			}
+		},
+		{
+			"path": "pages/vip/index",
+			"style": {
+				"navigationBarTitleText": "开通VIP会员"
+			}
+		},
+		{
+			"path": "pages/agreement/vip",
+			"style": {
+				"navigationBarTitleText": "VIP会员服务协议"
+			}
+		},
+		{
+			"path": "pages/account/cancel",
+			"style": {
+				"navigationBarTitleText": "注销账号"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "告白时刻Daily",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#999999",
+		"selectedColor": "#8068F7",
+		"backgroundColor": "#FFFFFF",
+		"borderStyle": "black",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "推荐",
+				"iconPath": "/static/Frame@2x(4).png",
+				"selectedIconPath": "/static/Frame@2x.png"
+			},
+			{
+				"pagePath": "pages/single/index",
+				"text": "单身库",
+				"iconPath": "/static/Frame@2x(5).png",
+				"selectedIconPath": "/static/Frame@2x(1).png"
+			},
+			{
+				"pagePath": "pages/request/index",
+				"text": "消息",
+				"iconPath": "/static/Frame@2x(6).png",
+				"selectedIconPath": "/static/Frame@2x(2).png"
+			},
+			{
+				"pagePath": "pages/mine/index",
+				"text": "我的",
+				"iconPath": "/static/Frame@2x(7).png",
+				"selectedIconPath": "/static/Frame@2x(3).png"
+			}
+		]
+	}
+}

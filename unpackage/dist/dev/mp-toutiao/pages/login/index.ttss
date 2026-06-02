@@ -1,0 +1,273 @@
+ 
+/* 登录校验 loading */
+.checking-login.data-v-d08ef7d4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #e2dfff 0%, #FFFFFF 35%, #FFF 100%);
+}
+.loading-spinner.data-v-d08ef7d4 {
+  width: 80rpx;
+  height: 80rpx;
+  border: 6rpx solid #E8E0FF;
+  border-top-color: #6853F0;
+  border-radius: 50%;
+  animation: spin-d08ef7d4 0.8s linear infinite;
+  margin-bottom: 40rpx;
+}
+@keyframes spin-d08ef7d4 {
+0% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+}
+.loading-text.data-v-d08ef7d4 {
+  font-size: 32rpx;
+  color: #666666;
+}
+
+/* 登录容器 */
+.login-container.data-v-d08ef7d4 {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #e2dfff 0%, #FFFFFF 35%, #FFF 100%);
+  padding: 0 85rpx;
+  box-sizing: border-box;
+}
+
+/* 标题区域 */
+.title-section.data-v-d08ef7d4 {
+  width: 100%;
+  padding-top: 150rpx;
+  margin-bottom: 80rpx;
+  text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .title-section::before,
+.title-section::after {
+  content: '';
+  position: absolute;
+  top: 80rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border: 4rpx solid #E2DFFF;
+  border-radius: 50%;
+  opacity: 0.5;
+} */
+.title-section.data-v-d08ef7d4::before {
+  left: 50rpx;
+}
+.title-section.data-v-d08ef7d4::after {
+  right: 50rpx;
+}
+.title-image.data-v-d08ef7d4 {
+  width: 500rpx;
+  height: 250rpx;
+  position: relative;
+  z-index: 1;
+}
+
+/* 输入框容器 */
+.input-wrapper.data-v-d08ef7d4 {
+  width: 100%;
+  height: 100rpx;
+  background-color: #F8F8F8;
+  border-radius: 100rpx;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40rpx;
+  box-sizing: border-box;
+}
+
+/* 输入框图标 */
+.input-icon.data-v-d08ef7d4 {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+/* 手机号输入 */
+.phone-input.data-v-d08ef7d4 {
+  flex: 1;
+  font-size: 32rpx;
+  color: #333333;
+}
+
+/* 验证码输入 */
+.code-input-wrapper.data-v-d08ef7d4 {
+  position: relative;
+}
+.code-input.data-v-d08ef7d4 {
+  flex: 1;
+  font-size: 32rpx;
+  color: #333333;
+}
+.code-btn.data-v-d08ef7d4 {
+  font-size: 28rpx;
+  color: #6853F0;
+  min-width: 180rpx;
+  text-align: right;
+}
+.code-btn.disabled.data-v-d08ef7d4 {
+  color: #CCCCCC;
+}
+
+/* 协议提示气泡 */
+.agreement-tip-wrapper.data-v-d08ef7d4 {
+  margin-top: 20rpx;
+  margin-left: 10rpx;
+}
+.agreement-tip-wrapper.shaking.data-v-d08ef7d4 {
+  animation: shake-horizontal-d08ef7d4 0.5s ease-in-out;
+}
+.agreement-bubble.data-v-d08ef7d4 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4A4A4A;
+  border: 4rpx solid #4A4A4A;
+  border-radius: 20rpx;
+  padding: 20rpx 10rpx;
+  min-width: 120rpx;
+  max-width: 100%;
+  position: relative;
+  margin-bottom: 10rpx;
+}
+.agreement-bubble text.data-v-d08ef7d4 {
+  font-size: 24rpx;
+  color: #FFFFFF;
+}
+.agreement-bubble.data-v-d08ef7d4::before {
+  content: '';
+  position: absolute;
+  bottom: -24rpx;
+  left: 16rpx;
+  border: 12rpx solid transparent;
+  border-top-color: #4A4A4A;
+  z-index: 2;
+}
+
+/* 协议勾选 */
+.agreement-section.data-v-d08ef7d4 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60rpx;
+  width: 100%;
+}
+.checkbox-wrapper.data-v-d08ef7d4 {
+  padding: 10rpx;
+  margin-right: 10rpx;
+}
+.checkbox.data-v-d08ef7d4 {
+  width: 40rpx;
+  height: 40rpx;
+  border: 2rpx solid #CCCCCC;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+}
+.checkbox.checked.data-v-d08ef7d4 {
+  background-color: #6853F0;
+  border-color: #6853F0;
+}
+.check-mark.data-v-d08ef7d4 {
+  color: #FFFFFF;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.agreement-text.data-v-d08ef7d4 {
+  flex: 1;
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 1.6;
+}
+.agreement-text .link.data-v-d08ef7d4 {
+  color: #6853F0;
+}
+
+/* 登录按钮 */
+.login-btn.data-v-d08ef7d4 {
+  width: 100%;
+  height: 100rpx;
+  background-color: #6853F0;
+  color: #FFFFFF;
+  font-size: 40rpx;
+  font-weight: 600;
+  border-radius: 50rpx;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+.login-btn.disabled.data-v-d08ef7d4 {
+  background-color: #CCCCCC;
+}
+.login-btn.data-v-d08ef7d4:active:not(.disabled) {
+  opacity: 0.9;
+}
+
+/* 抖动动画 */
+@keyframes shake-horizontal-d08ef7d4 {
+0% {
+    transform: translateX(0);
+}
+25% {
+    transform: translateX(-10rpx);
+}
+50% {
+    transform: translateX(10rpx);
+}
+75% {
+    transform: translateX(-10rpx);
+}
+100% {
+    transform: translateX(0);
+}
+}
+
+/* 小红书快捷登录 */
+.xiaohongshu-login-section.data-v-d08ef7d4 {
+  margin-top: 200rpx;
+  /* padding-bottom: 80rpx; */
+}
+
+/* 虚线分隔符 */
+.divider.data-v-d08ef7d4 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+.divider-line.data-v-d08ef7d4 {
+  flex: 1;
+  height: 1rpx;
+  border-top: 1rpx dashed #CCCCCC;
+}
+.divider-text.data-v-d08ef7d4 {
+  font-size: 28rpx;
+  color: #999999;
+  margin: 0 30rpx;
+}
+
+/* 小红书登录按钮 */
+.xiaohongshu-btn.data-v-d08ef7d4 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30rpx 0;
+}
+.xiaohongshu-icon.data-v-d08ef7d4 {
+  width: 80rpx;
+  height: 80rpx;
+}

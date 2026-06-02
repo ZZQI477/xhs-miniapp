@@ -1,0 +1,431 @@
+
+/* 整体容器 */
+.container.data-v-569e925a {
+  background-color: #F8F8F8;
+  min-height: 100vh;
+}
+
+/* 未登录状态 */
+.not-login.data-v-569e925a {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 60rpx;
+}
+.login-prompt.data-v-569e925a {
+  text-align: center;
+  width: 100%;
+}
+.prompt-icon.data-v-569e925a {
+  width: 160rpx;
+  height: 160rpx;
+  margin-bottom: 40rpx;
+}
+.prompt-title.data-v-569e925a {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  display: block;
+  margin-bottom: 20rpx;
+}
+.prompt-desc.data-v-569e925a {
+  font-size: 28rpx;
+  color: #999999;
+  display: block;
+  margin-bottom: 60rpx;
+}
+.login-btn.data-v-569e925a {
+  width: 100%;
+  height: 90rpx;
+  background: linear-gradient(135deg, #FF6B81 0%, #FF4D4F 100%);
+  color: #FFFFFF;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 45rpx;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 1. 用户信息区 */
+.user-section.data-v-569e925a {
+  position: relative;
+  /* margin-bottom: 20rpx; */
+  border-radius: 0;
+  overflow: hidden;
+}
+
+/* 背景图片 */
+.background-image.data-v-569e925a {
+  width: 100%;
+  height: 400rpx;
+  object-fit: cover;
+}
+
+/* 左上角：返回按钮 */
+.back-btn.data-v-569e925a {
+  position: absolute;
+  top: 30rpx;
+  left: 30rpx;
+  width: 50rpx;
+  height: 50rpx;
+  z-index: 20;
+}
+
+/* 返回图标 */
+.back-icon.data-v-569e925a {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/* 右上角：设置和消息图标 */
+.top-right-icons.data-v-569e925a {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  display: flex;
+  gap: 20rpx;
+  z-index: 20;
+}
+
+/* 顶部图标 */
+.top-icon.data-v-569e925a {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/* 统计数据行 */
+.header-row.data-v-569e925a {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+
+/* 左侧：圆形头像 */
+.avatar-container.data-v-569e925a {
+  position: absolute;
+  top: -50rpx;
+  left: 30rpx;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4rpx solid #FFFFFF;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+.avatar.data-v-569e925a {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #F5F5F5;
+}
+
+/* 右侧：统计数据 */
+.stats-container.data-v-569e925a {
+  display: flex;
+  flex: 1;
+  justify-content: end;
+}
+
+/* 统计项 */
+.stat-item.data-v-569e925a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 60rpx;
+}
+
+/* 统计数字 */
+.stat-number.data-v-569e925a {
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-bottom: 2rpx;
+  display: block;
+  color: #333333;
+}
+
+/* 统计标签 */
+.stat-label.data-v-569e925a {
+  font-size: 24rpx;
+  font-weight: 400;
+  display: block;
+  color: #919191;
+}
+
+/* 白色信息区域 */
+.info-section.data-v-569e925a {
+  position: relative;
+  margin-top: -30rpx; 
+  padding: 30rpx;
+  background-color: #FFFFFF;
+  border-radius: 30rpx 30rpx 0 0;
+  /* box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1); */
+  z-index: 5;
+}
+
+/* 基本信息 */
+.basic-info.data-v-569e925a {
+  margin-bottom: 20rpx;
+}
+
+/* 名字行 */
+.name-row.data-v-569e925a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+/* 用户名 */
+.user-name.data-v-569e925a {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-right: 5rpx;
+}
+
+/* 性别图标 */
+.gender-icon.data-v-569e925a {
+  width: 40rpx;
+  height: 40rpx;
+  /* margin-right: 10rpx; */
+}
+
+/* 验证图标 */
+.verify-icon.data-v-569e925a {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+/* 详情行 */
+.detail-row.data-v-569e925a {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx;
+  align-items: center;
+}
+
+/* 详情文本 */
+.detail-text.data-v-569e925a {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+/* VIP图标 */
+.vip-icon.data-v-569e925a {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+/* 用户标签 */
+.user-tags.data-v-569e925a {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 标签项 */
+.tag-item.data-v-569e925a {
+  font-size: 22rpx;
+  color: #666666;
+  padding: 8rpx 16rpx;
+  background-color: #F5F5F5;
+  border-radius: 15rpx;
+}
+
+/* 右侧：编辑资料图标 */
+.edit-profile-btn.data-v-569e925a {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 编辑资料图标 */
+.edit-profile-icon.data-v-569e925a {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/* 2. 资料完善提醒条 */
+.profile-tip.data-v-569e925a {
+  background-color: #F9D4D7;
+  padding: 20rpx 20rpx 20rpx 40rpx;
+  margin: 30rpx 30rpx 20rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 15rpx;
+  position: relative;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+.floating-image.data-v-569e925a {
+  width: 110rpx;
+  height: 110rpx;
+  position: absolute;
+  left: -20rpx;
+  top: 40%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.tip-text.data-v-569e925a {
+	padding-left: 60rpx;
+  font-size: 28rpx;
+  color: #E5606E;
+  font-weight: 400;
+  flex: 1;
+}
+.tip-btn.data-v-569e925a {
+  font-size: 28rpx;
+  color: #FF4D4F;
+  font-weight: 500;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+@keyframes float-569e925a {
+0%, 100% {
+    transform: translateY(0);
+}
+50% {
+    transform: translateY(-5rpx);
+}
+}
+
+/* 4. 脱单币区 */
+.coin-section.data-v-569e925a {
+  background-image: url('../../static/位图7.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0 30rpx 20rpx;
+  padding: 30rpx 30rpx;
+  border-radius: 15rpx; 
+  display: flex;
+  flex-direction: column;
+  min-height: 150rpx;
+}
+
+/* 硬币信息 */
+.coin-info.data-v-569e925a {
+  width: 100%;
+  margin: 30rpx 0 10rpx 0;
+}
+
+/* 按钮行 */
+.button-row.data-v-569e925a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+.coin-icon-container.data-v-569e925a {
+  width: 110rpx;
+  height: 110rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30rpx;
+}
+.coin-title.data-v-569e925a {
+  font-size: 32rpx;
+  font-weight: 500;
+  font-weight: bold;
+  margin-left: 40rpx;
+}
+.coin-amount.data-v-569e925a {
+  font-size: 26rpx;
+}
+.get-more-btn.data-v-569e925a {
+  background-color: #9370DB;
+  color: #FFFFFF;
+  border-radius: 40rpx;
+  padding: 10rpx 25rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0 2rpx 8rpx rgba(147, 112, 219, 0.3);
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: auto;
+  cursor: pointer;
+  -webkit-user-select: none;
+          user-select: none;
+}
+.more-icon.data-v-569e925a {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+/* 5. 功能图标区 */
+.feature-grid-section.data-v-569e925a {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10rpx;
+  background-color: #ffffff;
+  margin: 0 30rpx 20rpx;
+  border-radius: 15rpx;
+}
+.feature-grid-item.data-v-569e925a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  text-align: center;
+}
+.feature-grid-icon.data-v-569e925a {
+  width: 60rpx;
+  height: 60rpx;
+  margin-bottom: 10rpx;
+}
+.feature-grid-text.data-v-569e925a {
+  font-size: 24rpx;
+  color: #333333;
+  font-weight: 400;
+}
+
+/* 6. 设置和认证区域 */
+.setting-section.data-v-569e925a {
+  margin: 0 5rpx 30rpx 20rpx;
+  background-color: #FFFFFF;
+  border-radius: 15rpx;
+  overflow: hidden;
+}
+.setting-item.data-v-569e925a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 40rpx;
+  border-bottom: 1px solid #F0F0F0;
+}
+.setting-item.data-v-569e925a:last-child {
+  border-bottom: none;
+}
+.setting-left.data-v-569e925a {
+  display: flex;
+  align-items: center;
+}
+.setting-icon.data-v-569e925a {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+.setting-text.data-v-569e925a {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 400;
+}
+.arrow-icon.data-v-569e925a {
+  width: 30rpx;
+  height: 30rpx;
+  color: #999999;
+}

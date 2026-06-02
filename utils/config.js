@@ -1,0 +1,18 @@
+// API 基础配置
+const config = {
+  // 接口基础地址
+  // baseUrl: 'https://xhscms.chugao520.com/api',
+  // curlRef: 'https://xhscms.chugao520.com',
+  baseUrl: 'https://xhscms.zquest.top/api',
+  curlRef: 'https://xhscms.zquest.top',
+
+  // 请求超时时间
+  timeout: 10000,
+
+  // 请求头
+  headers: {
+    'Content-Type': 'application/json'
+  }
+}
+
+export default config

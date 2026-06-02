@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "用户详情",
+  "usingComponents": {
+    "center-modal": "../../components/center-modal"
+  }
+}

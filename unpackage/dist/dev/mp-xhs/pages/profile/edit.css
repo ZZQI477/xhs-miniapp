@@ -1,0 +1,324 @@
+
+.edit-container.data-v-ead3e541 {
+  min-height: 100vh;
+  background-color: #F9F9F9;
+  padding-bottom: calc(220rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+/* 导航栏占位 */
+.nav-bar-placeholder.data-v-ead3e541 {
+  height: 156rpx;
+}
+
+/* 步骤进度条 */
+.steps-bar.data-v-ead3e541 {
+  width: 100%;
+  height: 7rpx;
+  background-color: rgba(254, 245, 245, 1);
+  margin-bottom: 30rpx;
+}
+.step-progress.data-v-ead3e541 {
+  height: 100%;
+  background-color: #FF4D4F;
+  transition: width 0.3s ease;
+}
+
+/* 提示横幅 */
+.tip-banner.data-v-ead3e541 {
+  color: #FF4D4F;
+  height: 120rpx;
+  width: 650rpx;
+  margin: 0 auto 30rpx;
+  font-size: 28rpx;
+  padding: 20rpx;
+  line-height: 42rpx;
+  background-color: #FCF5F5;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+}
+
+/* 滚动内容区 */
+.content-scroll.data-v-ead3e541 {
+  height: calc(100vh - 277rpx - 200rpx - env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+.content-wrapper.data-v-ead3e541 {
+  padding: 30rpx 30rpx calc(80rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+.step-content.data-v-ead3e541 {
+  width: 100%;
+}
+
+/* 步骤标题 */
+.step-title.data-v-ead3e541 {
+  margin-bottom: 32rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #000000;
+}
+
+/* 输入框 */
+.step-input.data-v-ead3e541 {
+  width: 100%;
+  height: 128rpx;
+  background-color: #FFFFFF;
+  border-radius: 50rpx;
+  padding: 0 30rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 32rpx;
+  box-sizing: border-box;
+}
+
+/* 属性选择按钮 */
+.property-options.data-v-ead3e541 {
+  display: flex;
+  gap: 14rpx;
+  margin: 30rpx auto;
+}
+.property-btn.data-v-ead3e541 {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #FFFFFF;
+  border: 4rpx solid rgba(255, 0, 89, 0.2);
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+.property-btn.active.data-v-ead3e541 {
+  background-color: #FF4D4F;
+  color: #FFFFFF;
+  border-color: #FF4D4F;
+}
+
+/* 照片区域 */
+.photo-section-title.data-v-ead3e541 {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 25rpx;
+}
+.title-main.data-v-ead3e541 {
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 40rpx;
+}
+.title-sub.data-v-ead3e541 {
+  color: #FF4D4F;
+  font-size: 24rpx;
+  margin-top: 8rpx;
+}
+
+/* 头像上传 */
+.avatar-upload.data-v-ead3e541 {
+  position: relative;
+  width: 200rpx;
+  height: 200rpx;
+  margin: 0 auto 25rpx;
+  border-radius: 30rpx;
+  border: 2rpx dashed #FF4D4F;
+  overflow: hidden;
+}
+.avatar-img.data-v-ead3e541 {
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+}
+.avatar-placeholder.data-v-ead3e541 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.upload-icon.data-v-ead3e541 {
+  font-size: 50rpx;
+  color: #CCCCCC;
+  margin-bottom: 20rpx;
+}
+.upload-text.data-v-ead3e541 {
+  font-size: 24rpx;
+  color: #FF4D4F;
+}
+.upload-required.data-v-ead3e541 {
+  color: #FF4D4F;
+  font-size: 24rpx;
+}
+.delete-icon.data-v-ead3e541 {
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+  width: 34rpx;
+  height: 34rpx;
+}
+
+/* 照片网格 */
+.photo-grid.data-v-ead3e541 {
+  display: flex;
+  justify-content: space-between;
+  gap: 15rpx;
+}
+.photo-item.data-v-ead3e541 {
+  position: relative;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 30rpx;
+  border: 2rpx dashed #FF4D4F;
+  overflow: hidden;
+}
+.photo-img.data-v-ead3e541 {
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+}
+.photo-placeholder.data-v-ead3e541 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.upload-label.data-v-ead3e541 {
+  font-size: 20rpx;
+  color: #FF4D4F;
+  margin-top: 10rpx;
+}
+
+/* 文本域 */
+.step-textarea.data-v-ead3e541 {
+  width: 100%;
+  height: 200rpx;
+  padding: 20rpx 22rpx;
+  background-color: transparent;
+  border: 1rpx solid #CBCBCB;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  color: #333333;
+  box-sizing: border-box;
+}
+.char-count.data-v-ead3e541 {
+  display: block;
+  text-align: right;
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 10rpx;
+  margin-bottom: 40rpx;
+}
+
+/* 示例框 */
+.example-box.data-v-ead3e541 {
+  width: 100%;
+  border: 1rpx solid #CBCBCB;
+  border-radius: 10rpx;
+  padding: 22rpx 30rpx;
+  line-height: 40rpx;
+  margin-top: 40rpx;
+  margin-bottom: 60rpx;
+  box-sizing: border-box;
+}
+.example-header.data-v-ead3e541 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.example-avatar.data-v-ead3e541 {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.example-name.data-v-ead3e541 {
+  font-size: 28rpx;
+  margin-right: 30rpx;
+}
+.example-badge.data-v-ead3e541 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 70rpx;
+  background-color: rgba(227, 184, 180, 0.06);
+  border-radius: 45rpx;
+  padding: 0 20rpx;
+}
+.badge-icon.data-v-ead3e541 {
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 6rpx;
+  margin-right: 10rpx;
+}
+.badge-text.data-v-ead3e541 {
+  color: #FF4D4F;
+  font-size: 24rpx;
+  line-height: 70rpx;
+}
+.example-content.data-v-ead3e541 {
+  font-size: 26rpx;
+  color: #131313;
+  line-height: 40rpx;
+}
+
+/* 标签容器 */
+.tags-container.data-v-ead3e541 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  margin-top: 20rpx;
+  margin-bottom: 300rpx;
+}
+.tag-item.data-v-ead3e541 {
+  height: 70rpx;
+  padding: 0 30rpx;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  background-color: rgba(216, 216, 216, 0.2);
+  border-radius: 35rpx;
+}
+.tag-item.active.data-v-ead3e541 {
+  background-color: #FCF6F5;
+  color: #FF4D4F;
+}
+
+/* 底部按钮 */
+.bottom-buttons.data-v-ead3e541 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200rpx;
+  padding: 0 0 env(safe-area-inset-bottom);
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+}
+.btn.data-v-ead3e541 {
+  width: 310rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-radius: 45rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: 600;
+  border: none;
+}
+.btn-full.data-v-ead3e541 {
+  width: 654rpx;
+}
+.btn-primary.data-v-ead3e541 {
+  background-color: #FF4D4F;
+  color: #FFFFFF;
+}
+.btn-secondary.data-v-ead3e541 {
+  background-color: #FF4D4F;
+  color: #FFFFFF;
+}

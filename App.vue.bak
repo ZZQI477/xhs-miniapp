@@ -1,0 +1,63 @@
+<script>
+	import { isXhsMiniApp, checkSession } from '@/utils/xhsLogin.js'
+
+	export default {
+		onLaunch: function() {
+			console.log('App Launch')
+			// 检查登录状态
+			this.checkLoginStatus()
+		},
+		onShow: function() {
+			console.log('App Show')
+		},
+		onHide: function() {
+			console.log('App Hide')
+		},
+		methods: {
+			// 检查登录状态
+			async checkLoginStatus() {
+				const token = uni.getStorageSync('token')
+
+				if (!token) {
+					console.log('[App] 未登录')
+					return
+				}
+
+				// 检查是否需要填写引导信息（只检查基础信息：性别和学历）
+				const userinfo = uni.getStorageSync('userinfo')
+
+				if (userinfo && (!userinfo.gender || !userinfo.education)) {
+					console.log('[App] 基础信息未完成，需要填写引导信息')
+					// 延迟跳转，确保页面已加载
+					setTimeout(() => {
+						const pages = getCurrentPages()
+						const currentPage = pages[pages.length - 1]
+						// 如果当前不在引导页，则跳转
+						if (currentPage && currentPage.route !== 'pages/signup/guide') {
+							uni.redirectTo({ url: '/pages/signup/guide' })
+						}
+					}, 500)
+					return
+				}
+
+				// 小红书环境下检查 session 是否有效
+				if (isXhsMiniApp()) {
+					const sessionValid = await checkSession()
+					if (!sessionValid) {
+						console.log('[App] 小红书 session 已过期，需要重新登录')
+						// 清除登录信息
+						uni.removeStorageSync('token')
+						uni.removeStorageSync('userinfo')
+						uni.removeStorageSync('xhs_openid')
+					} else {
+						console.log('[App] 小红书 session 有效')
+					}
+				}
+			}
+		}
+	}
+</script>
+
+<style>
+	/*每个页面公共css */
+</style>

@@ -1,0 +1,1 @@
+<view class="container data-v-f4e37d4b"><custom-nav-bar xhs:if="{{a}}" class="data-v-f4e37d4b" u-i="f4e37d4b-0" bind:__l="__l" u-p="{{a}}"/><view class="nav-bar-placeholder data-v-f4e37d4b"></view><view class="data-v-f4e37d4b"><rich-text class="data-v-f4e37d4b" nodes="{{b}}"></rich-text></view></view>

@@ -1,0 +1,75 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/login/reset",
+    "pages/index/index",
+    "pages/single/index",
+    "pages/message/index",
+    "pages/mine/index",
+    "pages/soul/questions",
+    "pages/setting/index",
+    "pages/coin/index",
+    "pages/like/index",
+    "pages/fans/index",
+    "pages/visited/index",
+    "pages/profile/edit",
+    "pages/profile/guide",
+    "pages/profile/core-info",
+    "pages/signup/guide",
+    "pages/auth/index",
+    "pages/auth/idcard",
+    "pages/auth/face",
+    "pages/auth/callback",
+    "pages/auth/edu",
+    "pages/want/my",
+    "pages/want/me",
+    "pages/request/index",
+    "pages/group/index",
+    "pages/user/detail",
+    "pages/agreement/user",
+    "pages/agreement/privacy",
+    "pages/vip/index",
+    "pages/agreement/vip",
+    "pages/account/cancel"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "告白时刻Daily",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#8068F7",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "推荐",
+        "iconPath": "/static/Frame@2x(4).png",
+        "selectedIconPath": "/static/Frame@2x.png"
+      },
+      {
+        "pagePath": "pages/single/index",
+        "text": "单身库",
+        "iconPath": "/static/Frame@2x(5).png",
+        "selectedIconPath": "/static/Frame@2x(1).png"
+      },
+      {
+        "pagePath": "pages/request/index",
+        "text": "消息",
+        "iconPath": "/static/Frame@2x(6).png",
+        "selectedIconPath": "/static/Frame@2x(2).png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的",
+        "iconPath": "/static/Frame@2x(7).png",
+        "selectedIconPath": "/static/Frame@2x(3).png"
+      }
+    ]
+  },
+  "projectConfigJson": "project.xhs.config.json",
+  "usingComponents": {}
+}

@@ -1,0 +1,203 @@
+
+.container.data-v-191b8d1f {
+  /* background-image: url('/static/bg2.png'); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 120rpx;
+  position: relative;
+  z-index: 0;
+}
+
+/* 导航栏占位 */
+.nav-bar-placeholder.data-v-191b8d1f {
+  height: 165rpx;
+}
+
+
+
+/* 顶部介绍 */
+.intro-bar.data-v-191b8d1f {
+  margin: 30rpx 50rpx 0;
+  background: #FFF7F2;
+  border-radius: 20rpx;
+  padding: 18rpx 20rpx;
+  font-size: 28rpx;
+  color: #FF7915;
+  line-height: 42rpx;
+}
+
+/* 群聊列表 */
+.group-scroll.data-v-191b8d1f {
+  flex: 1;
+  margin-top: 30rpx;
+  padding: 0 50rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+.group-item.data-v-191b8d1f {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(216, 216, 216, 0.2);
+  border-radius: 10rpx;
+  padding: 20rpx 30rpx 20rpx 14rpx;
+  margin-bottom: 30rpx;
+}
+.group-icon.data-v-191b8d1f {
+  width: 92rpx;
+  height: 92rpx;
+  background-color: #DEDFDF;
+  border-radius: 4rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 28rpx;
+  flex-shrink: 0;
+}
+.group-img.data-v-191b8d1f {
+  width: 80rpx;
+  height: 80rpx;
+}
+.group-content.data-v-191b8d1f {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+.group-row.data-v-191b8d1f {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 24rpx;
+}
+.group-name.data-v-191b8d1f {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #131313;
+  line-height: 24rpx;
+}
+.group-time.data-v-191b8d1f {
+  font-size: 24rpx;
+  color: #999999;
+  line-height: 24rpx;
+}
+.city-container.data-v-191b8d1f {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+.city-icon.data-v-191b8d1f {
+  width: 24rpx;
+  height: 24rpx;
+}
+.group-msg.data-v-191b8d1f {
+  font-size: 26rpx;
+  color: #999999;
+  line-height: 26rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 空状态 */
+.empty.data-v-191b8d1f {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 180rpx;
+}
+.empty-text.data-v-191b8d1f {
+  font-size: 28rpx;
+  color: #CCCCCC;
+}
+
+/* 底部按钮 */
+.bottom-bar.data-v-191b8d1f {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: 10rpx 20rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-top: 2rpx solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+.bottom-btn.data-v-191b8d1f {
+  width: 310rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  border-radius: 46rpx;
+  font-size: 30rpx;
+}
+.single-btn.data-v-191b8d1f {
+  color: #6853F0;
+  background: #FFFFFF;
+  border: 1rpx solid #6853F0;
+}
+.group-btn.data-v-191b8d1f {
+  color: #FFFFFF;
+  background: linear-gradient(270deg, #8068F7 0%, #624EEE 100%);
+}
+
+/* 二维码弹窗 */
+.qrcode-overlay.data-v-191b8d1f {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 9999;
+}
+.qrcode-card.data-v-191b8d1f {
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 24rpx 24rpx 0 0;
+  padding: 60rpx 40rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: slideUp-191b8d1f 0.3s ease-out;
+}
+@keyframes slideUp-191b8d1f {
+from {
+    transform: translateY(100%);
+}
+to {
+    transform: translateY(0);
+}
+}
+.qrcode-title.data-v-191b8d1f {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #131313;
+  margin-bottom: 60rpx;
+}
+.qrcode-img.data-v-191b8d1f {
+  width: 320rpx;
+  height: 320rpx;
+  margin-bottom: 40rpx;
+}
+.qrcode-btn.data-v-191b8d1f {
+  width: 310rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: #FFFFFF;
+  font-weight: 500;
+  border-radius: 45rpx;
+  background: linear-gradient(135deg, #FF4D4F, #FF7875);
+}

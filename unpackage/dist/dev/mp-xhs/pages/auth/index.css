@@ -1,0 +1,116 @@
+
+.container.data-v-3f748249 {
+  background-color: #F8F8F8;
+  min-height: 100vh;
+  padding-bottom: 30rpx;
+}
+.tip-section.data-v-3f748249 {
+  padding: 30rpx;
+  text-align: center;
+}
+.tip-text.data-v-3f748249 {
+  font-size: 26rpx;
+  color: #999999;
+}
+.auth-card.data-v-3f748249 {
+  display: flex;
+  align-items: center;
+  background-color: #FFFFFF;
+  margin: 0 30rpx 20rpx;
+  padding: 30rpx;
+  border-radius: 15rpx;
+}
+.auth-icon.data-v-3f748249 {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  margin-right: 25rpx;
+}
+.auth-icon.verify.data-v-3f748249 {
+  background-color: #E6F7FF;
+  color: #1890FF;
+  font-weight: bold;
+}
+.auth-icon.edu.data-v-3f748249 {
+  background-color: #F6FFED;
+  font-size: 36rpx;
+}
+.auth-info.data-v-3f748249 {
+  flex: 1;
+}
+.auth-title.data-v-3f748249 {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  display: block;
+  margin-bottom: 8rpx;
+}
+.auth-desc.data-v-3f748249 {
+  font-size: 24rpx;
+  color: #999999;
+}
+.auth-action.data-v-3f748249 {
+  display: flex;
+  align-items: center;
+}
+.auth-status.data-v-3f748249 {
+  font-size: 26rpx;
+  padding: 10rpx 20rpx;
+  border-radius: 20rpx;
+}
+.auth-status.passed.data-v-3f748249 {
+  background-color: #F6FFED;
+  color: #52C41A;
+}
+.auth-status.pending.data-v-3f748249 {
+  background-color: #FFF7E6;
+  color: #FAAD14;
+}
+.auth-status.rejected.data-v-3f748249 {
+  background-color: #FFF1F0;
+  color: #FF4D4F;
+}
+.auth-status.unauth.data-v-3f748249 {
+  background-color: #FFF1F0;
+  color: #FF4D4F;
+}
+.auth-arrow.data-v-3f748249 {
+  font-size: 28rpx;
+  color: #CCCCCC;
+  margin-left: 10rpx;
+}
+.benefit-section.data-v-3f748249 {
+  background-color: #FFFFFF;
+  margin: 30rpx;
+  padding: 30rpx;
+  border-radius: 15rpx;
+}
+.benefit-title.data-v-3f748249 {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 25rpx;
+}
+.benefit-list.data-v-3f748249 {
+  display: flex;
+  flex-wrap: wrap;
+}
+.benefit-item.data-v-3f748249 {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.benefit-icon.data-v-3f748249 {
+  color: #52C41A;
+  font-size: 28rpx;
+  margin-right: 15rpx;
+}
+.benefit-text.data-v-3f748249 {
+  font-size: 26rpx;
+  color: #666666;
+}

@@ -1,0 +1,398 @@
+
+.container.data-v-2b615d88 {
+  /* background-image: url('/static/bg1.png'); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding-bottom: 120rpx;
+  position: relative;
+  z-index: 0;
+}
+
+/* 导航栏占位 */
+.nav-bar-placeholder.data-v-2b615d88 {
+  height: 160rpx;
+}
+
+
+
+/* Tab栏 */
+.tabs.data-v-2b615d88 {
+  display: flex;
+}
+.tab-item.data-v-2b615d88 {
+  flex: 1;
+  text-align: center;
+  padding: 30rpx 0;
+  font-size: 28rpx;
+  color: #666666;
+  position: relative;
+}
+.tab-item.active.data-v-2b615d88 {
+  /* color: #FF4D4F; */
+  font-weight: bold;
+}
+.tab-item.active.data-v-2b615d88::after {
+  content: '';
+  position: absolute;
+  bottom: 30rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90rpx;
+  height: 10rpx;
+  background-color: #8f4dffa8;
+  border-radius: 2rpx;
+}
+.badge.data-v-2b615d88 {
+  position: absolute;
+  top: 15rpx;
+  right: 50%;
+  transform: translateX(80rpx);
+  background-color: #FF4D4F;
+  color: #FFFFFF;
+  font-size: 20rpx;
+  padding: 2rpx 10rpx;
+  border-radius: 20rpx;
+  min-width: 30rpx;
+  text-align: center;
+}
+
+/* 空状态 */
+.empty.data-v-2b615d88 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 200rpx;
+}
+.empty-icon.data-v-2b615d88 {
+  font-size: 100rpx;
+  margin-bottom: 30rpx;
+}
+.empty-text.data-v-2b615d88 {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+/* 列表 */
+.list.data-v-2b615d88 {
+  padding: 20rpx;
+}
+.list-item.data-v-2b615d88 {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  padding: 25rpx;
+  margin-bottom: 20rpx;
+  border-radius: 15rpx;
+}
+.item-main.data-v-2b615d88 {
+  display: flex;
+  align-items: flex-start;
+}
+.avatar.data-v-2b615d88 {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-right: 25rpx;
+  background-color: #F5F5F5;
+  flex-shrink: 0;
+}
+.info.data-v-2b615d88 {
+  flex: 1;
+}
+.info-top.data-v-2b615d88 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.nickname.data-v-2b615d88 {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-right: 15rpx;
+}
+.gender.data-v-2b615d88 {
+  font-size: 24rpx;
+  color: #1890FF;
+}
+.gender.female.data-v-2b615d88 {
+  color: #FF85C0;
+}
+.desc.data-v-2b615d88 {
+  font-size: 24rpx;
+  color: #666666;
+  display: block;
+  margin-bottom: 8rpx;
+}
+.message.data-v-2b615d88 {
+  font-size: 26rpx;
+  color: #333333;
+  display: block;
+  margin-bottom: 8rpx;
+  background-color: #F8F8F8;
+  padding: 15rpx;
+  border-radius: 10rpx;
+}
+.time.data-v-2b615d88 {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+/* 操作按钮 */
+.actions.data-v-2b615d88 {
+  display: flex;
+  justify-content: space-between;
+}
+.btn.data-v-2b615d88 {
+  border-radius: 30rpx;
+ margin-left: 10rpx;
+  width: 114rpx;
+  height: 46rpx;
+  font-weight: 500;
+  font-size: 26rpx;
+  color: #FFFFFF;
+  line-height: 46rpx;
+}
+.btn.reject.data-v-2b615d88 {
+  background-color: #FFFFFF;
+  color: #6853F0;
+  border: 1px solid #6853F0;
+}
+.btn.accept.data-v-2b615d88 {
+  background-color: #8068F7;
+  color: #FFFFFF;
+}
+
+/* 状态文本 */
+.status-text.data-v-2b615d88 {
+  text-align: right;
+  /* border-top: 1rpx solid #F0F0F0; */
+  font-size: 24rpx;
+}
+.status-text .accepted.data-v-2b615d88 {
+  background-color: #F3F9FF;
+  color: #2D8CF0;
+}
+.status-text .rejected.data-v-2b615d88 {
+  background-color: #FFF0F0;
+  color: #EC1717;
+}
+
+/* 状态标签 */
+.status-tag.data-v-2b615d88 {
+  font-size: 22rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.status-tag.pending.data-v-2b615d88 {
+  background-color: #FFF7E6;
+  color: #FAAD14;
+}
+.status-tag.accepted.data-v-2b615d88 {
+  background-color: #F3F9FF;
+  color: #2D8CF0;
+}
+.status-tag.rejected.data-v-2b615d88 {
+  background-color: #FFF0F0;
+  color: #EC1717;
+}
+.gender-icon.data-v-2b615d88 {
+	width: 40rpx;
+	height: 40rpx;
+}
+/* 加载更多 */
+.load-more.data-v-2b615d88 {
+  text-align: center;
+  padding: 30rpx;
+  font-size: 26rpx;
+  color: #999999;
+}
+
+/* 子Tab栏 */
+.sub-tabs.data-v-2b615d88 {
+  width: 650rpx;
+  height: 90rpx;
+  margin: 30rpx auto;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.sub-tab-item.data-v-2b615d88 {
+  flex: 1;
+  text-align: center;
+  font-size: 28rpx;
+  color: #131313;
+  padding: 16rpx 0;
+}
+.sub-tab-item.active.data-v-2b615d88 {
+  color: #6853F0;
+  font-weight: bold;
+  background: #EEE9FF;
+  border-radius: 50rpx;
+}
+
+/* 查看微信按钮 */
+.btn.view-wechat.data-v-2b615d88 {
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF4D4F 100%);
+  color: #FFFFFF;
+}
+
+/* 拒绝理由选择器 */
+.reject-sheet-mask.data-v-2b615d88 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+.reject-sheet.data-v-2b615d88 {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #FFFFFF;
+  border-radius: 20rpx 20rpx 0 0;
+  z-index: 1001;
+}
+.reject-header.data-v-2b615d88 {
+  font-size: 36rpx;
+  color: #131313;
+  font-weight: 500;
+  text-align: center;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+.reject-picker.data-v-2b615d88 {
+  height: 400rpx;
+}
+.reject-item.data-v-2b615d88 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #131313;
+  height: 80rpx;
+}
+.reject-footer.data-v-2b615d88 {
+  display: flex;
+  gap: 20rpx;
+  padding: 30rpx;
+  border-top: 1rpx solid #F0F0F0;
+}
+.btn-cancel.data-v-2b615d88 {
+  flex: 1;
+  height: 80rpx;
+  background-color: #F5F5F5;
+  color: #757575;
+  font-size: 30rpx;
+  font-weight: 500;
+  border-radius: 46rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-confirm.data-v-2b615d88 {
+  flex: 1;
+  height: 80rpx;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF4D4F 100%);
+  color: #FFFFFF;
+  font-size: 30rpx;
+  font-weight: 500;
+  border-radius: 46rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 查看微信安全提示弹窗 */
+.wechat-modal-mask.data-v-2b615d88 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+}
+.wechat-modal.data-v-2b615d88 {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 640rpx;
+  background-color: #FFFFFF;
+  border-radius: 24rpx;
+  z-index: 2001;
+}
+.modal-header.data-v-2b615d88 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+.modal-title.data-v-2b615d88 {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #131313;
+}
+.modal-close.data-v-2b615d88 {
+  font-size: 48rpx;
+  color: #999999;
+  line-height: 1;
+}
+.modal-content.data-v-2b615d88 {
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 22rpx;
+  max-height: 600rpx;
+  overflow-y: auto;
+}
+.modal-text.data-v-2b615d88 {
+  font-size: 28rpx;
+  color: #131313;
+  line-height: 1.6;
+}
+.modal-tip.data-v-2b615d88 {
+  font-size: 28rpx;
+  color: #131313;
+  line-height: 1.6;
+}
+.modal-footer.data-v-2b615d88 {
+  display: flex;
+  gap: 24rpx;
+  padding: 30rpx;
+  border-top: 1rpx solid #F0F0F0;
+}
+.btn-modal-cancel.data-v-2b615d88 {
+  flex: 1;
+  height: 90rpx;
+  background-color: #F5F5F5;
+  color: #757575;
+  font-size: 30rpx;
+  font-weight: 500;
+  border-radius: 46rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-modal-confirm.data-v-2b615d88 {
+  flex: 1;
+  height: 90rpx;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF4D4F 100%);
+  color: #FFFFFF;
+  font-size: 30rpx;
+  font-weight: 500;
+  border-radius: 46rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10rpx 10rpx 0 rgba(227, 184, 184, 0.2);
+}

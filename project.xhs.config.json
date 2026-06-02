@@ -1,0 +1,10 @@
+{
+  "appid": "69b3ca6245f0d80001a71ea2",
+  "compileType": "miniprogram",
+  "setting": {
+    "es6": true,
+    "postcss": true,
+    "minified": false,
+    "urlCheck": false
+  }
+}

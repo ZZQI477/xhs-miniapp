@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "告白时刻Daily",
+  "usingComponents": {
+    "profile-check-modal": "../../components/profile-check-modal"
+  }
+}

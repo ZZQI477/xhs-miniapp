@@ -1,0 +1,1 @@
+<view class="container data-v-ff1e87b4"><view tt:if="{{a}}" class="content data-v-ff1e87b4"><view class="title data-v-ff1e87b4">{{b}}</view><view class="html-content data-v-ff1e87b4"><rich-text class="data-v-ff1e87b4" nodes="{{c}}"></rich-text></view></view><view tt:else class="loading data-v-ff1e87b4"><text class="data-v-ff1e87b4">加载中...</text></view></view>

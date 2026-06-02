@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "单身库",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "profile-check-modal": "../../components/profile-check-modal",
+    "filter-modal": "../../components/filter-modal",
+    "qrcode-modal": "../../components/qrcode-modal",
+    "vip-popup": "../../components/vip-popup",
+    "custom-nav-bar": "../../components/custom-nav-bar"
+  }
+}

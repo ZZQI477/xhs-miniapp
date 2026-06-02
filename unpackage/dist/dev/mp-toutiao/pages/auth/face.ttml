@@ -1,0 +1,1 @@
+<view class="container data-v-1d16c9f7"><view tt:if="{{a}}" class="loading-mask data-v-1d16c9f7"><view class="loading-content data-v-1d16c9f7"><text class="loading-text data-v-1d16c9f7">页面加载中...</text></view></view><web-view class="data-v-1d16c9f7" src="{{b}}" bindmessage="{{c}}" bindload="{{d}}" binderror="{{e}}"></web-view></view>

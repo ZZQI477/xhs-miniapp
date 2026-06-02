@@ -1,0 +1,29 @@
+
+.container.data-v-d015f332 {
+  min-height: 100vh;
+  background-color: #F8F8F8;
+}
+.content.data-v-d015f332 {
+  background-color: #FFFFFF;
+  padding: 30rpx;
+}
+.title.data-v-d015f332 {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+.html-content.data-v-d015f332 {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.8;
+}
+.loading.data-v-d015f332 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+  font-size: 28rpx;
+  color: #999999;
+}
