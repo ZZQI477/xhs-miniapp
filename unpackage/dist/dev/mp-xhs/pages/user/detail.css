@@ -79,9 +79,14 @@
   color: #fff;
   border-radius: 44rpx;
   border: none;
+  margin-bottom: 1rem;
 }
 .share-register-btn.data-v-51f45e2f::after {
   border: none;
+}
+.guest-chat-enter.data-v-51f45e2f {
+  color: #384582;
+  font-size: 0.85rem;
 }
 
 /* 脱单提示 */

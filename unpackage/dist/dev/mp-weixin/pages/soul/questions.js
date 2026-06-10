@@ -125,7 +125,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       title: "灵魂三问",
       backgroundImage: "/static/bg4.png"
     }),
-    b: common_assets._imports_0$4,
+    b: common_assets._imports_0$3,
     c: common_vendor.f($data.soulAnswers, (item, index, i0) => {
       return {
         a: common_vendor.t(["一", "二", "三"][index]),
@@ -136,7 +136,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         f: index
       };
     }),
-    d: common_assets._imports_1$3,
+    d: common_assets._imports_1$4,
     e: common_assets._imports_5$1,
     f: common_vendor.o((...args) => $options.saveSoul && $options.saveSoul(...args), "be"),
     g: $data.pickerVisible

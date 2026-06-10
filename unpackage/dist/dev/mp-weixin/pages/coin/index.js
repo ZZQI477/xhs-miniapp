@@ -97,7 +97,7 @@ const _sfc_main = {
             this.loadCoinBalance();
           },
           fail: (err) => {
-            common_vendor.index.__f__("error", "at pages/coin/index.vue:186", "支付失败", err);
+            common_vendor.index.__f__("error", "at pages/coin/index.vue:187", "支付失败", err);
             common_vendor.index.showToast({ title: "支付已取消", icon: "none" });
           }
         });
@@ -113,13 +113,13 @@ const _sfc_main = {
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
-    a: common_assets._imports_0$5,
+    a: common_assets._imports_0$4,
     b: common_vendor.t($data.coinBalance),
-    c: common_assets._imports_1$4,
-    d: common_vendor.o((...args) => $options.showRecharge && $options.showRecharge(...args), "dd"),
+    c: common_assets._imports_1$5,
+    d: common_vendor.o((...args) => $options.showRecharge && $options.showRecharge(...args), "ed"),
     e: $data.isRechargeVisible
   }, $data.isRechargeVisible ? {
-    f: common_vendor.o((...args) => $options.hideRecharge && $options.hideRecharge(...args), "15"),
+    f: common_vendor.o((...args) => $options.hideRecharge && $options.hideRecharge(...args), "8b"),
     g: common_vendor.f($data.packages, (pkg, k0, i0) => {
       return common_vendor.e({
         a: pkg.is_hot
@@ -132,10 +132,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       });
     }),
     h: !$data.isAgreed || !$data.selectedPackage,
-    i: common_vendor.o((...args) => $options.confirmRecharge && $options.confirmRecharge(...args), "ad"),
+    i: common_vendor.o((...args) => $options.confirmRecharge && $options.confirmRecharge(...args), "5f"),
     j: $data.isAgreed,
-    k: common_vendor.o((...args) => $options.onAgreementChange && $options.onAgreementChange(...args), "6c"),
-    l: common_vendor.o((...args) => $options.toggleAgreement && $options.toggleAgreement(...args), "f3")
+    k: common_vendor.o((...args) => $options.onAgreementChange && $options.onAgreementChange(...args), "a9"),
+    l: common_vendor.o((...args) => $options.toggleAgreement && $options.toggleAgreement(...args), "00")
   } : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-aab969b6"]]);

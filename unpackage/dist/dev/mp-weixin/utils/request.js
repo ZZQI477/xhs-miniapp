@@ -2,7 +2,17 @@
 const common_vendor = require("../common/vendor.js");
 const utils_config = require("./config.js");
 const getToken = () => {
-  return common_vendor.index.getStorageSync("token") || "";
+  const token = common_vendor.index.getStorageSync("token");
+  return token || "";
+};
+const getTokenType = () => {
+  const token = common_vendor.index.getStorageSync("token");
+  if (token)
+    return "user";
+  const guestToken = common_vendor.index.getStorageSync("guest_token");
+  if (guestToken)
+    return "guest";
+  return "none";
 };
 const setToken = (token) => {
   common_vendor.index.setStorageSync("token", token);
@@ -128,6 +138,7 @@ const http = {
   post,
   upload,
   getToken,
+  getTokenType,
   setToken,
   removeToken,
   getUserInfo,

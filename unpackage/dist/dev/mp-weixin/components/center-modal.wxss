@@ -1,0 +1,67 @@
+
+.modal-overlay.data-v-d8a73f90 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.modal-container.data-v-d8a73f90 {
+  width: 560rpx;
+  background-color: #FFFFFF;
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+.modal-title.data-v-d8a73f90 {
+  padding: 40rpx 32rpx 20rpx;
+  font-size: 34rpx;
+  font-weight: 800;
+  color: #333333;
+  text-align: center;
+}
+.modal-content.data-v-d8a73f90 {
+  padding: 20rpx 32rpx 40rpx;
+  text-align: center;
+}
+.content-line.data-v-d8a73f90 {
+  display: block;
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 8rpx;
+  text-align: left;
+}
+.content-line.data-v-d8a73f90:last-child {
+  margin-bottom: 0;
+}
+.modal-buttons.data-v-d8a73f90 {
+  display: flex;
+  border-top: 1rpx solid #EEEEEE;
+}
+.btn-cancel.data-v-d8a73f90,
+.btn-confirm.data-v-d8a73f90 {
+  flex: 1;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 32rpx;
+}
+.btn-cancel.data-v-d8a73f90 {
+  color: #666666;
+  border-right: 1rpx solid #EEEEEE;
+}
+.btn-confirm.data-v-d8a73f90 {
+  color: red;
+  font-weight: 500;
+}
+.btn-cancel.data-v-d8a73f90:active {
+  background-color: #F5F5F5;
+}
+.btn-confirm.data-v-d8a73f90:active {
+  background-color: #F5F5F5;
+}

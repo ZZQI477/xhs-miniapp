@@ -1,6 +1,16 @@
 "use strict";
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const utils_request = require("../utils/request.js");
+const utils_guestAuth = require("../utils/guestAuth.js");
+function getGuestParams() {
+  if (utils_guestAuth.isGuest()) {
+    const guestToken = utils_guestAuth.getGuestToken();
+    if (guestToken) {
+      return { guest_token: guestToken };
+    }
+  }
+  return {};
+}
 const mobileLogin = (data) => {
   return utils_request.http.post("/user/mobilelogin", data);
 };
@@ -133,6 +143,24 @@ const clearMessages = (data) => {
 const getAgreement = (params) => {
   return utils_request.http.get("/agreement/detail", params);
 };
+const getOrCreateSession = (params) => {
+  return utils_request.http.get("/chat/session", { ...getGuestParams(), ...params });
+};
+const getChatList = (params) => {
+  return utils_request.http.get("/chat/list", { ...getGuestParams(), ...params });
+};
+const getChatMessages = (params) => {
+  return utils_request.http.get("/chat/messages", { ...getGuestParams(), ...params });
+};
+const sendChatMessage = (data) => {
+  return utils_request.http.post("/chat/send", { ...getGuestParams(), ...data });
+};
+const markChatRead = (data) => {
+  return utils_request.http.post("/chat/read", { ...getGuestParams(), ...data });
+};
+const blockUser = (data) => {
+  return utils_request.http.post("/chat/block", data);
+};
 const getPartyLists = (params) => {
   return utils_request.http.get("/party/lists", params);
 };
@@ -145,6 +173,7 @@ const getCasesLists = (params) => {
 const getCasesDetail = (id) => {
   return utils_request.http.get("/cases/detail", { id });
 };
+exports.blockUser = blockUser;
 exports.cancelAccount = cancelAccount;
 exports.clearMessages = clearMessages;
 exports.createOrder = createOrder;
@@ -156,6 +185,8 @@ exports.getAuthStatus = getAuthStatus;
 exports.getBanners = getBanners;
 exports.getCasesDetail = getCasesDetail;
 exports.getCasesLists = getCasesLists;
+exports.getChatList = getChatList;
+exports.getChatMessages = getChatMessages;
 exports.getCoupleList = getCoupleList;
 exports.getFansList = getFansList;
 exports.getFollowList = getFollowList;
@@ -163,6 +194,7 @@ exports.getGroups = getGroups;
 exports.getMessageList = getMessageList;
 exports.getMySoul = getMySoul;
 exports.getMyWantList = getMyWantList;
+exports.getOrCreateSession = getOrCreateSession;
 exports.getPackages = getPackages;
 exports.getPartyDetail = getPartyDetail;
 exports.getPartyLists = getPartyLists;
@@ -180,10 +212,12 @@ exports.getVisitList = getVisitList;
 exports.getWantMeList = getWantMeList;
 exports.handleRequest = handleRequest;
 exports.handleWant = handleWant;
+exports.markChatRead = markChatRead;
 exports.markMessageRead = markMessageRead;
 exports.mobileLogin = mobileLogin;
 exports.resetPassword = resetPassword;
 exports.saveSoul = saveSoul;
+exports.sendChatMessage = sendChatMessage;
 exports.sendRequest = sendRequest;
 exports.sendSms = sendSms;
 exports.submitEduAuth = submitEduAuth;

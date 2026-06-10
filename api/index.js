@@ -1,4 +1,19 @@
 import http from '@/utils/request.js'
+import { isGuest, getGuestToken } from '@/utils/guestAuth.js'
+
+/**
+ * 获取游客token参数（游客模式下自动附加到请求参数中）
+ * @returns {object} 如果是游客模式返回 { guest_token }，否则返回 {}
+ */
+function getGuestParams() {
+  if (isGuest()) {
+    const guestToken = getGuestToken()
+    if (guestToken) {
+      return { guest_token: guestToken }
+    }
+  }
+  return {}
+}
 
 // ==================== 用户登录相关 ====================
 
@@ -279,6 +294,58 @@ export const getAgreement = (params) => {
   return http.get('/agreement/detail', params)
 }
 
+// ==================== 聊天相关 ====================
+
+// 获取或创建会话（游客模式自动附加guest_token）
+export const getOrCreateSession = (params) => {
+  return http.get('/chat/session', { ...getGuestParams(), ...params })
+}
+
+// 获取会话列表（游客模式自动附加guest_token）
+export const getChatList = (params) => {
+  return http.get('/chat/list', { ...getGuestParams(), ...params })
+}
+
+// 获取历史消息（游客模式自动附加guest_token）
+export const getChatMessages = (params) => {
+  return http.get('/chat/messages', { ...getGuestParams(), ...params })
+}
+
+// 发送消息（游客模式自动附加guest_token）
+export const sendChatMessage = (data) => {
+  return http.post('/chat/send', { ...getGuestParams(), ...data })
+}
+
+// 获取未读统计（游客模式自动附加guest_token）
+export const getChatUnread = () => {
+  return http.get('/chat/unread', getGuestParams())
+}
+
+// 标记已读（游客模式自动附加guest_token）
+export const markChatRead = (data) => {
+  return http.post('/chat/read', { ...getGuestParams(), ...data })
+}
+
+// 屏蔽用户
+export const blockUser = (data) => {
+  return http.post('/chat/block', data)
+}
+
+// 取消屏蔽
+export const unblockUser = (data) => {
+  return http.post('/chat/unblock', data)
+}
+
+// 获取黑名单列表
+export const getBlacklist = (params) => {
+  return http.get('/chat/blacklist', params)
+}
+
+// 获取聊天配置（私聊模式等）
+export const getChatConfig = () => {
+  return http.get('/chat/config')
+}
+
 // ==================== 活动&成功案例======================
 // 活动分页列表
 export const getPartyLists = (params) => {
@@ -355,5 +422,15 @@ export default {
   getPartyDetail,
   getCasesLists,
   getCasesDetail,
-  getBlur
+  getBlur,
+  // 聊天相关
+  getOrCreateSession,
+  getChatList,
+  getChatMessages,
+  sendChatMessage,
+  getChatUnread,
+  markChatRead,
+  blockUser,
+  unblockUser,
+  getBlacklist
 }

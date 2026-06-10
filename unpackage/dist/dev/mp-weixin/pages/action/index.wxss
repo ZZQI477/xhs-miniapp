@@ -109,7 +109,7 @@
 	  color: #FFFFFF;
 	  line-height: 52rpx;
 	  text-shadow: 0px 8px 16px rgba(208,82,78,0.81);
-	  text-align: left;
+	  text-align: right;
 	  font-style: normal;
 	  margin-bottom: 45rpx;
 }

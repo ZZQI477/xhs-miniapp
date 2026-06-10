@@ -35,6 +35,9 @@ const _sfc_main = {
       hasMore: true,
       showFilterModal: false,
       filterParams: {},
+      // 当前使用的筛选参数（后端API格式）
+      filterDisplayData: { ageRange: "", heightRange: "", education: "", city: "" },
+      // 前端格式筛选参数（用于弹窗显示）
       showQrcodeModal: false,
       groupQrcode: "/static/images/qrcode.png",
       // 公众号二维码图片
@@ -44,8 +47,12 @@ const _sfc_main = {
       // 是否显示解锁卡片
       extraUsers: [],
       // 额外的模糊用户列表
-      showVipPopup: false
+      showVipPopup: false,
       // 显示VIP支付弹窗
+      loadedImages: {},
+      // 图片加载状态跟踪
+      errorImages: {}
+      // 图片加载失败状态跟踪
     };
   },
   computed: {
@@ -103,7 +110,7 @@ const _sfc_main = {
         this.banners = res.data.list || [];
         this.buildDisplayBanners();
       } catch (e) {
-        common_vendor.index.__f__("error", "at pages/single/index.vue:266", "加载Banner失败", e);
+        common_vendor.index.__f__("error", "at pages/single/index.vue:280", "加载Banner失败", e);
       }
     },
     // 构建首尾复制的轮播数组，实现无缝衔接
@@ -197,7 +204,7 @@ const _sfc_main = {
         this.showUnlock = res.data.show_unlock || false;
         this.hasMore = this.users.length < this.total;
       } catch (e) {
-        common_vendor.index.__f__("error", "at pages/single/index.vue:371", "加载用户列表失败", e);
+        common_vendor.index.__f__("error", "at pages/single/index.vue:385", "加载用户列表失败", e);
       } finally {
         this.loading = false;
       }
@@ -218,7 +225,7 @@ const _sfc_main = {
     //     this.users = list.slice(0, 6);
     //     this.hasMore = false;
     //   } catch (e) {
-    //     uni.__f__('error','at pages/single/index.vue:395','加载用户列表失败', e);
+    //     uni.__f__('error','at pages/single/index.vue:409','加载用户列表失败', e);
     //   } finally {
     //     this.loading = false;
     //   }
@@ -242,7 +249,7 @@ const _sfc_main = {
         this.total = res.data.total;
         this.hasMore = this.coupleList.length < this.total;
       } catch (e) {
-        common_vendor.index.__f__("error", "at pages/single/index.vue:423", "加载脱单案例失败", e);
+        common_vendor.index.__f__("error", "at pages/single/index.vue:437", "加载脱单案例失败", e);
       } finally {
         this.loading = false;
       }
@@ -271,7 +278,6 @@ const _sfc_main = {
       this.currentTab = tab;
       this.page = 1;
       this.hasMore = true;
-      this.filterParams = {};
       if (tab === 2) {
         this.coupleList = [];
         this.loadCoupleList();
@@ -304,6 +310,7 @@ const _sfc_main = {
         apiParams.city = params.city;
       }
       this.filterParams = apiParams;
+      this.filterDisplayData = { ...params };
       this.showFilterModal = false;
       this.page = 1;
       this.users = [];
@@ -376,7 +383,7 @@ const _sfc_main = {
             this.loadUsers();
           },
           fail: (err) => {
-            common_vendor.index.__f__("error", "at pages/single/index.vue:602", "支付失败", err);
+            common_vendor.index.__f__("error", "at pages/single/index.vue:617", "支付失败", err);
             common_vendor.index.showToast({ title: "支付取消", icon: "none" });
           }
         });
@@ -387,6 +394,15 @@ const _sfc_main = {
           icon: "none"
         });
       }
+    },
+    // 图片加载完成
+    onImageLoad(userId) {
+      this.loadedImages[userId] = true;
+    },
+    // 图片加载失败，显示默认占位背景
+    onImageError(userId) {
+      this.errorImages[userId] = true;
+      this.loadedImages[userId] = true;
     },
     // 返回上一页
     goBack() {
@@ -411,20 +427,20 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       percent: _ctx.profilePercent,
       ["missing-fields"]: _ctx.profileMissingFields
     }),
-    d: common_vendor.o($options.onFilterConfirm, "ba"),
-    e: common_vendor.o(($event) => $data.showFilterModal = false, "bc"),
+    d: common_vendor.o($options.onFilterConfirm, "85"),
+    e: common_vendor.o(($event) => $data.showFilterModal = false, "c0"),
     f: common_vendor.p({
       visible: $data.showFilterModal,
-      filter: $data.filterParams
+      filter: $data.filterDisplayData
     }),
-    g: common_vendor.o(($event) => $data.showQrcodeModal = false, "62"),
+    g: common_vendor.o(($event) => $data.showQrcodeModal = false, "bb"),
     h: common_vendor.p({
       visible: $data.showQrcodeModal,
       qrcodeUrl: $data.groupQrcode,
       title: "告白时刻Daily公众号"
     }),
-    i: common_vendor.o(($event) => $data.showVipPopup = false, "ca"),
-    j: common_vendor.o($options.handleVipPay, "93"),
+    i: common_vendor.o(($event) => $data.showVipPopup = false, "ff"),
+    j: common_vendor.o($options.handleVipPay, "b9"),
     k: common_vendor.p({
       visible: $data.showVipPopup
     }),
@@ -442,9 +458,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       };
     }),
     o: $data.bannerCurrent,
-    p: common_vendor.o((...args) => $options.onBannerAnimationFinish && $options.onBannerAnimationFinish(...args), "cd"),
-    q: common_vendor.o((...args) => $options.onBannerTouchStart && $options.onBannerTouchStart(...args), "da"),
-    r: common_vendor.o((...args) => $options.onBannerTouchEnd && $options.onBannerTouchEnd(...args), "a9")
+    p: common_vendor.o((...args) => $options.onBannerAnimationFinish && $options.onBannerAnimationFinish(...args), "83"),
+    q: common_vendor.o((...args) => $options.onBannerTouchStart && $options.onBannerTouchStart(...args), "51"),
+    r: common_vendor.o((...args) => $options.onBannerTouchEnd && $options.onBannerTouchEnd(...args), "15")
   } : {}, {
     s: $data.banners.length > 1
   }, $data.banners.length > 1 ? {
@@ -456,57 +472,61 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   } : {}, {
     v: $data.currentTab === 0 ? 1 : "",
-    w: common_vendor.o(($event) => $options.switchTab(0), "90"),
+    w: common_vendor.o(($event) => $options.switchTab(0), "18"),
     x: $data.currentTab === 1 ? 1 : "",
-    y: common_vendor.o(($event) => $options.switchTab(1), "5c"),
-    z: $data.currentTab === 2 ? 1 : "",
-    A: common_vendor.o(($event) => $options.switchTab(3), "2e"),
-    B: $data.currentTab !== 2
+    y: common_vendor.o(($event) => $options.switchTab(1), "1e"),
+    z: $data.currentTab !== 2
   }, $data.currentTab !== 2 ? {
-    C: common_assets._imports_0$2,
-    D: common_vendor.o(($event) => $data.showFilterModal = true, "c1")
+    A: common_assets._imports_0$2,
+    B: common_vendor.o(($event) => $data.showFilterModal = true, "b2")
   } : {}, {
-    E: $data.currentTab !== 2
+    C: $data.currentTab !== 2
   }, $data.currentTab !== 2 ? common_vendor.e({
-    F: common_vendor.f($data.users, (user, index, i0) => {
+    D: common_vendor.f($data.users, (user, index, i0) => {
       return common_vendor.e({
-        a: user.avatar,
-        b: common_vendor.t(user.age),
-        c: common_vendor.t(user.nickname || "匿名用户"),
-        d: user.gender === 1 ? "/static/m.png" : "/static/wm.png",
-        e: common_vendor.t(user.city_t),
-        f: user.tags && user.tags.length > 0
+        a: !$data.loadedImages[user.id]
+      }, !$data.loadedImages[user.id] ? {} : {}, {
+        b: $data.loadedImages[user.id] ? 1 : "",
+        c: $data.errorImages[user.id] ? 1 : "",
+        d: $data.errorImages[user.id] ? "" : user.avatar,
+        e: common_vendor.o(($event) => $options.onImageLoad(user.id), user.id),
+        f: common_vendor.o(($event) => $options.onImageError(user.id), user.id),
+        g: common_vendor.t(user.age),
+        h: common_vendor.t(user.nickname || "匿名用户"),
+        i: user.gender === 1 ? "/static/m.png" : "/static/wm.png",
+        j: common_vendor.t(user.city_t),
+        k: user.tags && user.tags.length > 0
       }, user.tags && user.tags.length > 0 ? {
-        g: common_vendor.f(user.tags.slice(0, 3), (tag, idx, i1) => {
+        l: common_vendor.f(user.tags.slice(0, 3), (tag, idx, i1) => {
           return {
             a: common_vendor.t(tag),
             b: idx
           };
         })
       } : user.education ? {
-        i: common_vendor.t(user.education)
+        n: common_vendor.t(user.education)
       } : {}, {
-        h: user.education,
-        j: user.id,
-        k: common_vendor.o(($event) => $options.goUserDetail(user.id), user.id)
+        m: user.education,
+        o: user.id,
+        p: common_vendor.o(($event) => $options.goUserDetail(user.id), user.id)
       });
     }),
-    G: $data.showUnlock
+    E: $data.showUnlock
   }, $data.showUnlock ? common_vendor.e({
-    H: $data.extraUsers.length > 0
+    F: $data.extraUsers.length > 0
   }, $data.extraUsers.length > 0 ? {
-    I: common_vendor.f($data.extraUsers.slice(0, 5), (user, idx, i0) => {
+    G: common_vendor.f($data.extraUsers.slice(0, 5), (user, idx, i0) => {
       return {
         a: user.avatar + "?imageView2/1/w/80/h/80/q/50",
         b: idx
       };
     })
   } : {}, {
-    J: common_vendor.o((...args) => $options.handleUnlockClick && $options.handleUnlockClick(...args), "b0")
+    H: common_vendor.o((...args) => $options.handleUnlockClick && $options.handleUnlockClick(...args), "19")
   }) : {}) : {}, {
-    K: $data.currentTab === 2
+    I: $data.currentTab === 2
   }, $data.currentTab === 2 ? {
-    L: common_vendor.f($data.coupleList, (item, index, i0) => {
+    J: common_vendor.f($data.coupleList, (item, index, i0) => {
       return {
         a: item.avatar,
         b: common_vendor.t(item.name),
@@ -517,12 +537,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       };
     })
   } : {}, {
-    M: $data.hasMore
+    K: $data.hasMore
   }, $data.hasMore ? {
-    N: common_vendor.t($data.loading ? "加载中..." : "加载更多"),
-    O: common_vendor.o((...args) => $options.loadMore && $options.loadMore(...args), "ef")
+    L: common_vendor.t($data.loading ? "加载中..." : "加载更多"),
+    M: common_vendor.o((...args) => $options.loadMore && $options.loadMore(...args), "0f")
   } : {}, {
-    P: !$data.loading && $options.currentList.length === 0
+    N: !$data.loading && $options.currentList.length === 0
   }, !$data.loading && $options.currentList.length === 0 ? {} : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-79df256d"]]);

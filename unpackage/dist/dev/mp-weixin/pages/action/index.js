@@ -36,9 +36,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       fontColor: "black",
       backgroundColor: "transparent"
     }),
-    b: common_assets._imports_0$9,
+    b: common_assets._imports_0$8,
     c: common_vendor.o(($event) => $options.switchTab(0), "d4"),
-    d: common_assets._imports_1$6,
+    d: common_assets._imports_1$7,
     e: common_vendor.o(($event) => $options.switchTab(1), "11")
   };
 }

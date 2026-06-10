@@ -1,11 +1,12 @@
 <template>
   <view class="detail-container">
-    <view v-if="showShareRegisterPopup" class="share-register-overlay">
-      <view class="share-register-card">
+   <view v-if="showShareRegisterPopup" class="share-register-overlay">
+      <view class="share-register-card" style="text-align: center;">
         <text class="share-register-close" @click="closeShareRegisterPopup">×</text>
         <view class="share-register-title">注册后可继续查看嘉宾信息</view>
-        <view class="share-register-desc">登录后可关注对方、申请联系方式，并查看更多同城嘉宾。</view>
+        <view class="share-register-desc" style="text-align: left;">登录后可关注对方、申请联系方式，并查看更多同城嘉宾。</view>
         <button class="share-register-btn" @click="goRegister">立即注册</button>
+		<view class="guest-chat-enter" @click="startGuestChat">免登录聊天</view>
       </view>
     </view>
 
@@ -173,7 +174,7 @@
 			  </view>
 		    </view>
 		  </view>
-
+		<view class="guest-chat-enter" @click="startGuestChat">免登录聊天</view>
           <!-- 5. 自我介绍卡片 -->
           <view class="introduce-card card">
             <view class="card-title">
@@ -374,6 +375,7 @@
 import { getUserDetail, toggleFollow, sendRequest, wantView, getBlur } from '@/api/index.js'
 import utils_config from "../../utils/config.js"
 import CenterModal from '@/components/center-modal.vue'
+import { getOrCreateGuestId } from '@/utils/guestAuth.js'
 
 export default {
   name: 'UserDetail',
@@ -895,6 +897,28 @@ export default {
       })
     },
 
+    async startGuestChat() {
+      try {
+        // 获取或创建游客身份，传入邀请人ID
+        const inviterId = uni.getStorageSync('share_inviter_id') || ''
+        // const inviterId = '1796'
+        const guestInfo = await getOrCreateGuestId(inviterId ? { inviter_id: inviterId } : {})
+        console.log('[GuestChat] 游客身份创建成功', guestInfo)
+        
+        // 关闭弹窗，跳转聊天详情页
+        this.showShareRegisterPopup = false
+        uni.navigateTo({
+          url: `/pages/chat/detail?to_user_id=${this.userId}&guest=1`
+        })
+      } catch (e) {
+        console.error('[GuestChat] 创建游客身份失败', e)
+        uni.showToast({
+          title: '请稍后重试',
+          icon: 'none'
+        })
+      }
+    },
+
     async handleBind() {
       try {
         // 绑定逻辑
@@ -1109,10 +1133,16 @@ export default {
   color: #fff;
   border-radius: 44rpx;
   border: none;
+  margin-bottom: 1rem;
 
   &::after {
     border: none;
   }
+}
+
+.guest-chat-enter{
+	color: #384582;
+	font-size: 0.85rem;
 }
 
 /* 脱单提示 */

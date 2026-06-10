@@ -1,0 +1,97 @@
+
+.message-wrapper.data-v-15c2fc31 {
+  margin-bottom: 20rpx;
+}
+
+/* 时间分割线 */
+.time-divider.data-v-15c2fc31 {
+  text-align: center;
+  margin: 30rpx 0 20rpx;
+}
+.time-text.data-v-15c2fc31 {
+  font-size: 24rpx;
+  color: #999999;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 6rpx 16rpx;
+  border-radius: 8rpx;
+}
+
+/* 消息容器 */
+.message-container.data-v-15c2fc31 {
+  display: flex;
+  align-items: flex-start;
+  padding: 0 30rpx;
+}
+.message-wrapper.is-self .message-container.data-v-15c2fc31 {
+  justify-content: flex-end;
+}
+
+/* 头像 */
+.avatar.data-v-15c2fc31 {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin: 0 16rpx;
+  flex-shrink: 0;
+  background-color: #F5F5F5;
+}
+
+/* 消息气泡 */
+.message-bubble.data-v-15c2fc31 {
+  max-width: 500rpx;
+  padding: 20rpx 24rpx;
+  border-radius: 20rpx;
+  background-color: #FFFFFF;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+}
+.self-bubble.data-v-15c2fc31 {
+  background-color: #8068F7;
+}
+
+/* 文字消息 */
+.text-content.data-v-15c2fc31 {
+  word-break: break-all;
+}
+.text-message.data-v-15c2fc31 {
+  font-size: 28rpx;
+  line-height: 1.5;
+  color: #333333;
+}
+.self-bubble .text-message.data-v-15c2fc31 {
+  color: #FFFFFF;
+}
+
+/* 图片消息 */
+.image-content.data-v-15c2fc31 {
+  overflow: hidden;
+  border-radius: 12rpx;
+}
+.message-image.data-v-15c2fc31 {
+  max-width: 400rpx;
+  min-width: 150rpx;
+}
+
+/* 系统消息 */
+.system-content.data-v-15c2fc31 {
+  text-align: center;
+}
+.system-text.data-v-15c2fc31 {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+/* 消息状态 */
+.message-status.data-v-15c2fc31 {
+  margin-top: 8rpx;
+  text-align: right;
+}
+.status-text.data-v-15c2fc31 {
+  font-size: 20rpx;
+  color: #999999;
+}
+.status-text.failed.data-v-15c2fc31 {
+  color: #FF4D4F;
+}
+.status-text.read.data-v-15c2fc31 {
+  color: #52C41A;
+}

@@ -10,6 +10,10 @@ const _sfc_main = {
       showShaking: false,
       isSubmitting: false,
       showLocationPopup: false,
+      showStartGuide: true,
+      // 是否显示初始提示页面
+      showSuccessPopup: false,
+      // 是否显示提交成功弹框
       form: {
         gender: "",
         birthday: "",
@@ -21,7 +25,8 @@ const _sfc_main = {
         provinceName: "",
         cityId: "",
         cityName: "",
-        nickName: ""
+        nickName: "",
+        ideal_intro: ""
       },
       educationOptions: ["博士", "硕士", "本科", "大专", "高中", "中专"],
       incomeOptions: ["5万以下", "5-10万", "10-20万", "20-30万", "30-50万", "50-100万", "100万以上"],
@@ -100,7 +105,7 @@ const _sfc_main = {
           this.cityValue = [newCityValueIndex, newCityIndex];
         }
       } catch (e) {
-        common_vendor.index.__f__("error", "at pages/signup/guide.vue:355", "加载省份失败", e);
+        common_vendor.index.__f__("error", "at pages/signup/guide.vue:405", "加载省份失败", e);
         common_vendor.index.showToast({ title: "加载地区数据失败", icon: "none" });
       }
     },
@@ -118,7 +123,7 @@ const _sfc_main = {
         this.cityOptions = cities;
         this.$set(this.cityColumns, 1, this.cityOptions);
       } catch (e) {
-        common_vendor.index.__f__("error", "at pages/signup/guide.vue:376", "加载城市失败", e);
+        common_vendor.index.__f__("error", "at pages/signup/guide.vue:426", "加载城市失败", e);
         common_vendor.index.showToast({ title: "加载城市数据失败", icon: "none" });
       }
     },
@@ -148,6 +153,8 @@ const _sfc_main = {
           this.form.cityName = savedData.cityName;
         if (savedData.nickName)
           this.form.nickName = savedData.nickName;
+        if (savedData.ideal_intro)
+          this.form.ideal_intro = savedData.ideal_intro;
         const savedStep = common_vendor.index.getStorageSync("signup_guide_step");
         if (savedStep) {
           this.currentStep = savedStep;
@@ -247,6 +254,10 @@ const _sfc_main = {
           common_vendor.index.showToast({ title: "请选择居住城市", icon: "none" });
           return false;
         }
+        if (!this.form.ideal_intro) {
+          common_vendor.index.showToast({ title: "请输入择偶要求", icon: "none" });
+          return false;
+        }
       }
       return true;
     },
@@ -303,29 +314,36 @@ const _sfc_main = {
           // province: this.form.provinceName,  // 后端字段是 province
           city_cn: this.form.cityName,
           // 后端字段是 city
-          nickname: this.form.nickName
+          nickname: this.form.nickName,
+          ideal_intro: this.form.ideal_intro
         };
         await api_index.updateProfile(submitData);
         try {
           const userRes = await api_index.getUserInfo();
           const latestUserInfo = userRes.data.userinfo || userRes.data;
           common_vendor.index.setStorageSync("userinfo", latestUserInfo);
-          common_vendor.index.__f__("log", "at pages/signup/guide.vue:577", "[Guide] 已更新本地用户信息", { gender: latestUserInfo.gender, education: latestUserInfo.education });
+          common_vendor.index.__f__("log", "at pages/signup/guide.vue:633", "[Guide] 已更新本地用户信息", { gender: latestUserInfo.gender, education: latestUserInfo.education });
         } catch (err) {
-          common_vendor.index.__f__("error", "at pages/signup/guide.vue:579", "[Guide] 更新本地用户信息失败", err);
+          common_vendor.index.__f__("error", "at pages/signup/guide.vue:635", "[Guide] 更新本地用户信息失败", err);
         }
         common_vendor.index.setStorageSync("signup_guide_completed", true);
         common_vendor.index.removeStorageSync("signup_guide_data");
         common_vendor.index.removeStorageSync("signup_guide_step");
-        common_vendor.index.showToast({ title: "资料提交成功", icon: "success" });
-        setTimeout(() => {
-          common_vendor.index.switchTab({ url: "/pages/single/index" });
-        }, 1500);
+        this.showSuccessPopup = true;
       } catch (e) {
         common_vendor.index.showToast({ title: e.msg || "提交失败", icon: "none" });
       } finally {
         this.isSubmitting = false;
       }
+    },
+    // 点击"我已知晓"开始填写资料
+    handleStartGuide() {
+      this.showStartGuide = false;
+    },
+    // 点击确认跳转到单身库首页
+    handleSuccessConfirm() {
+      this.showSuccessPopup = false;
+      common_vendor.index.switchTab({ url: "/pages/single/index" });
     },
     // 关闭位置弹窗
     closeLocationPopup() {
@@ -352,11 +370,11 @@ const _sfc_main = {
     // 获取用户当前位置
     async getCurrentLocation() {
       try {
-        common_vendor.index.__f__("log", "at pages/signup/guide.vue:636", "开始获取位置...");
+        common_vendor.index.__f__("log", "at pages/signup/guide.vue:699", "开始获取位置...");
         const locationRes = await common_vendor.index.getLocation({
           type: "wgs84"
         });
-        common_vendor.index.__f__("log", "at pages/signup/guide.vue:642", "获取位置成功:", locationRes);
+        common_vendor.index.__f__("log", "at pages/signup/guide.vue:705", "获取位置成功:", locationRes);
         const geocodeRes = await common_vendor.index.request({
           url: `https://restapi.amap.com/v3/geocode/regeo`,
           method: "GET",
@@ -368,33 +386,33 @@ const _sfc_main = {
             extensions: "all"
           }
         });
-        common_vendor.index.__f__("log", "at pages/signup/guide.vue:656", "逆地理编码响应:", geocodeRes);
+        common_vendor.index.__f__("log", "at pages/signup/guide.vue:719", "逆地理编码响应:", geocodeRes);
         if (geocodeRes.data) {
-          common_vendor.index.__f__("log", "at pages/signup/guide.vue:659", "逆地理编码数据:", geocodeRes.data);
+          common_vendor.index.__f__("log", "at pages/signup/guide.vue:722", "逆地理编码数据:", geocodeRes.data);
           if (geocodeRes.data.status === "1") {
             if (geocodeRes.data.regeocode && geocodeRes.data.regeocode.addressComponent) {
               const addressComponent = geocodeRes.data.regeocode.addressComponent;
               const provinceName = addressComponent.province;
               const cityName = addressComponent.city || addressComponent.district;
-              common_vendor.index.__f__("log", "at pages/signup/guide.vue:665", "当前位置:", provinceName, cityName);
+              common_vendor.index.__f__("log", "at pages/signup/guide.vue:728", "当前位置:", provinceName, cityName);
               await this.$nextTick();
-              common_vendor.index.__f__("log", "at pages/signup/guide.vue:669", "省份数据:", this.provinceOptions);
+              common_vendor.index.__f__("log", "at pages/signup/guide.vue:732", "省份数据:", this.provinceOptions);
               if (provinceName && cityName) {
                 await this.setLocationCity(provinceName, cityName);
               } else {
-                common_vendor.index.__f__("error", "at pages/signup/guide.vue:675", "地址信息不完整:", addressComponent);
+                common_vendor.index.__f__("error", "at pages/signup/guide.vue:738", "地址信息不完整:", addressComponent);
               }
             } else {
-              common_vendor.index.__f__("error", "at pages/signup/guide.vue:678", "没有地址组件信息:", geocodeRes.data);
+              common_vendor.index.__f__("error", "at pages/signup/guide.vue:741", "没有地址组件信息:", geocodeRes.data);
             }
           } else {
-            common_vendor.index.__f__("error", "at pages/signup/guide.vue:681", "逆地理编码失败:", geocodeRes.data.info);
+            common_vendor.index.__f__("error", "at pages/signup/guide.vue:744", "逆地理编码失败:", geocodeRes.data.info);
           }
         } else {
-          common_vendor.index.__f__("error", "at pages/signup/guide.vue:684", "逆地理编码响应异常:", geocodeRes);
+          common_vendor.index.__f__("error", "at pages/signup/guide.vue:747", "逆地理编码响应异常:", geocodeRes);
         }
       } catch (e) {
-        common_vendor.index.__f__("error", "at pages/signup/guide.vue:687", "获取位置失败:", e);
+        common_vendor.index.__f__("error", "at pages/signup/guide.vue:750", "获取位置失败:", e);
       }
     },
     // 根据省份和城市名称设置城市选择器
@@ -402,13 +420,13 @@ const _sfc_main = {
       try {
         const province = this.provinceOptions.find((p) => p.name === provinceName);
         if (!province) {
-          common_vendor.index.__f__("error", "at pages/signup/guide.vue:698", "未找到省份:", provinceName);
+          common_vendor.index.__f__("error", "at pages/signup/guide.vue:761", "未找到省份:", provinceName);
           return;
         }
         await this.loadCities(province.id);
         const city = this.cityOptions.find((c) => c.name === cityName);
         if (!city) {
-          common_vendor.index.__f__("error", "at pages/signup/guide.vue:708", "未找到城市:", cityName);
+          common_vendor.index.__f__("error", "at pages/signup/guide.vue:771", "未找到城市:", cityName);
           return;
         }
         this.form.provinceId = province.id;
@@ -421,16 +439,33 @@ const _sfc_main = {
         const cityIndex = this.cityOptions.findIndex((c) => c.id === city.id);
         this.cityValue = [provinceIndex, cityIndex];
         this.saveData();
-        common_vendor.index.__f__("log", "at pages/signup/guide.vue:728", "自动定位成功:", provinceName, cityName);
+        common_vendor.index.__f__("log", "at pages/signup/guide.vue:791", "自动定位成功:", provinceName, cityName);
       } catch (e) {
-        common_vendor.index.__f__("error", "at pages/signup/guide.vue:730", "设置城市失败:", e);
+        common_vendor.index.__f__("error", "at pages/signup/guide.vue:793", "设置城市失败:", e);
       }
     }
   }
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
-    a: common_vendor.f($data.totalSteps, (step, k0, i0) => {
+    a: $data.showStartGuide
+  }, $data.showStartGuide ? {
+    b: common_assets._imports_0$6,
+    c: common_assets._imports_1$2,
+    d: common_vendor.o((...args) => $options.handleStartGuide && $options.handleStartGuide(...args), "31")
+  } : {}, {
+    e: $data.showSuccessPopup
+  }, $data.showSuccessPopup ? {
+    f: common_assets._imports_2$2,
+    g: common_vendor.o((...args) => $options.handleSuccessConfirm && $options.handleSuccessConfirm(...args), "41"),
+    h: common_vendor.o(() => {
+    }, "3c"),
+    i: common_vendor.o(() => {
+    }, "d4")
+  } : {}, {
+    j: !$data.showStartGuide
+  }, !$data.showStartGuide ? {
+    k: common_vendor.f($data.totalSteps, (step, k0, i0) => {
       return {
         a: step,
         b: common_vendor.n({
@@ -438,39 +473,40 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
         c: common_vendor.o(($event) => $options.handleStepClick(step), step)
       };
-    }),
-    b: $data.currentStep === 1
+    })
+  } : {}, {
+    l: $data.currentStep === 1
   }, $data.currentStep === 1 ? common_vendor.e({
-    c: !$data.form.gender ? 1 : "",
-    d: $data.form.gender === "male"
+    m: !$data.form.gender ? 1 : "",
+    n: $data.form.gender === "male"
   }, $data.form.gender === "male" ? {} : {}, {
-    e: common_vendor.n({
+    o: common_vendor.n({
       "selected": $data.form.gender === "male"
     }),
-    f: $data.form.gender === "male" ? 1 : "",
-    g: common_vendor.o(($event) => $options.selectGender("male"), "1c"),
-    h: $data.form.gender === "female"
+    p: $data.form.gender === "male" ? 1 : "",
+    q: common_vendor.o(($event) => $options.selectGender("male"), "05"),
+    r: $data.form.gender === "female"
   }, $data.form.gender === "female" ? {} : {}, {
-    i: common_vendor.n({
+    s: common_vendor.n({
       "selected": $data.form.gender === "female"
     }),
-    j: $data.form.gender === "female" ? 1 : "",
-    k: common_vendor.o(($event) => $options.selectGender("female"), "31"),
-    l: common_vendor.n({
+    t: $data.form.gender === "female" ? 1 : "",
+    v: common_vendor.o(($event) => $options.selectGender("female"), "03"),
+    w: common_vendor.n({
       "shaking": $data.showShaking && !$data.form.gender
     }),
-    m: $data.form.nickName,
-    n: common_vendor.o(($event) => $data.form.nickName = $event.detail.value, "85"),
-    o: common_vendor.t($data.form.birthday ? $data.form.birthday + "年" : "请选择"),
-    p: common_vendor.t($data.form.birthday ? $data.form.birthday + "年" : "请选择"),
-    q: $options.birthdayOptions,
-    r: $options.birthdayIndex >= 0 ? $options.birthdayIndex : void 0,
-    s: common_vendor.o((...args) => $options.onBirthdayChange && $options.onBirthdayChange(...args), "08")
+    x: $data.form.nickName,
+    y: common_vendor.o(($event) => $data.form.nickName = $event.detail.value, "f5"),
+    z: common_vendor.t($data.form.birthday ? $data.form.birthday + "年" : "请选择"),
+    A: common_vendor.t($data.form.birthday ? $data.form.birthday + "年" : "请选择"),
+    B: $options.birthdayOptions,
+    C: $options.birthdayIndex >= 0 ? $options.birthdayIndex : void 0,
+    D: common_vendor.o((...args) => $options.onBirthdayChange && $options.onBirthdayChange(...args), "54")
   }) : {}, {
-    t: $data.currentStep === 2
+    E: $data.currentStep === 2
   }, $data.currentStep === 2 ? {
-    v: !$data.form.education ? 1 : "",
-    w: common_vendor.f($data.educationOptions, (edu, k0, i0) => {
+    F: !$data.form.education ? 1 : "",
+    G: common_vendor.f($data.educationOptions, (edu, k0, i0) => {
       return {
         a: common_vendor.t(edu),
         b: edu,
@@ -480,53 +516,59 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: common_vendor.o(($event) => $options.selectEducation(edu), edu)
       };
     }),
-    x: common_vendor.n({
+    H: common_vendor.n({
       "shaking": $data.showShaking && !$data.form.education
     }),
-    y: $data.form.position,
-    z: common_vendor.o(($event) => $data.form.position = $event.detail.value, "64"),
-    A: common_vendor.t($data.form.income !== "" ? $data.incomeOptions[$data.form.income] : "请选择"),
-    B: common_vendor.t($data.form.income !== "" ? $data.incomeOptions[$data.form.income] : "请选择"),
-    C: $data.incomeOptions,
-    D: $data.form.income !== "" ? $data.form.income : void 0,
-    E: common_vendor.o((...args) => $options.onIncomeChange && $options.onIncomeChange(...args), "1c"),
-    F: common_vendor.t($data.form.maritalStatus || "请选择"),
-    G: common_vendor.t($data.form.maritalStatus || "请选择"),
-    H: $data.maritalStatusOptions,
-    I: $options.maritalStatusIndex,
-    J: common_vendor.o((...args) => $options.onMaritalStatusChange && $options.onMaritalStatusChange(...args), "76")
+    I: $data.form.position,
+    J: common_vendor.o(($event) => $data.form.position = $event.detail.value, "f3"),
+    K: common_vendor.t($data.form.income !== "" ? $data.incomeOptions[$data.form.income] : "请选择"),
+    L: common_vendor.t($data.form.income !== "" ? $data.incomeOptions[$data.form.income] : "请选择"),
+    M: $data.incomeOptions,
+    N: $data.form.income !== "" ? $data.form.income : void 0,
+    O: common_vendor.o((...args) => $options.onIncomeChange && $options.onIncomeChange(...args), "9c"),
+    P: common_vendor.t($data.form.maritalStatus || "请选择"),
+    Q: common_vendor.t($data.form.maritalStatus || "请选择"),
+    R: $data.maritalStatusOptions,
+    S: $options.maritalStatusIndex,
+    T: common_vendor.o((...args) => $options.onMaritalStatusChange && $options.onMaritalStatusChange(...args), "e3")
   } : {}, {
-    K: $data.currentStep === 3
-  }, $data.currentStep === 3 ? common_vendor.e({
-    L: $data.selectedProvinceName && $data.selectedCityName
-  }, $data.selectedProvinceName && $data.selectedCityName ? {
-    M: common_vendor.t($data.selectedProvinceName),
-    N: common_vendor.t($data.selectedCityName)
-  } : {}, {
-    O: $data.cityColumns,
-    P: $data.cityValue,
-    Q: common_vendor.o((...args) => $options.onCityChange && $options.onCityChange(...args), "a9"),
-    R: common_vendor.o((...args) => $options.onCityColumnChange && $options.onCityColumnChange(...args), "55")
-  }) : {}, {
-    S: $data.currentStep === 1
-  }, $data.currentStep === 1 ? {} : {}, {
-    T: $data.currentStep === 2
-  }, $data.currentStep === 2 ? {} : {}, {
     U: $data.currentStep === 3
+  }, $data.currentStep === 3 ? common_vendor.e({
+    V: $data.form.ideal_intro,
+    W: common_vendor.o(($event) => $data.form.ideal_intro = $event.detail.value, "15"),
+    X: common_vendor.t(($data.form.ideal_intro || "").length),
+    Y: $data.selectedProvinceName && $data.selectedCityName
+  }, $data.selectedProvinceName && $data.selectedCityName ? {
+    Z: common_vendor.t($data.selectedProvinceName),
+    aa: common_vendor.t($data.selectedCityName)
+  } : {}, {
+    ab: $data.cityColumns,
+    ac: $data.cityValue,
+    ad: common_vendor.o((...args) => $options.onCityChange && $options.onCityChange(...args), "9a"),
+    ae: common_vendor.o((...args) => $options.onCityColumnChange && $options.onCityColumnChange(...args), "05")
+  }) : {}, {
+    af: !$data.showStartGuide
+  }, !$data.showStartGuide ? common_vendor.e({
+    ag: $data.currentStep === 1
+  }, $data.currentStep === 1 ? {} : {}, {
+    ah: $data.currentStep === 2
+  }, $data.currentStep === 2 ? {} : {}, {
+    ai: $data.currentStep === 3
   }, $data.currentStep === 3 ? {} : {}, {
-    V: common_vendor.t($options.buttonText),
-    W: common_vendor.t($data.currentStep),
-    X: common_vendor.t($data.totalSteps),
-    Y: common_vendor.o((...args) => $options.handleNext && $options.handleNext(...args), "ce"),
-    Z: $data.isSubmitting,
-    aa: $data.showLocationPopup
-  }, $data.showLocationPopup ? {
-    ab: common_assets._imports_0$7,
-    ac: common_vendor.o((...args) => $options.rejectLocation && $options.rejectLocation(...args), "81"),
-    ad: common_vendor.o((...args) => $options.allowLocation && $options.allowLocation(...args), "14"),
-    ae: common_vendor.o(() => {
-    }, "4f"),
-    af: common_vendor.o((...args) => $options.closeLocationPopup && $options.closeLocationPopup(...args), "43")
+    aj: common_vendor.t($options.buttonText),
+    ak: common_vendor.t($data.currentStep),
+    al: common_vendor.t($data.totalSteps),
+    am: common_vendor.o((...args) => $options.handleNext && $options.handleNext(...args), "66"),
+    an: $data.isSubmitting
+  }) : {}, {
+    ao: $data.showLocationPopup && !$data.showStartGuide
+  }, $data.showLocationPopup && !$data.showStartGuide ? {
+    ap: common_assets._imports_3$3,
+    aq: common_vendor.o((...args) => $options.rejectLocation && $options.rejectLocation(...args), "11"),
+    ar: common_vendor.o((...args) => $options.allowLocation && $options.allowLocation(...args), "88"),
+    as: common_vendor.o(() => {
+    }, "a6"),
+    at: common_vendor.o((...args) => $options.closeLocationPopup && $options.closeLocationPopup(...args), "15")
   } : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-dd3414a9"]]);

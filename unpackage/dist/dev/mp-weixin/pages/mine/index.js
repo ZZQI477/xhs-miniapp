@@ -144,11 +144,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     d: !$data.isLoggedIn
   }, !$data.isLoggedIn ? {
-    e: common_assets._imports_0$3,
+    e: common_assets._imports_1$2,
     f: common_vendor.o((...args) => $options.goLogin && $options.goLogin(...args), "3e")
   } : {
     g: $data.userInfo.avatar || "/static/logo.png",
-    h: common_assets._imports_1$2,
+    h: common_assets._imports_1$3,
     i: common_assets._imports_2$1,
     j: $data.userInfo.avatar || "/static/logo.png",
     k: common_vendor.o((...args) => $options.changeAvatar && $options.changeAvatar(...args), "0f"),

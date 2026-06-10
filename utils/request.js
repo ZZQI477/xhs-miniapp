@@ -1,8 +1,20 @@
 import config from './config.js'
 
-// 获取存储的token
+// 获取存储的token（仅正式账号token，游客token通过参数传递）
 const getToken = () => {
-  return uni.getStorageSync('token') || ''
+  const token = uni.getStorageSync('token')
+  return token || ''
+}
+
+// 获取token类型（用于后端判断）
+const getTokenType = () => {
+  const token = uni.getStorageSync('token')
+  if (token) return 'user'
+  
+  const guestToken = uni.getStorageSync('guest_token')
+  if (guestToken) return 'guest'
+  
+  return 'none'
 }
 
 // 设置token
@@ -164,6 +176,7 @@ export default {
   post,
   upload,
   getToken,
+  getTokenType,
   setToken,
   removeToken,
   getUserInfo,
