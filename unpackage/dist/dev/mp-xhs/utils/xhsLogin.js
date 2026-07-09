@@ -1,5 +1,8 @@
 "use strict";
 const common_vendor = require("../common/vendor.js");
+const isXhsMiniApp = () => {
+  return true;
+};
 const getLoginCode = () => {
   return new Promise((resolve, reject) => {
     xhs.login({
@@ -78,4 +81,6 @@ const xhsQuickLogin = async (loginApi) => {
   }
 };
 exports.checkSession = checkSession;
+exports.getLoginCode = getLoginCode;
+exports.isXhsMiniApp = isXhsMiniApp;
 exports.xhsQuickLogin = xhsQuickLogin;

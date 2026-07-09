@@ -130,9 +130,53 @@ function getCurrentUserId() {
   }
   return getGuestId();
 }
+async function updateGuestUserInfo(userInfo) {
+  const guestId = getGuestId();
+  const guestToken = getGuestToken();
+  if (!guestId) {
+    console.warn("[guestAuth] 没有游客身份，无法更新用户信息");
+    return { success: false, error: "没有游客身份" };
+  }
+  try {
+    const existingInfo = getGuestUserInfo() || {};
+    const mergedInfo = {
+      ...existingInfo,
+      avatar: userInfo.avatarUrl || userInfo.avatar || existingInfo.avatar,
+      nickname: userInfo.nickName || userInfo.nickname || existingInfo.nickname,
+      gender: userInfo.gender || existingInfo.gender
+    };
+    common_vendor.index.setStorageSync(STORAGE_KEYS.GUEST_USERINFO, JSON.stringify(mergedInfo));
+    if (guestToken) {
+      console.log("[guestAuth] 同步游客用户信息到服务器", guestId, mergedInfo);
+      const res = await utils_request.http.post("/chat/update_guest_info", {
+        guest_id: guestId,
+        guest_token: guestToken,
+        userinfo: {
+          avatar: mergedInfo.avatar,
+          nickname: mergedInfo.nickname,
+          gender: mergedInfo.gender
+        }
+      });
+      if (res && res.data) {
+        console.log("[guestAuth] 游客用户信息同步成功");
+        return { success: true, userinfo: mergedInfo };
+      }
+    }
+    return { success: true, userinfo: mergedInfo };
+  } catch (e) {
+    console.error("[guestAuth] 更新游客用户信息失败", e);
+    return {
+      success: true,
+      userinfo: getGuestUserInfo(),
+      server_sync_failed: true,
+      error: e.msg || "同步失败"
+    };
+  }
+}
 exports.getCurrentToken = getCurrentToken;
 exports.getCurrentUserId = getCurrentUserId;
 exports.getGuestToken = getGuestToken;
 exports.getGuestUserInfo = getGuestUserInfo;
 exports.getOrCreateGuestId = getOrCreateGuestId;
 exports.isGuest = isGuest;
+exports.updateGuestUserInfo = updateGuestUserInfo;

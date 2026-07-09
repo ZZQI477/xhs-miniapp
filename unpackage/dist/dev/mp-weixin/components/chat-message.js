@@ -95,30 +95,31 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   } : {}, {
     c: !$options.isSelf
   }, !$options.isSelf ? {
-    d: $options.senderAvatar
+    d: $options.senderAvatar,
+    e: common_vendor.o(($event) => _ctx.$emit("avatarTap"), "7c")
   } : {}, {
-    e: $props.message.msg_type === "text"
+    f: $props.message.msg_type === "text"
   }, $props.message.msg_type === "text" ? {
-    f: common_vendor.t($props.message.content)
+    g: common_vendor.t($props.message.content)
   } : $props.message.msg_type === "image" ? {
-    h: $props.message.content,
-    i: common_vendor.o(($event) => $options.previewImage($props.message.content), "be")
+    i: $props.message.content,
+    j: common_vendor.o(($event) => $options.previewImage($props.message.content), "32")
   } : $props.message.msg_type === "system" ? {
-    k: common_vendor.t($props.message.content)
+    l: common_vendor.t($props.message.content)
   } : {}, {
-    g: $props.message.msg_type === "image",
-    j: $props.message.msg_type === "system",
-    l: $options.isSelf && $props.showStatus
+    h: $props.message.msg_type === "image",
+    k: $props.message.msg_type === "system",
+    m: $options.isSelf && $props.showStatus
   }, $options.isSelf && $props.showStatus ? {
-    m: common_vendor.t($options.statusText),
-    n: common_vendor.n($props.message.status)
+    n: common_vendor.t($options.statusText),
+    o: common_vendor.n($props.message.status)
   } : {}, {
-    o: $options.isSelf ? 1 : "",
-    p: $options.isSelf
+    p: $options.isSelf ? 1 : "",
+    q: $options.isSelf
   }, $options.isSelf ? {
-    q: $props.selfAvatar || "/static/logo.png"
+    r: $props.selfAvatar || "/static/logo.png"
   } : {}, {
-    r: $options.isSelf ? 1 : ""
+    s: $options.isSelf ? 1 : ""
   });
 }
 const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-15c2fc31"]]);

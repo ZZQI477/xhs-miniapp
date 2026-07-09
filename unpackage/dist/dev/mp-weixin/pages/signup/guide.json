@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "编辑资料",
   "navigationStyle": "default",
-  "usingComponents": {}
+  "usingComponents": {
+    "custom-picker": "../../components/custom-picker"
+  }
 }

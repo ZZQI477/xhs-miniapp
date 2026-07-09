@@ -24,7 +24,10 @@ const _sfc_main = {
         avatar: "",
         age: 0,
         city: "",
-        is_online: false
+        is_online: false,
+        // 增加默认的客服头像信息
+        customName: "情感分析师",
+        customAvatar: "https://minixhs.chugao520.com/assets/img/customAvatar.png"
       },
       messages: [],
       page: 1,
@@ -118,7 +121,7 @@ const _sfc_main = {
         this.hasMoreHistory = this.messages.length < total;
         this.page++;
       } catch (e) {
-        common_vendor.index.__f__("error", "at pages/chat/detail.vue:238", "[ChatDetail] 加载历史失败", e);
+        common_vendor.index.__f__("error", "at pages/chat/detail.vue:242", "[ChatDetail] 加载历史失败", e);
         common_vendor.index.showToast({ title: e.msg || "加载失败", icon: "none" });
       } finally {
         this.loadingHistory = false;
@@ -129,7 +132,7 @@ const _sfc_main = {
       utils_websocket.onMessage(this.handleNewMessage);
     },
     handleNewMessage(message) {
-      common_vendor.index.__f__("log", "at pages/chat/detail.vue:251", "[ChatDetail] 收到新消息", message);
+      common_vendor.index.__f__("log", "at pages/chat/detail.vue:255", "[ChatDetail] 收到新消息", message);
       if (message.type !== "chat")
         return;
       const isCurrentSession = message.session_id && message.session_id == this.conversationId;
@@ -216,7 +219,7 @@ const _sfc_main = {
           this.conversationId = res.data.session_id;
         }
       } catch (e) {
-        common_vendor.index.__f__("error", "at pages/chat/detail.vue:369", "[ChatDetail] 发送消息失败", e);
+        common_vendor.index.__f__("error", "at pages/chat/detail.vue:373", "[ChatDetail] 发送消息失败", e);
         updateMsgStatus(tempId, "failed");
         common_vendor.index.showToast({ title: e.msg || "发送失败", icon: "none" });
       }
@@ -235,7 +238,7 @@ const _sfc_main = {
           type: "image"
         });
       } catch (e) {
-        common_vendor.index.__f__("error", "at pages/chat/detail.vue:394", "[ChatDetail] 发送图片失败", e);
+        common_vendor.index.__f__("error", "at pages/chat/detail.vue:398", "[ChatDetail] 发送图片失败", e);
         common_vendor.index.showToast({ title: e.msg || "发送失败", icon: "none" });
       } finally {
         common_vendor.index.hideLoading();
@@ -260,7 +263,7 @@ const _sfc_main = {
       try {
         await api_index.markChatRead({ session_id: this.conversationId });
       } catch (e) {
-        common_vendor.index.__f__("error", "at pages/chat/detail.vue:424", "[ChatDetail] 标记已读失败", e);
+        common_vendor.index.__f__("error", "at pages/chat/detail.vue:428", "[ChatDetail] 标记已读失败", e);
       }
     },
     showUserDetail() {
@@ -304,38 +307,39 @@ if (!Array) {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_vendor.p({
-      title: $data.targetUser.nickname || "聊天",
+      title: $data.targetUser.customName || "聊天",
       isShowBack: true,
       backgroundImage: "/static/bg3.png"
     }),
     b: $data.isGuest
   }, $data.isGuest ? {
-    c: common_vendor.o((...args) => $options.goLogin && $options.goLogin(...args), "e6")
+    c: common_vendor.o((...args) => $options.goLogin && $options.goLogin(...args), "97")
   } : {}, {
     d: $data.hasMoreHistory
   }, $data.hasMoreHistory ? common_vendor.e({
     e: $data.loadingHistory
   }, $data.loadingHistory ? {} : {}, {
-    f: common_vendor.o((...args) => $options.loadHistory && $options.loadHistory(...args), "a7")
+    f: common_vendor.o((...args) => $options.loadHistory && $options.loadHistory(...args), "41")
   }) : {}, {
     g: common_vendor.f($data.messages, (msg, index, i0) => {
       return {
-        a: "ee06274a-1-" + i0,
-        b: common_vendor.p({
+        a: common_vendor.o($options.goUserProfile, msg.id || `temp_${index}`),
+        b: "ee06274a-1-" + i0,
+        c: common_vendor.p({
           message: msg,
           selfAvatar: $data.selfAvatar,
-          targetAvatar: $data.targetUser.avatar,
+          targetAvatar: $data.targetUser.customAvatar,
           selfUserId: $data.selfUserId,
           showTime: $options.shouldShowTime(index)
         }),
-        c: msg.id || `temp_${index}`,
-        d: `msg_${msg.id || index}`
+        d: msg.id || `temp_${index}`,
+        e: `msg_${msg.id || index}`
       };
     }),
     h: $data.scrollToId,
     i: common_vendor.sr("chatInput", "ee06274a-2"),
-    j: common_vendor.o($options.handleSendText, "a8"),
-    k: common_vendor.o($options.handleSendImage, "6d"),
+    j: common_vendor.o($options.handleSendText, "86"),
+    k: common_vendor.o($options.handleSendImage, "43"),
     l: common_vendor.p({
       placeholder: $options.inputPlaceholder,
       isVip: $data.isVip,
@@ -343,7 +347,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     m: $data.showUserModal
   }, $data.showUserModal ? {
-    n: common_vendor.o((...args) => $options.closeUserModal && $options.closeUserModal(...args), "4a")
+    n: common_vendor.o((...args) => $options.closeUserModal && $options.closeUserModal(...args), "e1")
   } : {}, {
     o: $data.showUserModal
   }, $data.showUserModal ? common_vendor.e({
@@ -351,12 +355,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     q: common_vendor.t($data.targetUser.nickname || "匿名用户"),
     r: common_vendor.t($data.targetUser.age || "?"),
     s: common_vendor.t($data.targetUser.city || "未知"),
-    t: common_vendor.o((...args) => $options.goUserProfile && $options.goUserProfile(...args), "e6"),
+    t: common_vendor.o((...args) => $options.goUserProfile && $options.goUserProfile(...args), "e3"),
     v: !$data.isGuest
   }, !$data.isGuest ? {
-    w: common_vendor.o((...args) => $options.goAddFriend && $options.goAddFriend(...args), "e9")
+    w: common_vendor.o((...args) => $options.goAddFriend && $options.goAddFriend(...args), "74")
   } : {}, {
-    x: common_vendor.o((...args) => $options.closeUserModal && $options.closeUserModal(...args), "15")
+    x: common_vendor.o((...args) => $options.closeUserModal && $options.closeUserModal(...args), "b4")
   }) : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-ee06274a"]]);

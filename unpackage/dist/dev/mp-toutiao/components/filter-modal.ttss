@@ -71,6 +71,23 @@ to {
   background-color: #FF4D4F;
   color: #FFFFFF;
 }
+
+/* 展开按钮样式 */
+.expand-btn.data-v-c4fad269 {
+  background-color: #F0F0F0;
+  color: #999999;
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+}
+.expand-btn .expand-icon.data-v-c4fad269 {
+  font-size: 20rpx;
+}
+
+/* 城市列表样式 */
+.city-option-list.data-v-c4fad269 {
+  align-items: flex-start;
+}
 .modal-buttons.data-v-c4fad269 {
   display: flex;
   gap: 20rpx;

@@ -159,6 +159,65 @@ export const xhsQuickLogin = async (loginApi) => {
 }
 
 /**
+ * 获取小红书用户手机号（需要用户授权）
+ * 注意：调用此方法前必须先调用 getLoginCode() 获取 code，因为小红书要求先 login 才能获取手机号
+ * @param {object} e - button getPhoneNumber 事件回调数据
+ * @param {string} code - 预先获取的登录 code（用于换取 session_key）
+ * @param {Function} phoneApi - 后端解密手机号接口函数
+ * @returns {Promise<object>} 返回手机号信息
+ */
+export const getXhsPhoneNumber = async (e, code, phoneApi) => {
+  try {
+    // #ifdef MP-XHS
+    // 检查用户是否授权
+    if (e.detail.errMsg !== 'getPhoneNumber:ok') {
+      console.error('[XHS Phone] 用户拒绝授权手机号:', e.detail.errMsg)
+      throw new Error('用户拒绝授权手机号')
+    }
+
+    // 获取加密数据
+    const { encryptedData, iv } = e.detail
+    if (!encryptedData || !iv) {
+      console.error('[XHS Phone] 加密数据不完整')
+      throw new Error('获取手机号数据失败')
+    }
+
+    // 确保 code 存在
+    if (!code) {
+      console.error('[XHS Phone] code 参数缺失')
+      throw new Error('缺少登录凭证，请刷新页面重试')
+    }
+
+    // 调用后端接口解密手机号
+    const res = await phoneApi({
+      code,
+      encrypted_data: encryptedData,
+      iv
+    })
+
+    if (res.code === 1 && res.data) {
+      console.log('[XHS Phone] 获取手机号成功:', res.data)
+      return {
+        success: true,
+        mobile: res.data.mobile || res.data.pure_phone_number,
+        purePhoneNumber: res.data.pure_phone_number,
+        countryCode: res.data.country_code || '86'
+      }
+    } else {
+      throw new Error(res.msg || '解密手机号失败')
+    }
+    // #endif
+
+    // #ifndef MP-XHS
+    throw new Error('当前环境不支持获取小红书手机号')
+    // #endif
+  } catch (error) {
+    console.error('[XHS Phone] 获取手机号流程出错:', error)
+    throw error
+  }
+}
+
+/**
  * 清除小红书登录信息
  */
 export const clearXhsLoginInfo = () => {
@@ -171,6 +230,7 @@ export default {
   getLoginCode,
   checkSession,
   getUserProfile,
+  getXhsPhoneNumber,
   xhsQuickLogin,
   clearXhsLoginInfo
 }

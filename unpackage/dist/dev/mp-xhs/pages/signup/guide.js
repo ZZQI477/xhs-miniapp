@@ -2,7 +2,11 @@
 const common_vendor = require("../../common/vendor.js");
 const api_index = require("../../api/index.js");
 const common_assets = require("../../common/assets.js");
+const CustomPicker = () => "../../components/custom-picker.js";
 const _sfc_main = {
+  components: {
+    CustomPicker
+  },
   data() {
     return {
       currentStep: 1,
@@ -10,8 +14,6 @@ const _sfc_main = {
       showShaking: false,
       isSubmitting: false,
       showLocationPopup: false,
-      showStartGuide: true,
-      // 是否显示初始提示页面
       showSuccessPopup: false,
       // 是否显示提交成功弹框
       form: {
@@ -26,7 +28,9 @@ const _sfc_main = {
         cityId: "",
         cityName: "",
         nickName: "",
-        ideal_intro: ""
+        ideal_intro: "",
+        phone_time: "",
+        wechat: ""
       },
       educationOptions: ["博士", "硕士", "本科", "大专", "高中", "中专"],
       incomeOptions: ["5万以下", "5-10万", "10-20万", "20-30万", "30-50万", "50-100万", "100万以上"],
@@ -155,6 +159,10 @@ const _sfc_main = {
           this.form.nickName = savedData.nickName;
         if (savedData.ideal_intro)
           this.form.ideal_intro = savedData.ideal_intro;
+        if (savedData.phone_time !== void 0)
+          this.form.phone_time = savedData.phone_time;
+        if (savedData.wechat !== void 0)
+          this.form.wechat = savedData.wechat;
         const savedStep = common_vendor.index.getStorageSync("signup_guide_step");
         if (savedStep) {
           this.currentStep = savedStep;
@@ -177,21 +185,27 @@ const _sfc_main = {
       this.saveData();
     },
     onBirthdayChange(e) {
-      this.form.birthday = 1970 + Number(e.detail.value);
+      this.form.birthday = 1970 + Number(e.value[0]);
       this.saveData();
+      setTimeout(() => {
+        this.handleNext();
+      }, 300);
     },
     onIncomeChange(e) {
-      this.form.income = Number(e.detail.value);
+      this.form.income = Number(e.value[0]);
       this.saveData();
     },
     onMaritalStatusChange(e) {
-      this.form.maritalStatus = this.maritalStatusOptions[Number(e.detail.value)] || "";
+      this.form.maritalStatus = e.items[0] || "";
       this.saveData();
+      setTimeout(() => {
+        this.handleNext();
+      }, 300);
     },
     async onCityChange(e) {
-      const [provinceIndex, cityIndex] = e.detail.value;
-      const province = this.cityColumns[0][provinceIndex];
-      const city = this.cityColumns[1][cityIndex];
+      const [provinceIndex, cityIndex] = e.value;
+      const province = e.items[0];
+      const city = e.items[1];
       if (province && city) {
         this.form.provinceId = province.id;
         this.form.provinceName = province.name;
@@ -204,13 +218,11 @@ const _sfc_main = {
       }
     },
     async onCityColumnChange(e) {
-      const { column, value } = e.detail;
+      const { column, value } = e;
       if (column === 0) {
         const province = this.cityColumns[0][value];
         if (province && province.id) {
           await this.loadCities(province.id);
-          this.cityValue = [value, 0];
-          await this.$nextTick();
           this.cityValue = [value, 0];
         }
       }
@@ -223,7 +235,7 @@ const _sfc_main = {
           common_vendor.index.showToast({ title: "请选择性别", icon: "none" });
           return false;
         }
-        if (!this.form.gender) {
+        if (!this.form.nickName || !this.form.nickName.trim()) {
           common_vendor.index.showToast({ title: "请输入昵称", icon: "none" });
           return false;
         }
@@ -315,7 +327,9 @@ const _sfc_main = {
           city_cn: this.form.cityName,
           // 后端字段是 city
           nickname: this.form.nickName,
-          ideal_intro: this.form.ideal_intro
+          ideal_intro: this.form.ideal_intro,
+          phone_time: this.form.phone_time,
+          wechat: this.form.wechat
         };
         await api_index.updateProfile(submitData);
         try {
@@ -335,10 +349,6 @@ const _sfc_main = {
       } finally {
         this.isSubmitting = false;
       }
-    },
-    // 点击"我已知晓"开始填写资料
-    handleStartGuide() {
-      this.showStartGuide = false;
     },
     // 点击确认跳转到单身库首页
     handleSuccessConfirm() {
@@ -446,26 +456,22 @@ const _sfc_main = {
     }
   }
 };
+if (!Array) {
+  const _component_custom_picker = common_vendor.resolveComponent("custom-picker");
+  _component_custom_picker();
+}
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
-    a: $data.showStartGuide
-  }, $data.showStartGuide ? {
-    b: common_assets._imports_0$6,
-    c: common_assets._imports_1$2,
-    d: common_vendor.o((...args) => $options.handleStartGuide && $options.handleStartGuide(...args), "31")
-  } : {}, {
-    e: $data.showSuccessPopup
+    a: $data.showSuccessPopup
   }, $data.showSuccessPopup ? {
-    f: common_assets._imports_2$2,
-    g: common_vendor.o((...args) => $options.handleSuccessConfirm && $options.handleSuccessConfirm(...args), "41"),
-    h: common_vendor.o(() => {
-    }, "3c"),
-    i: common_vendor.o(() => {
-    }, "d4")
+    b: common_assets._imports_0$6,
+    c: common_vendor.o((...args) => $options.handleSuccessConfirm && $options.handleSuccessConfirm(...args), "fd"),
+    d: common_vendor.o(() => {
+    }, "b6"),
+    e: common_vendor.o(() => {
+    }, "24")
   } : {}, {
-    j: !$data.showStartGuide
-  }, !$data.showStartGuide ? {
-    k: common_vendor.f($data.totalSteps, (step, k0, i0) => {
+    f: common_vendor.f($data.totalSteps, (step, k0, i0) => {
       return {
         a: step,
         b: common_vendor.n({
@@ -473,40 +479,44 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
         c: common_vendor.o(($event) => $options.handleStepClick(step), step)
       };
-    })
-  } : {}, {
-    l: $data.currentStep === 1
+    }),
+    g: $data.currentStep === 1
   }, $data.currentStep === 1 ? common_vendor.e({
-    m: !$data.form.gender ? 1 : "",
-    n: $data.form.gender === "male"
+    h: !$data.form.gender ? 1 : "",
+    i: $data.form.gender === "male"
   }, $data.form.gender === "male" ? {} : {}, {
-    o: common_vendor.n({
+    j: common_vendor.n({
       "selected": $data.form.gender === "male"
     }),
-    p: $data.form.gender === "male" ? 1 : "",
-    q: common_vendor.o(($event) => $options.selectGender("male"), "05"),
-    r: $data.form.gender === "female"
+    k: $data.form.gender === "male" ? 1 : "",
+    l: common_vendor.o(($event) => $options.selectGender("male"), "ff"),
+    m: $data.form.gender === "female"
   }, $data.form.gender === "female" ? {} : {}, {
-    s: common_vendor.n({
+    n: common_vendor.n({
       "selected": $data.form.gender === "female"
     }),
-    t: $data.form.gender === "female" ? 1 : "",
-    v: common_vendor.o(($event) => $options.selectGender("female"), "03"),
-    w: common_vendor.n({
+    o: $data.form.gender === "female" ? 1 : "",
+    p: common_vendor.o(($event) => $options.selectGender("female"), "53"),
+    q: common_vendor.n({
       "shaking": $data.showShaking && !$data.form.gender
     }),
-    x: $data.form.nickName,
-    y: common_vendor.o(($event) => $data.form.nickName = $event.detail.value, "f5"),
-    z: common_vendor.t($data.form.birthday ? $data.form.birthday + "年" : "请选择"),
-    A: common_vendor.t($data.form.birthday ? $data.form.birthday + "年" : "请选择"),
-    B: $options.birthdayOptions,
-    C: $options.birthdayIndex >= 0 ? $options.birthdayIndex : void 0,
-    D: common_vendor.o((...args) => $options.onBirthdayChange && $options.onBirthdayChange(...args), "54")
+    r: $data.form.nickName,
+    s: common_vendor.o(($event) => $data.form.nickName = $event.detail.value, "78"),
+    t: common_vendor.j({
+      "change": common_vendor.o($options.onBirthdayChange, "b4")
+    }),
+    v: common_vendor.p({
+      title: "选择出生年份",
+      columns: [$options.birthdayOptions],
+      value: [$options.birthdayIndex],
+      displayText: $data.form.birthday ? $data.form.birthday + "年" : "",
+      placeholder: "请选择"
+    })
   }) : {}, {
-    E: $data.currentStep === 2
+    w: $data.currentStep === 2
   }, $data.currentStep === 2 ? {
-    F: !$data.form.education ? 1 : "",
-    G: common_vendor.f($data.educationOptions, (edu, k0, i0) => {
+    x: !$data.form.education ? 1 : "",
+    y: common_vendor.f($data.educationOptions, (edu, k0, i0) => {
       return {
         a: common_vendor.t(edu),
         b: edu,
@@ -516,59 +526,73 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: common_vendor.o(($event) => $options.selectEducation(edu), edu)
       };
     }),
-    H: common_vendor.n({
+    z: common_vendor.n({
       "shaking": $data.showShaking && !$data.form.education
     }),
-    I: $data.form.position,
-    J: common_vendor.o(($event) => $data.form.position = $event.detail.value, "f3"),
-    K: common_vendor.t($data.form.income !== "" ? $data.incomeOptions[$data.form.income] : "请选择"),
-    L: common_vendor.t($data.form.income !== "" ? $data.incomeOptions[$data.form.income] : "请选择"),
-    M: $data.incomeOptions,
-    N: $data.form.income !== "" ? $data.form.income : void 0,
-    O: common_vendor.o((...args) => $options.onIncomeChange && $options.onIncomeChange(...args), "9c"),
-    P: common_vendor.t($data.form.maritalStatus || "请选择"),
-    Q: common_vendor.t($data.form.maritalStatus || "请选择"),
-    R: $data.maritalStatusOptions,
-    S: $options.maritalStatusIndex,
-    T: common_vendor.o((...args) => $options.onMaritalStatusChange && $options.onMaritalStatusChange(...args), "e3")
+    A: $data.form.position,
+    B: common_vendor.o(($event) => $data.form.position = $event.detail.value, "2d"),
+    C: common_vendor.j({
+      "change": common_vendor.o($options.onIncomeChange, "be")
+    }),
+    D: common_vendor.p({
+      title: "选择年收入",
+      columns: [$data.incomeOptions],
+      value: [$data.form.income !== "" ? $data.form.income : 0],
+      displayText: $data.form.income !== "" ? $data.incomeOptions[$data.form.income] : "",
+      placeholder: "请选择"
+    }),
+    E: common_vendor.j({
+      "change": common_vendor.o($options.onMaritalStatusChange, "e6")
+    }),
+    F: common_vendor.p({
+      title: "选择婚况",
+      columns: [$data.maritalStatusOptions],
+      value: [$options.maritalStatusIndex],
+      displayText: $data.form.maritalStatus || "",
+      placeholder: "请选择"
+    })
   } : {}, {
-    U: $data.currentStep === 3
-  }, $data.currentStep === 3 ? common_vendor.e({
-    V: $data.form.ideal_intro,
-    W: common_vendor.o(($event) => $data.form.ideal_intro = $event.detail.value, "15"),
-    X: common_vendor.t(($data.form.ideal_intro || "").length),
-    Y: $data.selectedProvinceName && $data.selectedCityName
-  }, $data.selectedProvinceName && $data.selectedCityName ? {
-    Z: common_vendor.t($data.selectedProvinceName),
-    aa: common_vendor.t($data.selectedCityName)
+    G: $data.currentStep === 3
+  }, $data.currentStep === 3 ? {
+    H: $data.form.ideal_intro,
+    I: common_vendor.o(($event) => $data.form.ideal_intro = $event.detail.value, "dd"),
+    J: common_vendor.t(($data.form.ideal_intro || "").length),
+    K: $data.form.phone_time,
+    L: common_vendor.o(($event) => $data.form.phone_time = $event.detail.value, "9d"),
+    M: $data.form.wechat,
+    N: common_vendor.o(($event) => $data.form.wechat = $event.detail.value, "d2"),
+    O: common_vendor.j({
+      "columnchange": common_vendor.o($options.onCityColumnChange, "c9"),
+      "change": common_vendor.o($options.onCityChange, "d0")
+    }),
+    P: common_vendor.p({
+      title: "选择居住城市",
+      columns: $data.cityColumns,
+      value: $data.cityValue,
+      displayText: $data.selectedProvinceName && $data.selectedCityName ? $data.selectedProvinceName + " - " + $data.selectedCityName : "",
+      placeholder: "请选择省份和城市",
+      labelKey: "name"
+    })
   } : {}, {
-    ab: $data.cityColumns,
-    ac: $data.cityValue,
-    ad: common_vendor.o((...args) => $options.onCityChange && $options.onCityChange(...args), "9a"),
-    ae: common_vendor.o((...args) => $options.onCityColumnChange && $options.onCityColumnChange(...args), "05")
-  }) : {}, {
-    af: !$data.showStartGuide
-  }, !$data.showStartGuide ? common_vendor.e({
-    ag: $data.currentStep === 1
+    Q: $data.currentStep === 1
   }, $data.currentStep === 1 ? {} : {}, {
-    ah: $data.currentStep === 2
+    R: $data.currentStep === 2
   }, $data.currentStep === 2 ? {} : {}, {
-    ai: $data.currentStep === 3
+    S: $data.currentStep === 3
   }, $data.currentStep === 3 ? {} : {}, {
-    aj: common_vendor.t($options.buttonText),
-    ak: common_vendor.t($data.currentStep),
-    al: common_vendor.t($data.totalSteps),
-    am: common_vendor.o((...args) => $options.handleNext && $options.handleNext(...args), "66"),
-    an: $data.isSubmitting
-  }) : {}, {
-    ao: $data.showLocationPopup && !$data.showStartGuide
-  }, $data.showLocationPopup && !$data.showStartGuide ? {
-    ap: common_assets._imports_3$3,
-    aq: common_vendor.o((...args) => $options.rejectLocation && $options.rejectLocation(...args), "11"),
-    ar: common_vendor.o((...args) => $options.allowLocation && $options.allowLocation(...args), "88"),
-    as: common_vendor.o(() => {
-    }, "a6"),
-    at: common_vendor.o((...args) => $options.closeLocationPopup && $options.closeLocationPopup(...args), "15")
+    T: common_vendor.t($options.buttonText),
+    U: common_vendor.t($data.currentStep),
+    V: common_vendor.t($data.totalSteps),
+    W: common_vendor.o((...args) => $options.handleNext && $options.handleNext(...args), "0f"),
+    X: $data.isSubmitting,
+    Y: $data.showLocationPopup
+  }, $data.showLocationPopup ? {
+    Z: common_assets._imports_1$6,
+    aa: common_vendor.o((...args) => $options.rejectLocation && $options.rejectLocation(...args), "43"),
+    ab: common_vendor.o((...args) => $options.allowLocation && $options.allowLocation(...args), "18"),
+    ac: common_vendor.o(() => {
+    }, "4e"),
+    ad: common_vendor.o((...args) => $options.closeLocationPopup && $options.closeLocationPopup(...args), "50")
   } : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-dd3414a9"]]);

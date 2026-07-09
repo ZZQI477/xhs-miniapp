@@ -54,7 +54,7 @@
   width: 100%;
   flex-shrink: 0;
   height: calc(100vh - 10vh);
-  margin-top: 40rpx;
+  /* margin-top: 40rpx; */
   overflow: hidden;
 }
 .card-swiper.data-v-1cf27b2a .uni-swiper-wrapper {

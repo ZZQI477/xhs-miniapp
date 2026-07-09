@@ -115,7 +115,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_assets._imports_0$4,
     b: common_vendor.t($data.coinBalance),
-    c: common_assets._imports_1$5,
+    c: common_assets._imports_1$4,
     d: common_vendor.o((...args) => $options.showRecharge && $options.showRecharge(...args), "ed"),
     e: $data.isRechargeVisible
   }, $data.isRechargeVisible ? {

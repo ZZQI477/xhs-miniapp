@@ -24,7 +24,10 @@ const _sfc_main = {
         avatar: "",
         age: 0,
         city: "",
-        is_online: false
+        is_online: false,
+        // 增加默认的客服头像信息
+        customName: "情感分析师",
+        customAvatar: "https://minixhs.chugao520.com/assets/img/customAvatar.png"
       },
       messages: [],
       page: 1,
@@ -304,39 +307,42 @@ if (!Array) {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_vendor.p({
-      title: $data.targetUser.nickname || "聊天",
+      title: $data.targetUser.customName || "聊天",
       isShowBack: true,
       backgroundImage: "/static/bg3.png"
     }),
     b: $data.isGuest
   }, $data.isGuest ? {
-    c: common_vendor.o((...args) => $options.goLogin && $options.goLogin(...args), "e6")
+    c: common_vendor.o((...args) => $options.goLogin && $options.goLogin(...args), "97")
   } : {}, {
     d: $data.hasMoreHistory
   }, $data.hasMoreHistory ? common_vendor.e({
     e: $data.loadingHistory
   }, $data.loadingHistory ? {} : {}, {
-    f: common_vendor.o((...args) => $options.loadHistory && $options.loadHistory(...args), "a7")
+    f: common_vendor.o((...args) => $options.loadHistory && $options.loadHistory(...args), "41")
   }) : {}, {
     g: common_vendor.f($data.messages, (msg, index, i0) => {
       return {
         a: "ee06274a-1-" + i0,
-        b: common_vendor.p({
+        b: common_vendor.j({
+          "avatarTap": common_vendor.o($options.goUserProfile, msg.id || `temp_${index}`)
+        }),
+        c: common_vendor.p({
           message: msg,
           selfAvatar: $data.selfAvatar,
-          targetAvatar: $data.targetUser.avatar,
+          targetAvatar: $data.targetUser.customAvatar,
           selfUserId: $data.selfUserId,
           showTime: $options.shouldShowTime(index)
         }),
-        c: msg.id || `temp_${index}`,
-        d: `msg_${msg.id || index}`
+        d: msg.id || `temp_${index}`,
+        e: `msg_${msg.id || index}`
       };
     }),
     h: $data.scrollToId,
     i: common_vendor.sr("chatInput", "ee06274a-2"),
     j: common_vendor.j({
-      "send": common_vendor.o($options.handleSendText, "a8"),
-      "sendImage": common_vendor.o($options.handleSendImage, "6d")
+      "send": common_vendor.o($options.handleSendText, "86"),
+      "sendImage": common_vendor.o($options.handleSendImage, "43")
     }),
     k: common_vendor.p({
       placeholder: $options.inputPlaceholder,
@@ -345,7 +351,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     l: $data.showUserModal
   }, $data.showUserModal ? {
-    m: common_vendor.o((...args) => $options.closeUserModal && $options.closeUserModal(...args), "4a")
+    m: common_vendor.o((...args) => $options.closeUserModal && $options.closeUserModal(...args), "e1")
   } : {}, {
     n: $data.showUserModal
   }, $data.showUserModal ? common_vendor.e({
@@ -353,12 +359,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     p: common_vendor.t($data.targetUser.nickname || "匿名用户"),
     q: common_vendor.t($data.targetUser.age || "?"),
     r: common_vendor.t($data.targetUser.city || "未知"),
-    s: common_vendor.o((...args) => $options.goUserProfile && $options.goUserProfile(...args), "e6"),
+    s: common_vendor.o((...args) => $options.goUserProfile && $options.goUserProfile(...args), "e3"),
     t: !$data.isGuest
   }, !$data.isGuest ? {
-    v: common_vendor.o((...args) => $options.goAddFriend && $options.goAddFriend(...args), "e9")
+    v: common_vendor.o((...args) => $options.goAddFriend && $options.goAddFriend(...args), "74")
   } : {}, {
-    w: common_vendor.o((...args) => $options.closeUserModal && $options.closeUserModal(...args), "15")
+    w: common_vendor.o((...args) => $options.closeUserModal && $options.closeUserModal(...args), "b4")
   }) : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-ee06274a"]]);

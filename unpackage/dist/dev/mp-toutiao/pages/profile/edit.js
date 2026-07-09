@@ -284,7 +284,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   } : {}, {
     s: $data.form.avatar
   }, $data.form.avatar ? {
-    t: common_assets._imports_0$6,
+    t: common_assets._imports_0$5,
     v: common_vendor.o((...args) => $options.deleteAvatar && $options.deleteAvatar(...args), "c5")
   } : {}, {
     w: common_vendor.o((...args) => $options.chooseAvatar && $options.chooseAvatar(...args), "32"),
@@ -298,7 +298,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         d: img
       }, img ? {
-        e: common_assets._imports_0$6,
+        e: common_assets._imports_0$5,
         f: common_vendor.o(($event) => $options.deleteImage(index), "55")
       } : {}, {
         g: index,

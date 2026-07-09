@@ -2,6 +2,7 @@
 const common_vendor = require("../../common/vendor.js");
 const api_index = require("../../api/index.js");
 const utils_profileCheck = require("../../utils/profileCheck.js");
+const utils_xhsLogin = require("../../utils/xhsLogin.js");
 const common_assets = require("../../common/assets.js");
 const _sfc_main = {
   data() {
@@ -22,8 +23,17 @@ const _sfc_main = {
       canSendCode: true,
       countdown: 30,
       timer: null,
-      lastLoginTime: 0
+      lastLoginTime: 0,
       // 节流：记录上次登录时间
+      // 小红书手机号授权相关
+      showXhsPhoneAuth: false,
+      // 是否显示小红书授权按钮阶段
+      xhsPhoneLoading: false,
+      // 获取手机号loading状态
+      isXhsEnv: false,
+      // 是否小红书环境
+      xhsLoginCode: ""
+      // 预先获取的登录 code
     };
   },
   computed: {
@@ -43,6 +53,12 @@ const _sfc_main = {
     if (inviterId > 0) {
       common_vendor.index.setStorageSync("share_inviter_id", inviterId);
     }
+    this.isXhsEnv = utils_xhsLogin.isXhsMiniApp();
+    const token = common_vendor.index.getStorageSync("token");
+    if (this.isXhsEnv && !token) {
+      this.showXhsPhoneAuth = true;
+      this.preGetXhsLoginCode();
+    }
     this.tryAutoLogin();
   },
   onUnload() {
@@ -55,13 +71,13 @@ const _sfc_main = {
     // 调用示例
     // getUserProfile()
     //   .then((userInfo) => {
-    //     uni.__f__('log','at pages/login/index.vue:161','用户信息:');
-    //     uni.__f__('log','at pages/login/index.vue:162','昵称:', userInfo.nickName);
-    //     uni.__f__('log','at pages/login/index.vue:163','头像 URL:', userInfo.avatarUrl);
-    //     uni.__f__('log','at pages/login/index.vue:164','性别:', userInfo.gender === 1 ? '男' : userInfo.gender === 2 ? '女' : '未知');
+    //     uni.__f__('log','at pages/login/index.vue:222','用户信息:');
+    //     uni.__f__('log','at pages/login/index.vue:223','昵称:', userInfo.nickName);
+    //     uni.__f__('log','at pages/login/index.vue:224','头像 URL:', userInfo.avatarUrl);
+    //     uni.__f__('log','at pages/login/index.vue:225','性别:', userInfo.gender === 1 ? '男' : userInfo.gender === 2 ? '女' : '未知');
     //   })
     //   .catch((err) => {
-    //     uni.__f__('error','at pages/login/index.vue:167','操作失败:', err);
+    //     uni.__f__('error','at pages/login/index.vue:228','操作失败:', err);
     //   });
     async tryAutoLogin() {
       const token = common_vendor.index.getStorageSync("token");
@@ -75,7 +91,7 @@ const _sfc_main = {
         common_vendor.index.setStorageSync("userinfo", profile);
         this.goAfterLogin({ isNewUser: false, profile });
       } catch (e) {
-        common_vendor.index.__f__("error", "at pages/login/index.vue:199", "[Login] 自动登录失败", e);
+        common_vendor.index.__f__("error", "at pages/login/index.vue:260", "[Login] 自动登录失败", e);
         this.checkingLogin = false;
       }
     },
@@ -224,7 +240,7 @@ const _sfc_main = {
           common_vendor.index.setStorageSync("userinfo", profile);
           this.goAfterLogin({ isNewUser, profile });
         } catch (profileError) {
-          common_vendor.index.__f__("error", "at pages/login/index.vue:392", "获取用户资料失败:", profileError);
+          common_vendor.index.__f__("error", "at pages/login/index.vue:453", "获取用户资料失败:", profileError);
           this.goAfterLogin({ isNewUser, profile: userinfo });
         }
       } catch (e) {
@@ -255,40 +271,143 @@ const _sfc_main = {
         common_vendor.index.showToast({ title: "当前环境不支持小红书登录", icon: "none" });
         return;
       }
+    },
+    // 小红书获取手机号授权
+    async handleXhsPhoneAuth(e) {
+      common_vendor.index.__f__("log", "at pages/login/index.vue:525", "[Login] handleXhsPhoneAuth 被调用");
+      common_vendor.index.__f__("log", "at pages/login/index.vue:526", "[Login] e.detail:", JSON.stringify(e.detail));
+      if (!this.agreedToTerms) {
+        common_vendor.index.showToast({
+          title: e.msg || "请先阅读并同意协议",
+          icon: "none"
+        });
+        common_vendor.index.__f__("log", "at pages/login/index.vue:534", "[Login] 未勾选协议，返回");
+        return;
+      }
+      if (e.detail.errMsg !== "getPhoneNumber:ok") {
+        common_vendor.index.__f__("error", "at pages/login/index.vue:540", "[Login] 用户拒绝授权手机号:", e.detail.errMsg);
+        common_vendor.index.showToast({ title: "请授权手机号以登录", icon: "none" });
+        return;
+      }
+      common_vendor.index.__f__("log", "at pages/login/index.vue:544", "[Login] 用户已授权，继续处理");
+      const { encryptedData, iv } = e.detail;
+      if (!encryptedData || !iv) {
+        common_vendor.index.showToast({ title: "获取手机号数据失败", icon: "none" });
+        return;
+      }
+      common_vendor.index.__f__("log", "at pages/login/index.vue:551", "[Login] encryptedData 和 iv 获取成功");
+      if (!this.xhsLoginCode) {
+        try {
+          this.xhsLoginCode = await utils_xhsLogin.getLoginCode();
+        } catch (err) {
+          common_vendor.index.showToast({ title: "获取登录凭证失败", icon: "none" });
+          return;
+        }
+      }
+      common_vendor.index.__f__("log", "at pages/login/index.vue:561", "[Login] xhsLoginCode 已准备好，开始调用登录接口");
+      this.xhsPhoneLoading = true;
+      try {
+        const loginData = {
+          code: this.xhsLoginCode,
+          encrypted_data: encryptedData,
+          iv
+        };
+        const inviterId = common_vendor.index.getStorageSync("share_inviter_id");
+        if (inviterId) {
+          loginData.inviter_id = inviterId;
+        }
+        const res = await api_index.xhsPhoneLogin(loginData);
+        common_vendor.index.__f__("log", "at pages/login/index.vue:579", "[Login] xhsPhoneLogin 返回结果:", res);
+        if (res.code === 1 && res.data) {
+          const { userinfo, token, is_new_user, openid } = res.data;
+          const isNewUser = !!is_new_user;
+          common_vendor.index.setStorageSync("token", token);
+          common_vendor.index.setStorageSync("userinfo", userinfo);
+          if (openid) {
+            common_vendor.index.setStorageSync("xhs_openid", openid);
+          }
+          utils_profileCheck.resetProfilePrompt();
+          common_vendor.index.removeStorageSync("share_inviter_id");
+          common_vendor.index.showToast({ title: "登录成功", icon: "success" });
+          try {
+            const profileRes = await api_index.getUserInfo();
+            const profile = profileRes.data.userinfo || profileRes.data;
+            common_vendor.index.setStorageSync("userinfo", profile);
+            this.goAfterLogin({ isNewUser, profile });
+          } catch (profileError) {
+            common_vendor.index.__f__("error", "at pages/login/index.vue:606", "获取用户资料失败:", profileError);
+            this.goAfterLogin({ isNewUser, profile: userinfo });
+          }
+        } else {
+          throw new Error(res.msg || "登录失败");
+        }
+      } catch (err) {
+        common_vendor.index.__f__("error", "at pages/login/index.vue:613", "[Login] 小红书手机号登录失败:", err);
+        common_vendor.index.showToast({ title: err.message || err.msg || "登录失败", icon: "none" });
+        this.xhsLoginCode = "";
+      } finally {
+        this.xhsPhoneLoading = false;
+      }
+    },
+    // 预先获取小红书登录 code
+    async preGetXhsLoginCode() {
+      try {
+        this.xhsLoginCode = await utils_xhsLogin.getLoginCode();
+        common_vendor.index.__f__("log", "at pages/login/index.vue:626", "[Login] 预获取 xhs code 成功:", this.xhsLoginCode);
+      } catch (err) {
+        common_vendor.index.__f__("error", "at pages/login/index.vue:628", "[Login] 预获取 xhs code 失败:", err);
+      }
+    },
+    // 跳过小红书手机号授权，手动输入
+    skipXhsPhoneAuth() {
+      this.showXhsPhoneAuth = false;
     }
   }
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: $data.checkingLogin
-  }, $data.checkingLogin ? {} : common_vendor.e({
-    b: common_assets._imports_0,
+  }, $data.checkingLogin ? {} : $data.showXhsPhoneAuth && $data.isXhsEnv ? common_vendor.e({
     c: common_assets._imports_1,
-    d: $data.areaCode === 852 ? 8 : 11,
-    e: $data.formData.mobile,
-    f: common_vendor.o(($event) => $data.formData.mobile = $event.detail.value, "c1"),
-    g: common_assets._imports_2,
-    h: common_vendor.o([($event) => $data.formData.captcha = $event.detail.value, (...args) => $options.onCodeInput && $options.onCodeInput(...args)], "86"),
-    i: $data.formData.captcha,
-    j: common_vendor.t($data.codeText),
-    k: !$data.canSendCode ? 1 : "",
-    l: common_vendor.o((...args) => $options.sendCode && $options.sendCode(...args), "fd"),
-    m: !$data.agreedToTerms && $data.showAgreementTip
-  }, !$data.agreedToTerms && $data.showAgreementTip ? {
-    n: $data.isShaking ? 1 : ""
-  } : {}, {
-    o: !$options.canLogin ? 1 : "",
-    p: $data.loading,
-    q: common_vendor.o((...args) => $options.handleLogin && $options.handleLogin(...args), "5d"),
-    r: $data.agreedToTerms
+    d: common_vendor.o((...args) => $options.handleXhsPhoneAuth && $options.handleXhsPhoneAuth(...args), "1a"),
+    e: $data.xhsPhoneLoading,
+    f: common_vendor.o((...args) => $options.skipXhsPhoneAuth && $options.skipXhsPhoneAuth(...args), "7f"),
+    g: $data.agreedToTerms
   }, $data.agreedToTerms ? {} : {}, {
-    s: $data.agreedToTerms ? 1 : "",
-    t: common_vendor.o((...args) => $options.toggleAgreement && $options.toggleAgreement(...args), "10"),
-    v: common_vendor.o((...args) => $options.openUserAgreement && $options.openUserAgreement(...args), "40"),
-    w: common_vendor.o((...args) => $options.openPrivacyPolicy && $options.openPrivacyPolicy(...args), "d4"),
-    x: common_assets._imports_3,
-    y: common_vendor.o((...args) => $options.handleXiaohongshuLogin && $options.handleXiaohongshuLogin(...args), "45")
-  }));
+    h: $data.agreedToTerms ? 1 : "",
+    i: common_vendor.o((...args) => $options.toggleAgreement && $options.toggleAgreement(...args), "10"),
+    j: common_vendor.o((...args) => $options.openUserAgreement && $options.openUserAgreement(...args), "59"),
+    k: common_vendor.o((...args) => $options.openPrivacyPolicy && $options.openPrivacyPolicy(...args), "58")
+  }) : common_vendor.e({
+    l: common_assets._imports_1,
+    m: common_assets._imports_2,
+    n: $data.areaCode === 852 ? 8 : 11,
+    o: $data.formData.mobile,
+    p: common_vendor.o(($event) => $data.formData.mobile = $event.detail.value, "e5"),
+    q: common_assets._imports_3,
+    r: common_vendor.o([($event) => $data.formData.captcha = $event.detail.value, (...args) => $options.onCodeInput && $options.onCodeInput(...args)], "86"),
+    s: $data.formData.captcha,
+    t: common_vendor.t($data.codeText),
+    v: !$data.canSendCode ? 1 : "",
+    w: common_vendor.o((...args) => $options.sendCode && $options.sendCode(...args), "ad"),
+    x: !$data.agreedToTerms && $data.showAgreementTip
+  }, !$data.agreedToTerms && $data.showAgreementTip ? {
+    y: $data.isShaking ? 1 : ""
+  } : {}, {
+    z: !$options.canLogin ? 1 : "",
+    A: $data.loading,
+    B: common_vendor.o((...args) => $options.handleLogin && $options.handleLogin(...args), "b9"),
+    C: $data.agreedToTerms
+  }, $data.agreedToTerms ? {} : {}, {
+    D: $data.agreedToTerms ? 1 : "",
+    E: common_vendor.o((...args) => $options.toggleAgreement && $options.toggleAgreement(...args), "f7"),
+    F: common_vendor.o((...args) => $options.openUserAgreement && $options.openUserAgreement(...args), "8c"),
+    G: common_vendor.o((...args) => $options.openPrivacyPolicy && $options.openPrivacyPolicy(...args), "75"),
+    H: common_assets._imports_4,
+    I: common_vendor.o((...args) => $options.handleXiaohongshuLogin && $options.handleXiaohongshuLogin(...args), "a7")
+  }), {
+    b: $data.showXhsPhoneAuth && $data.isXhsEnv
+  });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-d08ef7d4"]]);
 tt.createPage(MiniProgramPage);

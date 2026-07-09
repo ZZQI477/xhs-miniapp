@@ -35,7 +35,9 @@
     "pages/cases/index",
     "pages/party/detail",
     "pages/cases/detail",
-    "pages/action/index"
+    "pages/action/index",
+    "pages/chat/list",
+    "pages/chat/detail"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -62,16 +64,22 @@
         "selectedIconPath": "/static/Frame@2x(1).png"
       },
       {
-        "pagePath": "pages/request/index",
-        "text": "消息",
-        "iconPath": "/static/Frame@2x(6).png",
-        "selectedIconPath": "/static/Frame@2x(2).png"
-      },
-      {
         "pagePath": "pages/mine/index",
         "text": "我的",
         "iconPath": "/static/Frame@2x(7).png",
         "selectedIconPath": "/static/Frame@2x(3).png"
+      },
+      {
+        "pagePath": "pages/request/index",
+        "text": "申请",
+        "iconPath": "/static/Frame@2x(6).png",
+        "selectedIconPath": "/static/Frame@2x(2).png"
+      },
+      {
+        "pagePath": "pages/chat/list",
+        "text": "消息",
+        "iconPath": "/static/Frame@2x(6).png",
+        "selectedIconPath": "/static/Frame@2x(2).png"
       }
     ]
   },

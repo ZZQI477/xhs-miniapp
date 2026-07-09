@@ -313,7 +313,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     B: common_vendor.t(($data.form.intro || "").length),
     C: $options.exampleAvatar,
     D: common_vendor.t($options.exampleName),
-    E: common_assets._imports_1$6,
+    E: common_assets._imports_1$5,
     F: common_vendor.t($options.exampleIntro),
     G: common_vendor.f($data.allTags, (tag, k0, i0) => {
       return {
@@ -331,7 +331,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     K: common_vendor.t(($data.form.ideal_intro || "").length),
     L: $options.exampleAvatar,
     M: common_vendor.t($options.exampleName),
-    N: common_assets._imports_1$6,
+    N: common_assets._imports_1$5,
     O: common_vendor.t($options.exampleIdealIntro),
     P: common_vendor.f($data.allTags, (tag, k0, i0) => {
       return {

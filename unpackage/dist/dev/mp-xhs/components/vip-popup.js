@@ -107,8 +107,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     b: common_assets._imports_0$9,
     c: common_vendor.o((...args) => $options.handleClose && $options.handleClose(...args), "fc"),
     d: common_assets._imports_1$8,
-    e: common_assets._imports_2$4,
-    f: common_assets._imports_3$4,
+    e: common_assets._imports_2$3,
+    f: common_assets._imports_3$3,
     g: common_vendor.f($data.packages, (pkg, index, i0) => {
       return common_vendor.e({
         a: common_vendor.t(pkg.title),

@@ -144,11 +144,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     d: !$data.isLoggedIn
   }, !$data.isLoggedIn ? {
-    e: common_assets._imports_1$2,
+    e: common_assets._imports_0$2,
     f: common_vendor.o((...args) => $options.goLogin && $options.goLogin(...args), "3e")
   } : {
     g: $data.userInfo.avatar || "/static/logo.png",
-    h: common_assets._imports_1$3,
+    h: common_assets._imports_1$2,
     i: common_assets._imports_2$1,
     j: $data.userInfo.avatar || "/static/logo.png",
     k: common_vendor.o((...args) => $options.changeAvatar && $options.changeAvatar(...args), "0f"),
@@ -161,7 +161,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     r: common_vendor.t($data.userInfo.city ? this.getCityName($data.userInfo.city) : "未设置城市"),
     s: common_vendor.t($data.userInfo.age || "未设置年龄"),
     t: common_vendor.t($data.userInfo.xiaohongshu || "未设置"),
-    v: common_assets._imports_4$2,
+    v: common_assets._imports_4$3,
     w: common_vendor.f($data.userTags, (tag, index, i0) => {
       return {
         a: common_vendor.t(tag),

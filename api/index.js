@@ -42,6 +42,16 @@ export const xhsLogin = (data) => {
   return http.post('/user/xhslogin', data)
 }
 
+// 小红书小程序获取手机号（解密）
+export const xhsPhone = (data) => {
+  return http.post('/user/xhsphone', data)
+}
+
+// 小红书手机号一键登录（无需验证码，自动注册/登录）
+export const xhsPhoneLogin = (data) => {
+  return http.post('/user/xhs_quick_login', data)
+}
+
 // 注册账号
 export const register = (data) => {
   return http.post('/user/register', data)
@@ -375,6 +385,8 @@ export default {
   sendSms,
   wxLogin,
   xhsLogin,
+  xhsPhone,
+  xhsPhoneLogin,
   register,
   resetPassword,
   logout,

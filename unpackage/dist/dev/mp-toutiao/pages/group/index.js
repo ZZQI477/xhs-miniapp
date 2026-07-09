@@ -85,7 +85,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         f: common_vendor.o(($event) => $options.onGroupTap(item), "e8")
       };
     }),
-    d: common_assets._imports_0$8
+    d: common_assets._imports_0$7
   } : !$data.loading ? {} : {}, {
     e: !$data.loading,
     f: common_vendor.o((...args) => $options.goSingle && $options.goSingle(...args), "99"),

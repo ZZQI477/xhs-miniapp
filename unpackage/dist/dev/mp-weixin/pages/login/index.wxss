@@ -271,3 +271,82 @@
   width: 80rpx;
   height: 80rpx;
 }
+
+/* 小红书手机号授权阶段 */
+.xhs-phone-auth-section.data-v-d08ef7d4 {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 55rpx;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #e2dfff 0%, #FFFFFF 35%, #FFF 100%);
+}
+
+/* 标题区域 - 顶部 */
+.xhs-title-area.data-v-d08ef7d4 {
+  width: 100%;
+  padding-top: 250rpx;
+  margin-bottom: 200rpx;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.xhs-title-area .title-image.data-v-d08ef7d4 {
+  width: 500rpx;
+  height: 250rpx;
+}
+
+/* 按钮区域 - 居中 */
+.xhs-btn-area.data-v-d08ef7d4 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+/* 获取手机号按钮 */
+.xhs-phone-btn.data-v-d08ef7d4 {
+  width: 100%;
+  height: 100rpx;
+  background-color: #6853F0;
+  color: #FFFFFF;
+  font-size: 36rpx;
+  font-weight: 600;
+  border-radius: 50rpx;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.xhs-phone-btn.data-v-d08ef7d4:active {
+  opacity: 0.9;
+}
+
+/* 手机号登录按钮 */
+.manual-entry-btn.data-v-d08ef7d4 {
+  width: 100%;
+  height: 100rpx;
+  font-size: 36rpx;
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  color: #666666;
+  border: 2rpx solid #CCCCCC;
+  font-weight: 500;
+  margin-top: 40rpx;
+}
+
+/* 协议区域 - 底部 */
+.xhs-agreement-area.data-v-d08ef7d4 {
+  width: 100%;
+  padding-bottom: 60rpx;
+  margin-top: auto;
+}
+.xhs-agreement-area .agreement-section.data-v-d08ef7d4 {
+  margin-bottom: 0;
+}

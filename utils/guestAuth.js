@@ -261,6 +261,64 @@ export function getCurrentUserId() {
   return getGuestId()
 }
 
+/**
+ * 更新游客用户信息
+ * 在获取到用户授权信息后调用，将头像、昵称等信息存储到游客身份
+ * @param {object} userInfo 用户信息（包含 avatarUrl, nickName, gender 等）
+ * @returns {Promise<object>} 更新结果
+ */
+export async function updateGuestUserInfo(userInfo) {
+  const guestId = getGuestId()
+  const guestToken = getGuestToken()
+  
+  if (!guestId) {
+    console.warn('[guestAuth] 没有游客身份，无法更新用户信息')
+    return { success: false, error: '没有游客身份' }
+  }
+  
+  try {
+    // 先更新本地存储
+    const existingInfo = getGuestUserInfo() || {}
+    const mergedInfo = {
+      ...existingInfo,
+      avatar: userInfo.avatarUrl || userInfo.avatar || existingInfo.avatar,
+      nickname: userInfo.nickName || userInfo.nickname || existingInfo.nickname,
+      gender: userInfo.gender || existingInfo.gender
+    }
+    uni.setStorageSync(STORAGE_KEYS.GUEST_USERINFO, JSON.stringify(mergedInfo))
+    
+    // 如果有 token，同步到服务器
+    if (guestToken) {
+      console.log('[guestAuth] 同步游客用户信息到服务器', guestId, mergedInfo)
+      const res = await http.post('/chat/update_guest_info', {
+        guest_id: guestId,
+        guest_token: guestToken,
+        userinfo: {
+          avatar: mergedInfo.avatar,
+          nickname: mergedInfo.nickname,
+          gender: mergedInfo.gender
+        }
+      })
+      
+      if (res && res.data) {
+        console.log('[guestAuth] 游客用户信息同步成功')
+        return { success: true, userinfo: mergedInfo }
+      }
+    }
+    
+    return { success: true, userinfo: mergedInfo }
+  } catch (e) {
+    console.error('[guestAuth] 更新游客用户信息失败', e)
+    // 即使服务器同步失败，本地存储已更新，返回部分成功
+    return {
+      success: true,
+      userinfo: getGuestUserInfo(),
+      server_sync_failed: true,
+      error: e.msg || '同步失败'
+    }
+  }
+}
+
 export default {
   generateGuestId,
   getGuestId,
@@ -273,5 +331,6 @@ export default {
   bindGuestToAccount,
   clearGuestInfo,
   getCurrentToken,
-  getCurrentUserId
+  getCurrentUserId,
+  updateGuestUserInfo
 }

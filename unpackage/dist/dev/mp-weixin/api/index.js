@@ -17,6 +17,9 @@ const mobileLogin = (data) => {
 const sendSms = (data) => {
   return utils_request.http.post("/user/sendcode", data);
 };
+const xhsPhoneLogin = (data) => {
+  return utils_request.http.post("/user/xhs_quick_login", data);
+};
 const resetPassword = (data) => {
   return utils_request.http.post("/user/resetpwd", data);
 };
@@ -227,4 +230,5 @@ exports.uploadAvatar = uploadAvatar;
 exports.uploadImage = uploadImage;
 exports.wantView = wantView;
 exports.wxPay = wxPay;
+exports.xhsPhoneLogin = xhsPhoneLogin;
 //# sourceMappingURL=../../.sourcemap/mp-weixin/api/index.js.map

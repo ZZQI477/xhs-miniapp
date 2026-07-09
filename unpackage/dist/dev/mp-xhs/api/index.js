@@ -20,6 +20,9 @@ const sendSms = (data) => {
 const xhsLogin = (data) => {
   return utils_request.http.post("/user/xhslogin", data);
 };
+const xhsPhoneLogin = (data) => {
+  return utils_request.http.post("/user/xhs_quick_login", data);
+};
 const resetPassword = (data) => {
   return utils_request.http.post("/user/resetpwd", data);
 };
@@ -231,3 +234,4 @@ exports.uploadImage = uploadImage;
 exports.wantView = wantView;
 exports.wxPay = wxPay;
 exports.xhsLogin = xhsLogin;
+exports.xhsPhoneLogin = xhsPhoneLogin;

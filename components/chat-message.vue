@@ -13,6 +13,7 @@
         class="avatar" 
         :src="senderAvatar" 
         mode="aspectFill"
+        @click="$emit('avatarTap')"
       ></image>
       
       <!-- 消息气泡 -->

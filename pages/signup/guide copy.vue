@@ -478,10 +478,6 @@ export default {
       // 自定义组件返回 { value: [index], items: [item] }
       this.form.birthday = 1970 + Number(e.value[0])
       this.saveData()
-      // 第一页最后一项，选择后自动跳转下一页
-      setTimeout(() => {
-        this.handleNext()
-      }, 300)
     },
     onIncomeChange(e) {
       // 自定义组件返回 { value: [index], items: [item] }
@@ -492,10 +488,6 @@ export default {
       // 自定义组件返回 { value: [index], items: [item] }
       this.form.maritalStatus = e.items[0] || ''
       this.saveData()
-      // 第二页最后一项，选择后自动跳转下一页
-      setTimeout(() => {
-        this.handleNext()
-      }, 300)
     },
 
     async onCityChange(e) {

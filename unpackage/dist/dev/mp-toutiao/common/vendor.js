@@ -5291,12 +5291,17 @@ function vFor(source, renderItem) {
   }
   return ret;
 }
+function setRef(ref2, id2, opts = {}) {
+  const { $templateRefs } = getCurrentInstance();
+  $templateRefs.push({ i: id2, r: ref2, k: opts.k, f: opts.f });
+}
 const o = (value, key) => vOn(value, key);
 const f = (source, renderItem) => vFor(source, renderItem);
 const e = (target, ...sources) => extend(target, ...sources);
 const n = (value) => normalizeClass(value);
 const t = (val) => toDisplayString(val);
 const p = (props) => renderProps(props);
+const sr = (ref2, id2, opts) => setRef(ref2, id2, opts);
 function createApp$1(rootComponent, rootProps = null) {
   rootComponent && (rootComponent.mpType = "app");
   return createVueApp(rootComponent, rootProps).use(plugin);
@@ -7081,7 +7086,7 @@ function isConsoleWritable() {
 function initRuntimeSocketService() {
   const hosts = "192.168.9.90,127.0.0.1";
   const port = "8090";
-  const id2 = "mp-toutiao_IVZuv-";
+  const id2 = "mp-toutiao_B28SY3";
   const lazy = typeof swan !== "undefined";
   let restoreError = lazy ? () => {
   } : initOnError();
@@ -8149,5 +8154,6 @@ exports.n = n;
 exports.o = o;
 exports.p = p;
 exports.resolveComponent = resolveComponent;
+exports.sr = sr;
 exports.t = t;
 //# sourceMappingURL=../../.sourcemap/mp-toutiao/common/vendor.js.map

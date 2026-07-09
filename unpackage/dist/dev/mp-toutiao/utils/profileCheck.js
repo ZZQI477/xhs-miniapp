@@ -4,7 +4,7 @@ const api_index = require("../api/index.js");
 let isChecking = false;
 const PROFILE_THRESHOLD = 90;
 const PROFILE_PROMPT_KEY = "profile_prompt_last_time";
-const PROFILE_PROMPT_INTERVAL = 1 * 60 * 1e3;
+const SESSION_PROMPT_KEY = "hasProfilePromptedInSession";
 const REQUIRED_FIELDS = [
   { key: "birthday", label: "出生年份", check: (data) => Boolean(data.birthday) },
   {
@@ -28,8 +28,40 @@ function normalizeUserInfo(res) {
 function getMissingFields(userInfo) {
   return REQUIRED_FIELDS.filter((field) => !field.check(userInfo)).map((field) => field.label);
 }
+function getAppGlobalData() {
+  try {
+    const app = getApp();
+    if (app && app.globalData) {
+      return app.globalData;
+    }
+  } catch (e) {
+    common_vendor.index.__f__("warn", "at utils/profileCheck.js:49", "getApp() 不可用", e);
+  }
+  return null;
+}
+function hasPromptedInSession() {
+  const globalData = getAppGlobalData();
+  if (globalData) {
+    return globalData[SESSION_PROMPT_KEY] === true;
+  }
+  return common_vendor.index.getStorageSync(SESSION_PROMPT_KEY) === true;
+}
+function markPromptedInSession() {
+  const globalData = getAppGlobalData();
+  if (globalData) {
+    globalData[SESSION_PROMPT_KEY] = true;
+  }
+  common_vendor.index.setStorageSync(SESSION_PROMPT_KEY, true);
+}
 function resetProfilePrompt() {
   common_vendor.index.removeStorageSync(PROFILE_PROMPT_KEY);
+}
+function resetSessionPromptFlag() {
+  const globalData = getAppGlobalData();
+  if (globalData) {
+    globalData[SESSION_PROMPT_KEY] = false;
+  }
+  common_vendor.index.removeStorageSync(SESSION_PROMPT_KEY);
 }
 const profileCheckMixin = {
   data() {
@@ -50,8 +82,7 @@ const profileCheckMixin = {
       if (!token) {
         return;
       }
-      const lastPromptTime = Number(common_vendor.index.getStorageSync(PROFILE_PROMPT_KEY) || 0);
-      if (lastPromptTime && Date.now() - lastPromptTime < PROFILE_PROMPT_INTERVAL) {
+      if (hasPromptedInSession()) {
         return;
       }
       if (isChecking) {
@@ -70,9 +101,10 @@ const profileCheckMixin = {
         this.profileMissingFields = missingFields;
         if (percent < PROFILE_THRESHOLD) {
           this.showProfileModal = true;
+          markPromptedInSession();
         }
       } catch (e) {
-        common_vendor.index.__f__("error", "at utils/profileCheck.js:103", "检查资料完善度失败", e);
+        common_vendor.index.__f__("error", "at utils/profileCheck.js:160", "检查资料完善度失败", e);
       } finally {
         isChecking = false;
       }
@@ -100,4 +132,5 @@ const profileCheckMixin = {
 };
 exports.profileCheckMixin = profileCheckMixin;
 exports.resetProfilePrompt = resetProfilePrompt;
+exports.resetSessionPromptFlag = resetSessionPromptFlag;
 //# sourceMappingURL=../../.sourcemap/mp-toutiao/utils/profileCheck.js.map

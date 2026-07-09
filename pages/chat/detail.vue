@@ -2,7 +2,7 @@
   <view class="chat-detail-container">
     <!-- 顶部导航栏 -->
     <custom-nav-bar
-      :title="targetUser.nickname || '聊天'"
+      :title="targetUser.customName || '聊天'"
       :isShowBack="true"
       backgroundImage="/static/bg3.png"
     >
@@ -47,9 +47,10 @@
         <chat-message
           :message="msg"
           :selfAvatar="selfAvatar"
-          :targetAvatar="targetUser.avatar"
+          :targetAvatar="targetUser.customAvatar"
           :selfUserId="selfUserId"
           :showTime="shouldShowTime(index)"
+          @avatarTap="goUserProfile"
         />
       </view>
       
@@ -120,7 +121,10 @@ export default {
         avatar: '',
         age: 0,
         city: '',
-        is_online: false
+        is_online: false,
+		// 增加默认的客服头像信息
+		customName:'情感分析师',
+		customAvatar:'https://minixhs.chugao520.com/assets/img/customAvatar.png'
       },
       
       messages: [],

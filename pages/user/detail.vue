@@ -1,12 +1,29 @@
 <template>
   <view class="detail-container">
+    <!-- 未登录弹框 -->
    <view v-if="showShareRegisterPopup" class="share-register-overlay">
       <view class="share-register-card" style="text-align: center;">
         <text class="share-register-close" @click="closeShareRegisterPopup">×</text>
         <view class="share-register-title">注册后可继续查看嘉宾信息</view>
         <view class="share-register-desc" style="text-align: left;">登录后可关注对方、申请联系方式，并查看更多同城嘉宾。</view>
-        <button class="share-register-btn" @click="goRegister">立即注册</button>
-		<view class="guest-chat-enter" @click="startGuestChat">免登录聊天</view>
+        
+        <!-- 小红书环境：显示授权按钮 -->
+        <!-- #ifdef MP-XHS -->
+        <button 
+          class="share-register-btn auth-btn" 
+          open-type="getUserInfo"
+          @getuserinfo="handleGetUserInfoForGuest"
+        >
+          暂不登录，先聊聊
+        </button>
+        <!-- #endif -->
+        
+        <!-- 非小红书环境：普通按钮 -->
+        <!-- #ifndef MP-XHS -->
+        <button class="share-register-btn" @click="startGuestChat">暂不登录，先聊聊</button>
+        <!-- #endif -->
+        
+        <view class="guest-chat-enter" @click="goRegister">立即注册匹配</view>
       </view>
     </view>
 
@@ -174,7 +191,7 @@
 			  </view>
 		    </view>
 		  </view>
-		<view class="guest-chat-enter" @click="startGuestChat">免登录聊天</view>
+<!-- <view class="guest-chat-enter" @click="startGuestChat">免登录聊天</view> -->
           <!-- 5. 自我介绍卡片 -->
           <view class="introduce-card card">
             <view class="card-title">
@@ -375,7 +392,7 @@
 import { getUserDetail, toggleFollow, sendRequest, wantView, getBlur } from '@/api/index.js'
 import utils_config from "../../utils/config.js"
 import CenterModal from '@/components/center-modal.vue'
-import { getOrCreateGuestId } from '@/utils/guestAuth.js'
+import { getOrCreateGuestId, updateGuestUserInfo } from '@/utils/guestAuth.js'
 
 export default {
   name: 'UserDetail',
@@ -540,8 +557,8 @@ export default {
 
     return {
       title: `告白时刻Daily - 遇见对的人`,
-	  content:'小红书小程序拯救单身互联网人',
-	  // title: `我发现一个不错的人：${this.userInfo.name}`,
+      content:'小红书小程序拯救单身互联网人',
+      // title: `我发现一个不错的人：${this.userInfo.name}`,
       imageUrl: shareImageUrl,
       path: `/pages/user/detail?id=${this.userId}&share=true&inviter_id=${inviterId}`
     }
@@ -897,11 +914,57 @@ export default {
       })
     },
 
-    async startGuestChat() {
+    // 小红书环境：处理用户授权信息回调
+    async handleGetUserInfoForGuest(e) {
+      try {
+        // 检查用户是否授权
+        if (e.detail.errMsg !== 'getUserInfo:ok') {
+          console.warn('[GuestChat] 用户拒绝授权用户信息，使用匿名模式')
+          // 用户拒绝授权，以匿名游客身份聊天
+          await this.createGuestAndNavigate()
+          return
+        }
+
+        uni.showLoading({ title: '创建身份...' })
+        
+        // 获取或创建游客身份
+        const inviterId = uni.getStorageSync('share_inviter_id') || ''
+        const guestInfo = await getOrCreateGuestId(inviterId ? { inviter_id: inviterId } : {})
+        console.log('[GuestChat] 游客身份创建成功', guestInfo)
+        
+        // 更新游客用户信息
+        const userInfo = e.detail.userInfo
+        if (userInfo) {
+          await updateGuestUserInfo({
+            avatarUrl: userInfo.avatarUrl || userInfo.avatar,
+            nickName: userInfo.nickName || userInfo.nickname,
+            gender: userInfo.gender
+          })
+          console.log('[GuestChat] 游客用户信息已更新', userInfo)
+        }
+        
+        uni.hideLoading()
+        
+        // 关闭弹窗，跳转聊天详情页
+        this.showShareRegisterPopup = false
+        uni.navigateTo({
+          url: `/pages/chat/detail?to_user_id=${this.userId}&guest=1`
+        })
+      } catch (e) {
+        uni.hideLoading()
+        console.error('[GuestChat] 创建游客身份失败', e)
+        uni.showToast({
+          title: '请稍后重试',
+          icon: 'none'
+        })
+      }
+    },
+
+    // 通用：创建游客身份并跳转聊天
+    async createGuestAndNavigate() {
       try {
         // 获取或创建游客身份，传入邀请人ID
         const inviterId = uni.getStorageSync('share_inviter_id') || ''
-        // const inviterId = '1796'
         const guestInfo = await getOrCreateGuestId(inviterId ? { inviter_id: inviterId } : {})
         console.log('[GuestChat] 游客身份创建成功', guestInfo)
         
@@ -917,6 +980,11 @@ export default {
           icon: 'none'
         })
       }
+    },
+
+    // 非小红书环境：普通游客聊天
+    async startGuestChat() {
+      await this.createGuestAndNavigate()
     },
 
     async handleBind() {
@@ -1081,6 +1149,8 @@ export default {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1143,6 +1213,12 @@ export default {
 .guest-chat-enter{
 	color: #384582;
 	font-size: 0.85rem;
+}
+
+.register-link{
+	color: #999;
+	font-size: 0.8rem;
+	margin-top: 0.5rem;
 }
 
 /* 脱单提示 */

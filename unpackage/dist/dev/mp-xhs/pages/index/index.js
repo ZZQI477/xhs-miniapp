@@ -378,7 +378,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     g: $data.loading && $data.users.length === 0
   }, $data.loading && $data.users.length === 0 ? {
-    h: common_assets._imports_0$1
+    h: common_assets._imports_0
   } : {}, {
     i: $data.users.length > 0
   }, $data.users.length > 0 ? {
@@ -413,13 +413,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       } : {}, {
         q: user.is_realface
       }, user.is_realface ? {
-        r: common_assets._imports_4
+        r: common_assets._imports_4$1
       } : {}, {
         s: user.is_education
       }, user.is_education ? {} : {}) : {}, {
         t: user.intro
       }, user.intro ? {
-        v: common_assets._imports_4$1,
+        v: common_assets._imports_4$2,
         w: common_vendor.t(user.intro)
       } : {}, {
         x: user.my_tags && user.my_tags.length > 0
@@ -499,7 +499,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   } : {}, {
     p: !$data.loading && $data.users.length === 0
   }, !$data.loading && $data.users.length === 0 ? {
-    q: common_assets._imports_0$1,
+    q: common_assets._imports_0,
     r: common_vendor.o((...args) => $options.loadRecommendList && $options.loadRecommendList(...args), "24")
   } : {}, {
     s: $data.users.length > 0 && $options.currentUser

@@ -212,7 +212,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   }, $data.loading && $data.conversations.length === 0 ? {} : {}, {
     e: !$data.loading && $data.conversations.length === 0
   }, !$data.loading && $data.conversations.length === 0 ? {
-    f: common_assets._imports_0$1
+    f: common_assets._imports_0
   } : {}, {
     g: $data.conversations.length > 0
   }, $data.conversations.length > 0 ? common_vendor.e({

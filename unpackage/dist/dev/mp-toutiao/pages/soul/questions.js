@@ -125,7 +125,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       title: "灵魂三问",
       backgroundImage: "/static/bg4.png"
     }),
-    b: common_assets._imports_0$4,
+    b: common_assets._imports_0$3,
     c: common_vendor.f($data.soulAnswers, (item, index, i0) => {
       return {
         a: common_vendor.t(["一", "二", "三"][index]),

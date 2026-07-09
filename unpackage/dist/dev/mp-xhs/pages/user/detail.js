@@ -455,7 +455,43 @@ const _sfc_main = {
         url: `/pages/login/index?inviter_id=${inviterId}`
       });
     },
-    async startGuestChat() {
+    // 小红书环境：处理用户授权信息回调
+    async handleGetUserInfoForGuest(e) {
+      try {
+        if (e.detail.errMsg !== "getUserInfo:ok") {
+          console.warn("[GuestChat] 用户拒绝授权用户信息，使用匿名模式");
+          await this.createGuestAndNavigate();
+          return;
+        }
+        common_vendor.index.showLoading({ title: "创建身份..." });
+        const inviterId = common_vendor.index.getStorageSync("share_inviter_id") || "";
+        const guestInfo = await utils_guestAuth.getOrCreateGuestId(inviterId ? { inviter_id: inviterId } : {});
+        console.log("[GuestChat] 游客身份创建成功", guestInfo);
+        const userInfo = e.detail.userInfo;
+        if (userInfo) {
+          await utils_guestAuth.updateGuestUserInfo({
+            avatarUrl: userInfo.avatarUrl || userInfo.avatar,
+            nickName: userInfo.nickName || userInfo.nickname,
+            gender: userInfo.gender
+          });
+          console.log("[GuestChat] 游客用户信息已更新", userInfo);
+        }
+        common_vendor.index.hideLoading();
+        this.showShareRegisterPopup = false;
+        common_vendor.index.navigateTo({
+          url: `/pages/chat/detail?to_user_id=${this.userId}&guest=1`
+        });
+      } catch (e2) {
+        common_vendor.index.hideLoading();
+        console.error("[GuestChat] 创建游客身份失败", e2);
+        common_vendor.index.showToast({
+          title: "请稍后重试",
+          icon: "none"
+        });
+      }
+    },
+    // 通用：创建游客身份并跳转聊天
+    async createGuestAndNavigate() {
       try {
         const inviterId = common_vendor.index.getStorageSync("share_inviter_id") || "";
         const guestInfo = await utils_guestAuth.getOrCreateGuestId(inviterId ? { inviter_id: inviterId } : {});
@@ -471,6 +507,10 @@ const _sfc_main = {
           icon: "none"
         });
       }
+    },
+    // 非小红书环境：普通游客聊天
+    async startGuestChat() {
+      await this.createGuestAndNavigate();
     },
     async handleBind() {
       try {
@@ -611,17 +651,17 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: $data.showShareRegisterPopup
   }, $data.showShareRegisterPopup ? {
-    b: common_vendor.o((...args) => $options.closeShareRegisterPopup && $options.closeShareRegisterPopup(...args), "42"),
-    c: common_vendor.o((...args) => $options.goRegister && $options.goRegister(...args), "1a"),
-    d: common_vendor.o((...args) => $options.startGuestChat && $options.startGuestChat(...args), "50")
+    b: common_vendor.o((...args) => $options.closeShareRegisterPopup && $options.closeShareRegisterPopup(...args), "75"),
+    c: common_vendor.o((...args) => $options.handleGetUserInfoForGuest && $options.handleGetUserInfoForGuest(...args), "80"),
+    d: common_vendor.o((...args) => $options.goRegister && $options.goRegister(...args), "78")
   } : {}, {
     e: $data.userNotFound
   }, $data.userNotFound ? {
-    f: common_assets._imports_0$1,
+    f: common_assets._imports_0,
     g: common_vendor.t($data.userDeletedMsg || "该用户不存在或已注销"),
-    h: common_vendor.o((...args) => $options.gotoSingle && $options.gotoSingle(...args), "a1")
+    h: common_vendor.o((...args) => $options.gotoSingle && $options.gotoSingle(...args), "ba")
   } : $data.userInfo.isLogout ? {
-    j: common_vendor.o((...args) => $options.gotoSingle && $options.gotoSingle(...args), "48")
+    j: common_vendor.o((...args) => $options.gotoSingle && $options.gotoSingle(...args), "ca")
   } : common_vendor.e({
     k: $data.userInfo.imgList && $data.userInfo.imgList.length > 0
   }, $data.userInfo.imgList && $data.userInfo.imgList.length > 0 ? {
@@ -637,12 +677,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     m: $data.userInfo.avatar
   }, $data.userInfo.avatar ? {
     n: $data.userInfo.avatar,
-    o: common_vendor.o((...args) => $options.handleAvatarError && $options.handleAvatarError(...args), "75")
+    o: common_vendor.o((...args) => $options.handleAvatarError && $options.handleAvatarError(...args), "d4")
   } : {
     p: $data.userInfo.gender === "男" ? "/static/icons/male-default.png" : "/static/icons/female-default.png"
   }, {
     q: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
-    r: common_vendor.o(($event) => $options.wantSee("photo"), "bd")
+    r: common_vendor.o(($event) => $options.wantSee("photo"), "be")
   }), {
     s: common_vendor.t($data.userInfo.name),
     t: $data.userInfo.gender === "男" ? "/static/m.png" : "/static/wm.png",
@@ -652,7 +692,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   } : {}, {
     x: $data.userInfo.isRealName
   }, $data.userInfo.isRealName ? {
-    y: common_assets._imports_2$3
+    y: common_assets._imports_2$2
   } : {}, {
     z: common_vendor.t($data.userInfo.birthday),
     A: $data.userInfo.birthday && ($data.userInfo.height || $data.userInfo.education)
@@ -703,36 +743,35 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   } : {}, {
     T: common_vendor.t($data.userInfo.has_car ? "是" : "否"),
     U: common_vendor.t($data.userInfo.has_house ? "是" : "否"),
-    V: common_vendor.o((...args) => $options.startGuestChat && $options.startGuestChat(...args), "a6"),
-    W: common_assets._imports_3$1,
-    X: $data.userInfo.introduce
+    V: common_assets._imports_3$1,
+    W: $data.userInfo.introduce
   }, $data.userInfo.introduce ? {
-    Y: common_vendor.t($options.formatIntroduce)
+    X: common_vendor.t($options.formatIntroduce)
   } : !$data.isAdSource ? {
-    aa: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
-    ab: common_vendor.o(($event) => $options.wantSee("introduce"), "6d")
+    Z: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
+    aa: common_vendor.o(($event) => $options.wantSee("introduce"), "e5")
   } : {}, {
-    Z: !$data.isAdSource,
-    ac: !$data.isAdSource
+    Y: !$data.isAdSource,
+    ab: !$data.isAdSource
   }, !$data.isAdSource ? common_vendor.e({
-    ad: common_assets._imports_4$1,
-    ae: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
-    af: $options.filterTags($data.userInfo.tags).length
+    ac: common_assets._imports_4$2,
+    ad: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
+    ae: $options.filterTags($data.userInfo.tags).length
   }, $options.filterTags($data.userInfo.tags).length ? {
-    ag: common_vendor.f($options.filterTags($data.userInfo.tags), (tag, index, i0) => {
+    af: common_vendor.f($options.filterTags($data.userInfo.tags), (tag, index, i0) => {
       return {
         a: common_vendor.t(tag),
         b: index
       };
     })
   } : {
-    ah: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
-    ai: common_vendor.o(($event) => $options.wantSee("tag"), "4a")
+    ag: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
+    ah: common_vendor.o(($event) => $options.wantSee("tag"), "55")
   }) : {}, {
-    aj: $data.userInfo.questionAnswer && $data.userInfo.questionAnswer.length
+    ai: $data.userInfo.questionAnswer && $data.userInfo.questionAnswer.length
   }, $data.userInfo.questionAnswer && $data.userInfo.questionAnswer.length ? {
-    ak: common_assets._imports_5$1,
-    al: common_vendor.f($data.userInfo.questionAnswer, (item, index, i0) => {
+    aj: common_assets._imports_5$1,
+    ak: common_vendor.f($data.userInfo.questionAnswer, (item, index, i0) => {
       return common_vendor.e({
         a: item.question && item.answer
       }, item.question && item.answer ? {
@@ -747,66 +786,66 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       });
     })
   } : {}, {
-    am: $data.userInfo.friends_impression && $data.userInfo.friends_impression.length
+    al: $data.userInfo.friends_impression && $data.userInfo.friends_impression.length
   }, $data.userInfo.friends_impression && $data.userInfo.friends_impression.length ? {
-    an: common_assets._imports_7$2,
-    ao: common_vendor.f($data.userInfo.friends_impression, (item, index, i0) => {
+    am: common_assets._imports_7$2,
+    an: common_vendor.f($data.userInfo.friends_impression, (item, index, i0) => {
       return {
         a: common_vendor.t($data.friendLabels[index]),
         b: common_vendor.t(item),
         c: index
       };
     }),
-    ap: common_assets._imports_8$2
+    ao: common_assets._imports_8$2
   } : {}, {
-    aq: common_assets._imports_9$1,
-    ar: $options.hasIdealPartner
+    ap: common_assets._imports_9$1,
+    aq: $options.hasIdealPartner
   }, $options.hasIdealPartner ? common_vendor.e({
-    as: $data.userInfo.idealPartner.introduce
+    ar: $data.userInfo.idealPartner.introduce
   }, $data.userInfo.idealPartner.introduce ? {
-    at: common_vendor.t($options.formatIdealPartner)
+    as: common_vendor.t($options.formatIdealPartner)
   } : {}, {
-    av: $data.userInfo.idealPartner.tags && $options.filterTags($data.userInfo.idealPartner.tags).length
+    at: $data.userInfo.idealPartner.tags && $options.filterTags($data.userInfo.idealPartner.tags).length
   }, $data.userInfo.idealPartner.tags && $options.filterTags($data.userInfo.idealPartner.tags).length ? {
-    aw: common_vendor.f($options.filterTags($data.userInfo.idealPartner.tags), (tag, index, i0) => {
+    av: common_vendor.f($options.filterTags($data.userInfo.idealPartner.tags), (tag, index, i0) => {
       return {
         a: common_vendor.t(tag),
         b: index
       };
     })
   } : {}) : !$data.isAdSource ? {
-    ay: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
-    az: common_vendor.o(($event) => $options.wantSee("idealPartner"), "ba")
+    ax: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
+    ay: common_vendor.o(($event) => $options.wantSee("idealPartner"), "c4")
   } : {}, {
-    ax: !$data.isAdSource,
-    aA: common_assets._imports_3$1,
-    aB: !$data.isAdSource
+    aw: !$data.isAdSource,
+    az: common_assets._imports_3$1,
+    aA: !$data.isAdSource
   }, !$data.isAdSource ? {
-    aC: common_assets._imports_10$2,
-    aD: common_vendor.o((...args) => $options.gotoReport && $options.gotoReport(...args), "6b")
+    aB: common_assets._imports_10$2,
+    aC: common_vendor.o((...args) => $options.gotoReport && $options.gotoReport(...args), "f1")
   } : {}, {
-    aE: $data.userInfo.privacyInfo
+    aD: $data.userInfo.privacyInfo
   }, $data.userInfo.privacyInfo ? common_vendor.e({
-    aF: $data.userInfo.privacyInfo.income
+    aE: $data.userInfo.privacyInfo.income
   }, $data.userInfo.privacyInfo.income ? {
-    aG: common_vendor.t($data.userInfo.privacyInfo.income)
+    aF: common_vendor.t($data.userInfo.privacyInfo.income)
   } : {}, {
-    aH: $data.userInfo.privacyInfo.familyBackground
+    aG: $data.userInfo.privacyInfo.familyBackground
   }, $data.userInfo.privacyInfo.familyBackground ? {
-    aI: common_vendor.t($data.userInfo.privacyInfo.familyBackground.replace(/\\n/g, "\n"))
+    aH: common_vendor.t($data.userInfo.privacyInfo.familyBackground.replace(/\\n/g, "\n"))
   } : {}, {
-    aJ: !$data.isAdSource
+    aI: !$data.isAdSource
   }, !$data.isAdSource ? common_vendor.e({
-    aK: common_vendor.t($data.contactFieldName),
-    aL: $data.userInfo.isBuy
+    aJ: common_vendor.t($data.contactFieldName),
+    aK: $data.userInfo.isBuy
   }, $data.userInfo.isBuy ? {
-    aM: common_vendor.t($data.userInfo.privacyInfo.wechatNo),
-    aN: common_assets._imports_11$2,
-    aO: common_vendor.o(($event) => $options.copyWechat($data.userInfo.privacyInfo.wechatNo), "4d")
+    aL: common_vendor.t($data.userInfo.privacyInfo.wechatNo),
+    aM: common_assets._imports_11$2,
+    aN: common_vendor.o(($event) => $options.copyWechat($data.userInfo.privacyInfo.wechatNo), "5d")
   } : {}) : {}) : {}, {
-    aP: !$data.isAdSource && $data.recommendList.length
+    aO: !$data.isAdSource && $data.recommendList.length
   }, !$data.isAdSource && $data.recommendList.length ? {
-    aQ: common_vendor.f($data.recommendList, (item, index, i0) => {
+    aP: common_vendor.f($data.recommendList, (item, index, i0) => {
       return {
         a: item.avatar,
         b: common_vendor.t(item.name),
@@ -818,28 +857,28 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       };
     })
   } : {}, {
-    aR: $data.scrollIntoView,
-    aS: !$data.isBindMode
+    aQ: $data.scrollIntoView,
+    aR: !$data.isBindMode
   }, !$data.isBindMode ? {
-    aT: common_assets._imports_12,
-    aU: common_vendor.o((...args) => $options.handleShare && $options.handleShare(...args), "fc"),
-    aV: common_assets._imports_13,
-    aW: common_vendor.o((...args) => $options.handleGetWechat && $options.handleGetWechat(...args), "37")
+    aS: common_assets._imports_12,
+    aT: common_vendor.o((...args) => $options.handleShare && $options.handleShare(...args), "64"),
+    aU: common_assets._imports_13,
+    aV: common_vendor.o((...args) => $options.handleGetWechat && $options.handleGetWechat(...args), "cd")
   } : {}, {
-    aX: $data.isBindMode
+    aW: $data.isBindMode
   }, $data.isBindMode ? {
-    aY: common_vendor.o((...args) => $options.handleBind && $options.handleBind(...args), "21")
+    aX: common_vendor.o((...args) => $options.handleBind && $options.handleBind(...args), "b5")
   } : {}, {
-    aZ: !$data.isBindMode
+    aY: !$data.isBindMode
   }, !$data.isBindMode ? {
-    ba: $data.userInfo.isFollow ? "/static/ygz.png" : "/static/Frame 1420074377.png",
-    bb: common_vendor.o((...args) => $options.handleFollow && $options.handleFollow(...args), "d5")
+    aZ: $data.userInfo.isFollow ? "/static/ygz.png" : "/static/Frame 1420074377.png",
+    ba: common_vendor.o((...args) => $options.handleFollow && $options.handleFollow(...args), "37")
   } : {}, {
-    bc: common_vendor.j({
-      "confirm": common_vendor.o($options.onCenterModalConfirm, "9e"),
-      "cancel": common_vendor.o($options.onCenterModalCancel, "67")
+    bb: common_vendor.j({
+      "confirm": common_vendor.o($options.onCenterModalConfirm, "45"),
+      "cancel": common_vendor.o($options.onCenterModalCancel, "3b")
     }),
-    bd: common_vendor.p({
+    bc: common_vendor.p({
       visible: $data.showCenterModal,
       title: $data.centerModalTitle,
       content: $data.centerModalContent,

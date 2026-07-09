@@ -6,6 +6,51 @@ ququ<template>
       <text class="loading-text">正在登录...</text>
     </view>
 
+    <!-- 小红书手机号授权阶段 -->
+    <view v-else-if="showXhsPhoneAuth && isXhsEnv" class="xhs-phone-auth-section">
+      <!-- 标题区域 -->
+      <view class="xhs-title-area">
+        <image class="title-image" src="/static/Frame 1890183229@2x.png" mode="aspectFit"></image>
+      </view>
+
+      <!-- 按钮区域 -->
+      <view class="xhs-btn-area">
+        <!-- 获取手机号按钮 -->
+        <button
+          class="xhs-phone-btn"
+          open-type="getPhoneNumber"
+          @getphonenumber="handleXhsPhoneAuth"
+          :loading="xhsPhoneLoading"
+        >
+          获取手机号登录
+        </button>
+
+        <!-- 手机号登录入口 -->
+        <button
+          class="manual-entry-btn"
+          @click="skipXhsPhoneAuth"
+        >
+          验证码登录
+        </button>
+      </view>
+	  
+	  <!-- 协议勾选 -->
+	  <view class="agreement-section">
+	    <view class="checkbox-wrapper" @click="toggleAgreement">
+	      <view class="checkbox" :class="{ checked: agreedToTerms }">
+	        <text v-if="agreedToTerms" class="check-mark">✓</text>
+	      </view>
+	    </view>
+	    <view class="agreement-text">
+	      <text>我已经阅读并同意</text>
+	      <text class="link" @click.stop="openUserAgreement">《用户协议》</text>
+	      <text>与</text>
+	      <text class="link" @click.stop="openPrivacyPolicy">《隐私协议》</text>
+	    </view>
+	  </view>
+
+    </view>
+
     <!-- 登录表单 -->
     <view v-else>
       <!-- 标题区域 -->
@@ -94,9 +139,9 @@ ququ<template>
 </template>
 
 <script>
-import { mobileLogin, sendSms, getUserInfo, xhsLogin } from '@/api/index.js'
+import { mobileLogin, sendSms, getUserInfo, xhsLogin, xhsPhone, xhsPhoneLogin } from '@/api/index.js'
 import { resetProfilePrompt } from '@/utils/profileCheck.js'
-import { xhsQuickLogin, isXhsMiniApp, checkSession } from '@/utils/xhsLogin.js'
+import { xhsQuickLogin, isXhsMiniApp, checkSession, getLoginCode } from '@/utils/xhsLogin.js'
 
 export default {
   data() {
@@ -117,7 +162,12 @@ export default {
       canSendCode: true,
       countdown: 30,
       timer: null,
-      lastLoginTime: 0 // 节流：记录上次登录时间
+      lastLoginTime: 0, // 节流：记录上次登录时间
+      // 小红书手机号授权相关
+      showXhsPhoneAuth: false, // 是否显示小红书授权按钮阶段
+      xhsPhoneLoading: false,  // 获取手机号loading状态
+      isXhsEnv: false,         // 是否小红书环境
+      xhsLoginCode: ''         // 预先获取的登录 code
     }
   },
   computed: {
@@ -143,6 +193,17 @@ export default {
     const inviterId = Number(options.inviter_id || 0)
     if (inviterId > 0) {
       uni.setStorageSync('share_inviter_id', inviterId)
+    }
+
+    // 判断是否小红书环境
+    this.isXhsEnv = isXhsMiniApp()
+    
+    // 如果是小红书环境且没有token，显示手机号授权按钮阶段
+    const token = uni.getStorageSync('token')
+    if (this.isXhsEnv && !token) {
+      this.showXhsPhoneAuth = true
+      // 预先调用 login 获取 code（小红书要求先 login 才能获取手机号）
+      this.preGetXhsLoginCode()
     }
 
     this.tryAutoLogin()
@@ -457,6 +518,120 @@ export default {
       } finally {
         this.loading = false
       }
+    },
+
+    // 小红书获取手机号授权
+    async handleXhsPhoneAuth(e) {
+      console.log('[Login] handleXhsPhoneAuth 被调用')
+      console.log('[Login] e.detail:', JSON.stringify(e.detail))
+      // 检查协议
+      if (!this.agreedToTerms) {
+        // this.triggerShake()
+		uni.showToast({
+		  title: e.msg || '请先阅读并同意协议',
+		  icon: 'none'
+		});
+        console.log('[Login] 未勾选协议，返回')
+        return
+      }
+
+      // 检查用户是否授权手机号
+      if (e.detail.errMsg !== 'getPhoneNumber:ok') {
+        console.error('[Login] 用户拒绝授权手机号:', e.detail.errMsg)
+        uni.showToast({ title: '请授权手机号以登录', icon: 'none' })
+        return
+      }
+      console.log('[Login] 用户已授权，继续处理')
+      // 获取加密数据
+      const { encryptedData, iv } = e.detail
+      if (!encryptedData || !iv) {
+        uni.showToast({ title: '获取手机号数据失败', icon: 'none' })
+        return
+      }
+	console.log('[Login] encryptedData 和 iv 获取成功')
+      // 如果没有预先获取的 code，先获取
+      if (!this.xhsLoginCode) {
+        try {
+          this.xhsLoginCode = await getLoginCode()
+        } catch (err) {
+          uni.showToast({ title: '获取登录凭证失败', icon: 'none' })
+          return
+        }
+      }
+      console.log('[Login] xhsLoginCode 已准备好，开始调用登录接口')
+      this.xhsPhoneLoading = true
+      try {
+        // 构建登录参数
+        const loginData = {
+          code: this.xhsLoginCode,
+          encrypted_data: encryptedData,
+          iv: iv
+        }
+
+        // 携带邀请人ID
+        const inviterId = uni.getStorageSync('share_inviter_id')
+        if (inviterId) {
+          loginData.inviter_id = inviterId
+        }
+
+        // 调用小红书手机号一键登录接口
+        const res = await xhsPhoneLogin(loginData)
+        console.log('[Login] xhsPhoneLogin 返回结果:', res)
+        if (res.code === 1 && res.data) {
+          const { userinfo, token, is_new_user, openid } = res.data
+          const isNewUser = !!is_new_user
+
+          // 保存用户信息和Token
+          uni.setStorageSync('token', token)
+          uni.setStorageSync('userinfo', userinfo)
+          if (openid) {
+            uni.setStorageSync('xhs_openid', openid)
+          }
+
+          // 重置资料完善度提示标记
+          resetProfilePrompt()
+
+          // 登录成功后清除邀请人ID，避免重复绑定
+          uni.removeStorageSync('share_inviter_id')
+
+          uni.showToast({ title: '登录成功', icon: 'success' })
+
+          // 获取完整的用户资料信息
+          try {
+            const profileRes = await getUserInfo()
+            const profile = profileRes.data.userinfo || profileRes.data
+            uni.setStorageSync('userinfo', profile)
+            this.goAfterLogin({ isNewUser, profile })
+          } catch (profileError) {
+            console.error('获取用户资料失败:', profileError)
+            this.goAfterLogin({ isNewUser, profile: userinfo })
+          }
+        } else {
+          throw new Error(res.msg || '登录失败')
+        }
+      } catch (err) {
+        console.error('[Login] 小红书手机号登录失败:', err)
+        uni.showToast({ title: err.message || err.msg || '登录失败', icon: 'none' })
+        // 清除 code，下次需要重新获取
+        this.xhsLoginCode = ''
+      } finally {
+        this.xhsPhoneLoading = false
+      }
+    },
+
+    // 预先获取小红书登录 code
+    async preGetXhsLoginCode() {
+      try {
+        this.xhsLoginCode = await getLoginCode()
+        console.log('[Login] 预获取 xhs code 成功:', this.xhsLoginCode)
+      } catch (err) {
+        console.error('[Login] 预获取 xhs code 失败:', err)
+      }
+    },
+
+    // 跳过小红书手机号授权，手动输入
+    skipXhsPhoneAuth() {
+      this.showXhsPhoneAuth = false
     }
   }
 }
@@ -758,5 +933,87 @@ export default {
 .xiaohongshu-icon {
   width: 80rpx;
   height: 80rpx;
+}
+
+/* 小红书手机号授权阶段 */
+.xhs-phone-auth-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 55rpx;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #e2dfff 0%, #FFFFFF 35%, #FFF 100%);
+}
+
+/* 标题区域 - 顶部 */
+.xhs-title-area {
+  width: 100%;
+  padding-top: 250rpx;
+  margin-bottom: 200rpx;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.xhs-title-area .title-image {
+  width: 500rpx;
+  height: 250rpx;
+}
+
+/* 按钮区域 - 居中 */
+.xhs-btn-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+/* 获取手机号按钮 */
+.xhs-phone-btn {
+  width: 100%;
+  height: 100rpx;
+  background-color: #6853F0;
+  color: #FFFFFF;
+  font-size: 36rpx;
+  font-weight: 600;
+  border-radius: 50rpx;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.xhs-phone-btn:active {
+  opacity: 0.9;
+}
+
+/* 手机号登录按钮 */
+.manual-entry-btn {
+  width: 100%;
+  height: 100rpx;
+  font-size: 36rpx;
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  color: #666666;
+  border: 2rpx solid #CCCCCC;
+  font-weight: 500;
+  margin-top: 40rpx;
+}
+
+/* 协议区域 - 底部 */
+.xhs-agreement-area {
+  width: 100%;
+  padding-bottom: 60rpx;
+  margin-top: auto;
+}
+
+.xhs-agreement-area .agreement-section {
+  margin-bottom: 0;
 }
 </style>
