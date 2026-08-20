@@ -4,7 +4,7 @@
     <view v-if="showSuccessPopup" class="success-popup-overlay" @click.stop>
       <view class="success-popup-content" @click.stop>
         <view class="success-icon">
-          <image src="/static/images/checked.png" mode="aspectFit" class="success-img"></image>
+          <image src="https://minixhs.chugao520.com/makefriends/images/checked.png" mode="aspectFit" class="success-img"></image>
         </view>
         <view class="success-title">资料提交成功</view>
         <view class="success-text">
@@ -91,6 +91,8 @@
             :displayText="form.birthday ? form.birthday + '年' : ''"
             placeholder="请选择"
             @change="onBirthdayChange"
+            @open="pickerOpen = true"
+            @close="pickerOpen = false"
           />
         </view>
       </view>
@@ -149,6 +151,8 @@
             :displayText="form.income !== '' ? incomeOptions[form.income] : ''"
             placeholder="请选择"
             @change="onIncomeChange"
+            @open="pickerOpen = true"
+            @close="pickerOpen = false"
           />
         </view>
 
@@ -164,6 +168,8 @@
             :displayText="form.maritalStatus || ''"
             placeholder="请选择"
             @change="onMaritalStatusChange"
+            @open="pickerOpen = true"
+            @close="pickerOpen = false"
           />
         </view>
       </view>
@@ -238,13 +244,15 @@
             labelKey="name"
             @columnchange="onCityColumnChange"
             @change="onCityChange"
+            @open="pickerOpen = true"
+            @close="pickerOpen = false"
           />
         </view>
       </view>
     </view>
 
     <!-- 底部按钮区域 -->
-    <view class="bottom-actions">
+    <view class="bottom-actions" v-if="!pickerOpen">
       <view v-if="currentStep === 1" class="hint-text"></view>
       <view v-if="currentStep === 2" class="hint-text">让对方遇见更真实的你</view>
       <view v-if="currentStep === 3" class="hint-text">为你匹配同城最合适的异性</view>
@@ -262,7 +270,7 @@
     <view v-if="showLocationPopup" class="popup-overlay" @click="closeLocationPopup">
       <view class="popup-content" @click.stop>
         <view class="popup-header">
-          <image src="/static/images/location.png" class="popup-icon" mode="aspectFit"></image>
+          <image src="https://minixhs.chugao520.com/makefriends/images/location.png" class="popup-icon" mode="aspectFit"></image>
           <text class="popup-title">告白时刻Daily 申请</text>
         </view>
         <view class="popup-body">
@@ -295,6 +303,7 @@ export default {
       isSubmitting: false,
       showLocationPopup: false,
       showSuccessPopup: false, // 是否显示提交成功弹框
+      pickerOpen: false, // 选择器是否打开
 
       form: {
         gender: '',

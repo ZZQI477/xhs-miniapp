@@ -45,7 +45,7 @@
       <image 
         v-if="isSelf" 
         class="avatar" 
-        :src="selfAvatar || '/static/logo.png'" 
+        :src="selfAvatar || 'https://minixhs.chugao520.com/makefriends/logo.png'" 
         mode="aspectFill"
       ></image>
     </view>
@@ -95,9 +95,9 @@ export default {
     senderAvatar() {
       // 优先使用消息携带的发送者头像（如客服消息的from_user.avatar）
       if (this.message.sender_avatar) {
-        return this.message.sender_avatar || '/static/logo.png'
+        return this.message.sender_avatar || 'https://minixhs.chugao520.com/makefriends/logo.png'
       }
-      return this.targetAvatar || '/static/logo.png'
+      return this.targetAvatar || 'https://minixhs.chugao520.com/makefriends/logo.png'
     },
     displayTime() {
       // 优先使用后端提供的time_text

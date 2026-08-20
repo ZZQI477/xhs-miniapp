@@ -1,16 +1,16 @@
 {
-  "setting": {
-    "urlCheck": false,
-    "es6": true,
-    "postcss": false,
-    "minified": false,
-    "newFeature": true
-  },
-  "appid": "testAppId",
-  "projectname": "makeFriends",
-  "condition": {
-    "miniprogram": {
-      "current": -1
+    "setting": {
+        "urlCheck": false,
+        "es6": true,
+        "postcss": false,
+        "minified": false,
+        "newFeature": true
+    },
+    "appid": "tt701806a5ee7c575801",
+    "projectname": "makeFriends",
+    "condition": {
+        "miniprogram": {
+            "current": -1
+        }
     }
-  }
 }

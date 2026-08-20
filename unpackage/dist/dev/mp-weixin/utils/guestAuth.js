@@ -52,10 +52,6 @@ function getGuestUserInfo() {
   }
   return null;
 }
-function isGuest() {
-  const token = common_vendor.index.getStorageSync("token");
-  return !token && getGuestId() !== null;
-}
 function isGuestValid() {
   const guestId = getGuestId();
   const guestToken = getGuestToken();
@@ -117,19 +113,6 @@ function clearGuestInfo() {
   common_vendor.index.removeStorageSync(STORAGE_KEYS.GUEST_USERINFO);
   common_vendor.index.__f__("log", "at utils/guestAuth.js:237", "[guestAuth] 游客信息已清除");
 }
-function getCurrentToken() {
-  const token = common_vendor.index.getStorageSync("token");
-  if (token)
-    return token;
-  return getGuestToken();
-}
-function getCurrentUserId() {
-  const userinfo = common_vendor.index.getStorageSync("userinfo");
-  if (userinfo && userinfo.id) {
-    return userinfo.id;
-  }
-  return getGuestId();
-}
 async function updateGuestUserInfo(userInfo) {
   const guestId = getGuestId();
   const guestToken = getGuestToken();
@@ -173,11 +156,6 @@ async function updateGuestUserInfo(userInfo) {
     };
   }
 }
-exports.getCurrentToken = getCurrentToken;
-exports.getCurrentUserId = getCurrentUserId;
-exports.getGuestToken = getGuestToken;
-exports.getGuestUserInfo = getGuestUserInfo;
 exports.getOrCreateGuestId = getOrCreateGuestId;
-exports.isGuest = isGuest;
 exports.updateGuestUserInfo = updateGuestUserInfo;
 //# sourceMappingURL=../../.sourcemap/mp-weixin/utils/guestAuth.js.map

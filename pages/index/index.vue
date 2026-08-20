@@ -18,7 +18,7 @@
 
     <!-- 顶部标题栏 -->
     <custom-nav-bar
-      backgroundImage="/static/bg3.png"
+      backgroundImage="https://minixhs.chugao520.com/makefriends/bg3.png"
       fontColor="#6853F0"
       :isShowLeft="false"
       :isShowRight="false"
@@ -33,7 +33,7 @@
 
     <!-- 加载中 -->
     <view class="loading-container" v-if="loading && users.length === 0">
-      <image src="/static/images/empty.png" class="loading-icon" mode="aspectFit"></image>
+      <image src="https://minixhs.chugao520.com/makefriends/images/empty.png" class="loading-icon" mode="aspectFit"></image>
       <text class="loading-text">加载中...</text>
     </view>
 
@@ -69,11 +69,11 @@
               <view class="user-basic">
                 <view class="name-row">
                   <text class="nickname">{{ user.nickname }}</text>
-                  <image class="gender-icon" :src="user.gender === 1 ? '/static/m.png' : '/static/wm.png'" mode="aspectFit"></image>
+                  <image class="gender-icon" :src="user.gender === 1 ? 'https://minixhs.chugao520.com/makefriends/m.png' : 'https://minixhs.chugao520.com/makefriends/wm.png'" mode="aspectFit"></image>
                   <image
                     v-if="user.is_vip"
                     class="vip-badge-small"
-                    src="/static/images/vip-badge.png"
+                    src="https://minixhs.chugao520.com/makefriends/images/vip-badge.png"
                     mode="aspectFit"
                   ></image>
                 </view>
@@ -90,16 +90,16 @@
             <!-- 认证信息 -->
             <view class="section cert-section" v-if="user.is_verified || user.is_realface || user.is_education">
 			  <view class="section-title">
-			    <image class="section-icon" src="/static/Frame(2).png" mode="aspectFit"></image>
+			    <image class="section-icon" src="https://minixhs.chugao520.com/makefriends/Frame(2).png" mode="aspectFit"></image>
 			    <text>认证信息</text>
 			  </view>
               <view class="cert-list">
                 <view class="cert-item" v-if="user.is_verified">
-                  <image class="cert-icon" src="/static/images/identify-id-green.png" mode="aspectFit"></image>
+                  <image class="cert-icon" src="https://minixhs.chugao520.com/makefriends/images/identify-id-green.png" mode="aspectFit"></image>
                   <text class="cert-text">实名认证</text>
                 </view>
                 <view class="cert-item" v-if="user.is_realface">
-                  <image class="cert-icon" src="/static/images/identify-real-blue.png" mode="aspectFit"></image>
+                  <image class="cert-icon" src="https://minixhs.chugao520.com/makefriends/images/identify-real-blue.png" mode="aspectFit"></image>
                   <text class="cert-text">真人认证</text>
                 </view>
                 <view class="cert-item" v-if="user.is_education">
@@ -112,7 +112,7 @@
             <!-- 自我介绍 -->
             <view class="section" v-if="user.intro">
               <view class="section-title">
-                <image class="section-icon" src="/static/Frame (3).png" mode="aspectFit"></image>
+                <image class="section-icon" src="https://minixhs.chugao520.com/makefriends/Frame (3).png" mode="aspectFit"></image>
                 <text>自我介绍</text>
               </view>
               <text class="intro-text">{{ user.intro }}</text>
@@ -121,7 +121,7 @@
             <!-- 个人标签 -->
             <view class="section" v-if="user.my_tags && user.my_tags.length > 0">
               <view class="section-title">
-                <image class="section-icon" src="/static/Frame(7).png" mode="aspectFit"></image>
+                <image class="section-icon" src="https://minixhs.chugao520.com/makefriends/Frame(7).png" mode="aspectFit"></image>
                 <text>个人标签</text>
               </view>
               <view class="tags-wrap">
@@ -132,7 +132,7 @@
             <!-- 详细信息 -->
             <view class="section">
               <view class="section-title">
-                <image class="section-icon" src="/static/Frame(2).png" mode="aspectFit"></image>
+                <image class="section-icon" src="https://minixhs.chugao520.com/makefriends/Frame(2).png" mode="aspectFit"></image>
                 <text>详细信息</text>
               </view>
               <view class="detail-grid">
@@ -166,7 +166,7 @@
             <!-- 照片墙 -->
             <view class="section" v-if="user.images && user.images.length > 0">
               <view class="section-title">
-                <image class="section-icon" src="/static/Frame(3).png" mode="aspectFit"></image>
+                <image class="section-icon" src="https://minixhs.chugao520.com/makefriends/Frame(3).png" mode="aspectFit"></image>
                 <text>我的照片</text>
               </view>
               <view class="photo-grid">
@@ -195,7 +195,7 @@
             <!-- 理想对象 -->
             <view class="section" v-if="user.ideal_intro || (user.ideal_tags && user.ideal_tags.length > 0)">
               <view class="section-title">
-                <image class="section-icon" src="/static/Frame(4).png" mode="aspectFit"></image>
+                <image class="section-icon" src="https://minixhs.chugao520.com/makefriends/Frame(4).png" mode="aspectFit"></image>
                 <text>理想对象</text>
               </view>
               <text class="intro-text" v-if="user.ideal_intro">{{ user.ideal_intro }}</text>
@@ -222,7 +222,7 @@
 
     <!-- 空状态 -->
     <view class="empty-container" v-if="!loading && users.length === 0">
-      <image src="/static/images/empty.png" class="empty-icon" mode="aspectFit"></image>
+      <image src="https://minixhs.chugao520.com/makefriends/images/empty.png" class="empty-icon" mode="aspectFit"></image>
       <text class="empty-text">暂无推荐用户</text>
       <button class="refresh-btn" @click="loadRecommendList">刷新试试</button>
     </view>
@@ -231,14 +231,14 @@
     <view class="side-actions" v-if="users.length > 0 && currentUser">
       <view class="action-item" @click="handleFollow">
           <view class="action-icon-wrap" :class="{ active: currentUser.is_followed }">
-            <image :src="currentUser.is_followed ? '/static/ygz.png' : '/static/Frame 1420074377.png'" class="action-icon" mode="aspectFit"></image>
+            <image :src="currentUser.is_followed ? 'https://minixhs.chugao520.com/makefriends/ygz.png' : 'https://minixhs.chugao520.com/makefriends/Frame 1420074377.png'" class="action-icon" mode="aspectFit"></image>
           </view>
           <!-- <text class="action-label">{{ currentUser.is_followed ? '关注' : '已关注' }}</text> -->
         </view>
 
       <view class="action-item" @click="handleContact">
         <view class="action-icon-wrap">
-          <image src="/static/Frame 1420074379.png" class="action-icon" mode="aspectFit"></image>
+          <image src="https://minixhs.chugao520.com/makefriends/Frame 1420074379.png" class="action-icon" mode="aspectFit"></image>
         </view>
         <!-- <text class="action-label">联系</text> -->
       </view>
@@ -251,7 +251,7 @@
           @contact="handleServiceContact"
         >
           <view class="action-icon-wrap">
-            <image src="/static/Frame 1420074380.png" class="action-icon" mode="aspectFit"></image>
+            <image src="https://minixhs.chugao520.com/makefriends/Frame 1420074380.png" class="action-icon" mode="aspectFit"></image>
           </view>
           <!-- <text class="action-label">客服</text> -->
         </button>
@@ -265,7 +265,7 @@
         class="share-btn"
         open-type="share"
       >
-        <image src="/static/icons/share.svg" class="share-icon" mode="aspectFit"></image>
+        <image src="https://minixhs.chugao520.com/makefriends/icons/share.svg" class="share-icon" mode="aspectFit"></image>
       </button>
     </view>
   </view>
@@ -571,7 +571,8 @@ export default {
     async handleContact() {
       if (!this.checkLogin()) return
       if (!(await this.checkProfileComplete())) return
-      if (!this.checkAuthComplete()) return
+	  // 26.08.08 注销认证校验
+      // if (!this.checkAuthComplete()) return
       if (!this.currentUser) return
 
       uni.showModal({
@@ -648,7 +649,7 @@ export default {
 .section-notetitle{font-size: 24rpx !important;}
 	
 .container {
-  background-image: url('/static/bg3.png');
+  background-image: url('https://minixhs.chugao520.com/makefriends/bg3.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

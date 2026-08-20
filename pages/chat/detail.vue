@@ -4,7 +4,7 @@
     <custom-nav-bar
       :title="targetUser.customName || '聊天'"
       :isShowBack="true"
-      backgroundImage="/static/bg3.png"
+      backgroundImage="https://minixhs.chugao520.com/makefriends/bg3.png"
     >
       <!-- <template #right>
         <view class="nav-right" @click="showUserDetail">
@@ -72,7 +72,7 @@
     <view class="user-modal-mask" v-if="showUserModal" @click="closeUserModal"></view>
     <view class="user-modal" v-if="showUserModal">
       <view class="modal-header">
-        <image class="modal-avatar" :src="targetUser.avatar || '/static/logo.png'" mode="aspectFill"></image>
+        <image class="modal-avatar" :src="targetUser.avatar || 'https://minixhs.chugao520.com/makefriends/logo.png'" mode="aspectFill"></image>
         <view class="modal-info">
           <text class="modal-nickname">{{ targetUser.nickname || '匿名用户' }}</text>
           <text class="modal-desc">{{ targetUser.age || '?' }}岁 · {{ targetUser.city || '未知' }}</text>

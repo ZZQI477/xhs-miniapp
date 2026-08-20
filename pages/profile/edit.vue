@@ -3,7 +3,7 @@
     <!-- 顶部标题栏 -->
     <custom-nav-bar
       title="编辑资料"
-      backgroundImage="/static/bg3.png"
+      backgroundImage="https://minixhs.chugao520.com/makefriends/bg3.png"
     />
 
     <!-- 导航栏占位 -->

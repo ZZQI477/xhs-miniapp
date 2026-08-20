@@ -3,7 +3,7 @@
     <!-- 顶部标题栏 -->
     <custom-nav-bar
       title="我想看的"
-      backgroundImage="/static/bg3.png"
+      backgroundImage="https://minixhs.chugao520.com/makefriends/bg3.png"
     />
 
     <!-- 导航栏占位 -->
@@ -20,11 +20,11 @@
     <!-- 列表 -->
     <view class="list" v-else>
       <view class="list-item" v-for="item in list" :key="item.id" @click="goDetail(item.id)">
-        <image class="avatar" :src="item.avatar || '/static/logo.png'" mode="aspectFill"></image>
+        <image class="avatar" :src="item.avatar || 'https://minixhs.chugao520.com/makefriends/logo.png'" mode="aspectFill"></image>
         <view class="info">
           <view class="info-top">
             <text class="nickname">{{ item.nickname || '匿名用户' }}</text>
-			  <image  class="gender-icon" :src="item.gender == 1 ? '/static/m.png' : '/static/wm.png' " mode=""></image>
+			  <image  class="gender-icon" :src="item.gender == 1 ? 'https://minixhs.chugao520.com/makefriends/m.png' : 'https://minixhs.chugao520.com/makefriends/wm.png' " mode=""></image>
           </view>
           <text class="desc">
             {{ item.age || '?' }}岁 · {{ item.height || '?' }}cm · {{ item.city || '未知' }}

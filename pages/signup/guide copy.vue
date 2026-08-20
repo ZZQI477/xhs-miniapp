@@ -4,7 +4,7 @@
     <view v-if="showSuccessPopup" class="success-popup-overlay" @click.stop>
       <view class="success-popup-content" @click.stop>
         <view class="success-icon">
-          <image src="/static/images/checked.png" mode="aspectFit" class="success-img"></image>
+          <image src="https://minixhs.chugao520.com/makefriends/images/checked.png" mode="aspectFit" class="success-img"></image>
         </view>
         <view class="success-title">资料提交成功</view>
         <view class="success-text">
@@ -262,7 +262,7 @@
     <view v-if="showLocationPopup" class="popup-overlay" @click="closeLocationPopup">
       <view class="popup-content" @click.stop>
         <view class="popup-header">
-          <image src="/static/images/location.png" class="popup-icon" mode="aspectFit"></image>
+          <image src="https://minixhs.chugao520.com/makefriends/images/location.png" class="popup-icon" mode="aspectFit"></image>
           <text class="popup-title">告白时刻Daily 申请</text>
         </view>
         <view class="popup-body">

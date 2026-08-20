@@ -203,16 +203,16 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     a: common_vendor.p({
       title: "好友申请",
       isShowBack: false,
-      backgroundImage: "/static/bg3.png"
+      backgroundImage: "https://minixhs.chugao520.com/makefriends/bg3.png"
     }),
     b: $data.pendingCount > 0
   }, $data.pendingCount > 0 ? {
     c: common_vendor.t($data.pendingCount)
   } : {}, {
     d: $data.currentTab === "received" ? 1 : "",
-    e: common_vendor.o(($event) => $options.switchTab("received"), "07"),
+    e: common_vendor.o(($event) => $options.switchTab("received"), "e9"),
     f: $data.currentTab === "sent" ? 1 : "",
-    g: common_vendor.o(($event) => $options.switchTab("sent"), "6e"),
+    g: common_vendor.o(($event) => $options.switchTab("sent"), "d2"),
     h: common_vendor.f($data.subTabs, (tab, index, i0) => {
       return {
         a: common_vendor.t(tab.name),
@@ -229,9 +229,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   }, $data.currentTab === "received" && $data.list.length > 0 ? {
     l: common_vendor.f($data.list, (item, k0, i0) => {
       return common_vendor.e({
-        a: item.from_user.avatar || "/static/logo.png",
+        a: item.from_user.avatar || "https://minixhs.chugao520.com/makefriends/logo.png",
         b: common_vendor.t(item.from_user.nickname || "匿名用户"),
-        c: item.from_user.gender == 1 ? "/static/m.png" : "/static/wm.png",
+        c: item.from_user.gender == 1 ? "https://minixhs.chugao520.com/makefriends/m.png" : "https://minixhs.chugao520.com/makefriends/wm.png",
         d: common_vendor.t(item.from_user.age + "岁" || " "),
         e: common_vendor.t(item.from_user.height + "cm" || " "),
         f: common_vendor.t(item.from_user.city || "--"),
@@ -258,7 +258,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   }, $data.currentTab === "sent" && $data.list.length > 0 ? {
     n: common_vendor.f($data.list, (item, k0, i0) => {
       return common_vendor.e({
-        a: item.target_user.avatar || "/static/logo.png",
+        a: item.target_user.avatar || "https://minixhs.chugao520.com/makefriends/logo.png",
         b: common_vendor.t(item.target_user.nickname || "匿名用户"),
         c: common_vendor.t(item.target_user.gender == 1 ? "♂" : "♀"),
         d: item.target_user.gender == 2 ? 1 : "",
@@ -286,13 +286,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   }, $data.list.length > 0 ? common_vendor.e({
     p: $data.loading
   }, $data.loading ? {} : $data.noMore ? {} : {
-    r: common_vendor.o((...args) => $options.loadMore && $options.loadMore(...args), "89")
+    r: common_vendor.o((...args) => $options.loadMore && $options.loadMore(...args), "ef")
   }, {
     q: $data.noMore
   }) : {}, {
     s: $data.showRejectSheet
   }, $data.showRejectSheet ? {
-    t: common_vendor.o(($event) => $data.showRejectSheet = false, "72")
+    t: common_vendor.o(($event) => $data.showRejectSheet = false, "19")
   } : {}, {
     v: $data.showRejectSheet
   }, $data.showRejectSheet ? {
@@ -303,19 +303,19 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       };
     }),
     x: [$data.rejectIndex],
-    y: common_vendor.o((...args) => $options.onRejectChange && $options.onRejectChange(...args), "b3"),
-    z: common_vendor.o(($event) => $data.showRejectSheet = false, "6d"),
-    A: common_vendor.o((...args) => $options.confirmReject && $options.confirmReject(...args), "e3")
+    y: common_vendor.o((...args) => $options.onRejectChange && $options.onRejectChange(...args), "ff"),
+    z: common_vendor.o(($event) => $data.showRejectSheet = false, "5d"),
+    A: common_vendor.o((...args) => $options.confirmReject && $options.confirmReject(...args), "1f")
   } : {}, {
     B: $data.showWechatModal
   }, $data.showWechatModal ? {
-    C: common_vendor.o(($event) => $data.showWechatModal = false, "19")
+    C: common_vendor.o(($event) => $data.showWechatModal = false, "c3")
   } : {}, {
     D: $data.showWechatModal
   }, $data.showWechatModal ? {
-    E: common_vendor.o(($event) => $data.showWechatModal = false, "37"),
-    F: common_vendor.o(($event) => $data.showWechatModal = false, "52"),
-    G: common_vendor.o((...args) => $options.confirmViewWechat && $options.confirmViewWechat(...args), "f6")
+    E: common_vendor.o(($event) => $data.showWechatModal = false, "18"),
+    F: common_vendor.o(($event) => $data.showWechatModal = false, "ac"),
+    G: common_vendor.o((...args) => $options.confirmViewWechat && $options.confirmViewWechat(...args), "0e")
   } : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-2b615d88"]]);

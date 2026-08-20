@@ -101,4 +101,19 @@
 
 <style>
 	/*每个页面公共css */
+	page {
+	  margin: 0;
+	  padding: 0;
+	}
+	/* #ifndef MP-WEIXIN */
+	page {
+	  -webkit-text-size-adjust: 100%;
+	}
+	::-webkit-scrollbar {
+	  display: none;
+	}
+	* {
+	  touch-action: manipulation;
+	}
+	/* #endif */
 </style>

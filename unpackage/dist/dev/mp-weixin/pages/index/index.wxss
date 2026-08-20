@@ -3,7 +3,7 @@
 .section-note.data-v-1cf27b2a{font-size: 30rpx !important;}
 .section-notetitle.data-v-1cf27b2a{font-size: 24rpx !important;}
 .container.data-v-1cf27b2a {
-  background-image: url('../../static/bg3.png');
+  background-image: url('https://minixhs.chugao520.com/makefriends/bg3.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

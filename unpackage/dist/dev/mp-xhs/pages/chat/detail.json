@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "聊天详情",
-  "navigationStyle": "custom",
-  "usingComponents": {
-    "custom-nav-bar": "../../components/custom-nav-bar",
-    "chat-message": "../../components/chat-message",
-    "chat-input": "../../components/chat-input"
-  }
-}

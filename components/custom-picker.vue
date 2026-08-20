@@ -115,6 +115,11 @@ export default {
         this.pickerValue = this.columns.map(() => 0)
       }
       this.visible = true
+      this.$emit('open')
+	  // 26.07.10  @zzqi  兼容ios滑动选择器样式
+	  // #ifdef MP
+	  uni.pageScrollTo({ scrollTop: 0, duration: 0 })
+	  // #endif
     },
 
     // 关闭选择器（点击遮罩或取消）
@@ -122,6 +127,7 @@ export default {
       this.visible = false
       // 不保存选择，恢复原始值
       this.pickerValue = this.value && this.value.length > 0 ? [...this.value] : this.columns.map(() => 0)
+      this.$emit('close')
     },
 
     // 滚动时更新临时选中值
@@ -154,6 +160,7 @@ export default {
         value: [...this.pickerValue],
         items: selectedItems
       })
+      this.$emit('close')
     },
 
     // 获取选项显示文本
@@ -206,16 +213,36 @@ export default {
 
 /* 弹窗遮罩 */
 .picker-overlay {
-  position: fixed;
+  /* position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
+  z-index: 99999;
+  display: flex;
+  align-items: flex-end; */
+   /* 26.07.10  @zzqi  兼容ios滑动选择器样式 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; /* 替换 right/bottom 四向拉伸，更稳定 */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99999;
   display: flex;
   align-items: flex-end;
+  /* 新增兼容属性 */
+  -webkit-overflow-scrolling: touch;
+  touch-action: none; /* 禁止遮罩滑动穿透底层 */
 }
+/* 适配苹果底部安全区 */
+/* #ifdef IOS */
+.mask {
+  padding-bottom: env(safe-area-inset-bottom);
+  box-sizing: border-box;
+}
+/* #endif */
 
 /* 选择器容器 */
 .picker-container {

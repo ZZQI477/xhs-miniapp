@@ -1,6 +1,5 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
-const common_assets = require("../../common/assets.js");
 const CustomNavBar = () => "../../components/custom-nav-bar.js";
 const _sfc_main = {
   components: { CustomNavBar },
@@ -36,10 +35,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       fontColor: "black",
       backgroundColor: "transparent"
     }),
-    b: common_assets._imports_0$8,
-    c: common_vendor.o(($event) => $options.switchTab(0), "d4"),
-    d: common_assets._imports_1$7,
-    e: common_vendor.o(($event) => $options.switchTab(1), "11")
+    b: common_vendor.o(($event) => $options.switchTab(0), "33"),
+    c: common_vendor.o(($event) => $options.switchTab(1), "dd")
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-0ded373b"]]);

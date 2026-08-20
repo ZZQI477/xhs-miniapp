@@ -1,7 +1,7 @@
 <template>
   <view class="container">
     <!-- 顶部导航栏 -->
-    <!-- <custom-nav-bar title="线下活动" :isShowBack="true" backgroundImage="/static/bg3.png" fontColor="#6853F0" backgroundColor="#FFFFFF" /> -->
+    <!-- <custom-nav-bar title="线下活动" :isShowBack="true" backgroundImage="https://minixhs.chugao520.com/makefriends/bg3.png" fontColor="#6853F0" backgroundColor="#FFFFFF" /> -->
 	<custom-nav-bar title="线下活动" :isShowBack="true" fontColor="#6853F0" backgroundColor="transparent" />
 
     <!-- 导航栏占位 -->

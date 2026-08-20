@@ -4,7 +4,7 @@
     <custom-nav-bar
       title="聊天"
       :isShowBack="false"
-      backgroundImage="/static/bg3.png"
+      backgroundImage="https://minixhs.chugao520.com/makefriends/bg3.png"
     />
     
     <!-- 导航栏占位 -->
@@ -23,7 +23,7 @@
     
     <!-- 空状态 -->
     <view class="empty-container" v-if="!loading && conversations.length === 0">
-      <image class="empty-icon" src="/static/images/empty.png" mode="aspectFit"></image>
+      <image class="empty-icon" src="https://minixhs.chugao520.com/makefriends/images/empty.png" mode="aspectFit"></image>
       <text class="empty-text">暂无聊天记录</text>
       <!-- <text class="empty-tip">通过分享卡片进入用户详情页可发起聊天</text> -->
     </view>
@@ -47,7 +47,7 @@
         <view class="avatar-wrapper">
           <image 
             class="avatar" 
-            :src="item.target_user?.avatar || '/static/logo.png'" 
+            :src="item.target_user?.avatar || 'https://minixhs.chugao520.com/makefriends/logo.png'" 
             mode="aspectFill"
           ></image>
           <view class="online-badge" v-if="item.target_user?.is_online"></view>

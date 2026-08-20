@@ -2,7 +2,6 @@
 const common_vendor = require("../../common/vendor.js");
 const api_index = require("../../api/index.js");
 const utils_profileCheck = require("../../utils/profileCheck.js");
-const common_assets = require("../../common/assets.js");
 const ProfileCheckModal = () => "../../components/profile-check-modal.js";
 const FilterModal = () => "../../components/filter-modal.js";
 const QrcodeModal = () => "../../components/qrcode-modal.js";
@@ -39,7 +38,7 @@ const _sfc_main = {
       filterDisplayData: { ageRange: "", heightRange: "", education: "", city: "" },
       // 前端格式筛选参数（用于弹窗显示）
       showQrcodeModal: false,
-      groupQrcode: "/static/images/qrcode.png",
+      groupQrcode: "https://minixhs.chugao520.com/makefriends/images/qrcode.png",
       // 公众号二维码图片
       isVip: false,
       // 是否VIP
@@ -447,7 +446,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     l: common_vendor.p({
       title: "单身库",
       isShowBack: false,
-      backgroundImage: "/static/bg4.png"
+      backgroundImage: "https://minixhs.chugao520.com/makefriends/bg4.png"
     }),
     m: $data.displayBanners.length > 0
   }, $data.displayBanners.length > 0 ? {
@@ -458,9 +457,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       };
     }),
     o: $data.bannerCurrent,
-    p: common_vendor.o((...args) => $options.onBannerAnimationFinish && $options.onBannerAnimationFinish(...args), "83"),
-    q: common_vendor.o((...args) => $options.onBannerTouchStart && $options.onBannerTouchStart(...args), "51"),
-    r: common_vendor.o((...args) => $options.onBannerTouchEnd && $options.onBannerTouchEnd(...args), "15")
+    p: common_vendor.o((...args) => $options.onBannerAnimationFinish && $options.onBannerAnimationFinish(...args), "99"),
+    q: common_vendor.o((...args) => $options.onBannerTouchStart && $options.onBannerTouchStart(...args), "59"),
+    r: common_vendor.o((...args) => $options.onBannerTouchEnd && $options.onBannerTouchEnd(...args), "2e")
   } : {}, {
     s: $data.banners.length > 1
   }, $data.banners.length > 1 ? {
@@ -472,17 +471,16 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   } : {}, {
     v: $data.currentTab === 0 ? 1 : "",
-    w: common_vendor.o(($event) => $options.switchTab(0), "18"),
+    w: common_vendor.o(($event) => $options.switchTab(0), "5d"),
     x: $data.currentTab === 1 ? 1 : "",
-    y: common_vendor.o(($event) => $options.switchTab(1), "1e"),
+    y: common_vendor.o(($event) => $options.switchTab(1), "25"),
     z: $data.currentTab !== 2
   }, $data.currentTab !== 2 ? {
-    A: common_assets._imports_0$1,
-    B: common_vendor.o(($event) => $data.showFilterModal = true, "b2")
+    A: common_vendor.o(($event) => $data.showFilterModal = true, "17")
   } : {}, {
-    C: $data.currentTab !== 2
+    B: $data.currentTab !== 2
   }, $data.currentTab !== 2 ? common_vendor.e({
-    D: common_vendor.f($data.users, (user, index, i0) => {
+    C: common_vendor.f($data.users, (user, index, i0) => {
       return common_vendor.e({
         a: !$data.loadedImages[user.id]
       }, !$data.loadedImages[user.id] ? {} : {}, {
@@ -493,7 +491,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         f: common_vendor.o(($event) => $options.onImageError(user.id), user.id),
         g: common_vendor.t(user.age),
         h: common_vendor.t(user.nickname || "匿名用户"),
-        i: user.gender === 1 ? "/static/m.png" : "/static/wm.png",
+        i: user.gender === 1 ? "https://minixhs.chugao520.com/makefriends/m.png" : "https://minixhs.chugao520.com/makefriends/wm.png",
         j: common_vendor.t(user.city_t),
         k: user.tags && user.tags.length > 0
       }, user.tags && user.tags.length > 0 ? {
@@ -511,22 +509,22 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         p: common_vendor.o(($event) => $options.goUserDetail(user.id), user.id)
       });
     }),
-    E: $data.showUnlock
+    D: $data.showUnlock
   }, $data.showUnlock ? common_vendor.e({
-    F: $data.extraUsers.length > 0
+    E: $data.extraUsers.length > 0
   }, $data.extraUsers.length > 0 ? {
-    G: common_vendor.f($data.extraUsers.slice(0, 5), (user, idx, i0) => {
+    F: common_vendor.f($data.extraUsers.slice(0, 5), (user, idx, i0) => {
       return {
         a: user.avatar + "?imageView2/1/w/80/h/80/q/50",
         b: idx
       };
     })
   } : {}, {
-    H: common_vendor.o((...args) => $options.handleUnlockClick && $options.handleUnlockClick(...args), "19")
+    G: common_vendor.o((...args) => $options.handleUnlockClick && $options.handleUnlockClick(...args), "9b")
   }) : {}) : {}, {
-    I: $data.currentTab === 2
+    H: $data.currentTab === 2
   }, $data.currentTab === 2 ? {
-    J: common_vendor.f($data.coupleList, (item, index, i0) => {
+    I: common_vendor.f($data.coupleList, (item, index, i0) => {
       return {
         a: item.avatar,
         b: common_vendor.t(item.name),
@@ -537,12 +535,12 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       };
     })
   } : {}, {
-    K: $data.hasMore
+    J: $data.hasMore
   }, $data.hasMore ? {
-    L: common_vendor.t($data.loading ? "加载中..." : "加载更多"),
-    M: common_vendor.o((...args) => $options.loadMore && $options.loadMore(...args), "0f")
+    K: common_vendor.t($data.loading ? "加载中..." : "加载更多"),
+    L: common_vendor.o((...args) => $options.loadMore && $options.loadMore(...args), "09")
   } : {}, {
-    N: !$data.loading && $options.currentList.length === 0
+    M: !$data.loading && $options.currentList.length === 0
   }, !$data.loading && $options.currentList.length === 0 ? {} : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-79df256d"]]);

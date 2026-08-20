@@ -36,7 +36,7 @@
     <custom-nav-bar
       title="单身库"
       :isShowBack="false"
-      backgroundImage="/static/bg4.png"
+      backgroundImage="https://minixhs.chugao520.com/makefriends/bg4.png"
     />
 
     <!-- 导航栏占位 -->
@@ -83,7 +83,7 @@
 	
 	
 	  <view class="">
-	  	<image class="filter-icon" src="/static/Frame (2).png" mode="aspectFit" @click="showFilterModal = true" v-if="currentTab !== 2"></image>
+	  	<image class="filter-icon" src="https://minixhs.chugao520.com/makefriends/Frame (2).png" mode="aspectFit" @click="showFilterModal = true" v-if="currentTab !== 2"></image>
 	  </view>
     </view>
 
@@ -107,7 +107,7 @@
         <view class="user-info">
           <view class="user-name">
             <text>{{ user.nickname || '匿名用户' }}</text>
-            <image class="gender-icon" :src="user.gender === 1 ? '/static/m.png' : '/static/wm.png'" mode="aspectFit"></image>
+            <image class="gender-icon" :src="user.gender === 1 ? 'https://minixhs.chugao520.com/makefriends/m.png' : 'https://minixhs.chugao520.com/makefriends/wm.png'" mode="aspectFit"></image>
           </view>
           <view class="user-city">{{ user.city_t }}</view>
           <view class="user-tags" v-if="user.tags && user.tags.length > 0">
@@ -212,7 +212,7 @@ export default {
       filterParams: {}, // 当前使用的筛选参数（后端API格式）
       filterDisplayData: { ageRange: '', heightRange: '', education: '', city: '' }, // 前端格式筛选参数（用于弹窗显示）
       showQrcodeModal: false,
-      groupQrcode: '/static/images/qrcode.png', // 公众号二维码图片
+      groupQrcode: 'https://minixhs.chugao520.com/makefriends/images/qrcode.png', // 公众号二维码图片
       isVip: false, // 是否VIP
       showUnlock: false, // 是否显示解锁卡片
       extraUsers: [], // 额外的模糊用户列表
@@ -654,7 +654,7 @@ export default {
 }
 
 .container {
-  /* background-image: url('/static/bg1.png'); */
+  /* background-image: url('https://minixhs.chugao520.com/makefriends/bg1.png'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

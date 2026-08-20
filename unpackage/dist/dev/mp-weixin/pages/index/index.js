@@ -3,7 +3,6 @@ const common_vendor = require("../../common/vendor.js");
 const api_index = require("../../api/index.js");
 const utils_profileCheck = require("../../utils/profileCheck.js");
 const utils_config = require("../../utils/config.js");
-const common_assets = require("../../common/assets.js");
 const CenterModal = () => "../../components/center-modal.js";
 const CustomNavBar = () => "../../components/custom-nav-bar.js";
 const _sfc_main = {
@@ -282,8 +281,6 @@ const _sfc_main = {
         return;
       if (!await this.checkProfileComplete())
         return;
-      if (!this.checkAuthComplete())
-        return;
       if (!this.currentUser)
         return;
       common_vendor.index.showModal({
@@ -312,7 +309,7 @@ const _sfc_main = {
     },
     // 客服消息回调
     handleServiceContact(e) {
-      common_vendor.index.__f__("log", "at pages/index/index.vue:607", "客服消息事件", e);
+      common_vendor.index.__f__("log", "at pages/index/index.vue:608", "客服消息事件", e);
     },
     // 订阅（开通VIP）
     handleSubscribe() {
@@ -369,90 +366,78 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       type: "message"
     }),
     g: common_vendor.p({
-      backgroundImage: "/static/bg3.png",
+      backgroundImage: "https://minixhs.chugao520.com/makefriends/bg3.png",
       fontColor: "#6853F0",
       isShowLeft: false,
       isShowRight: false
     }),
     h: $data.loading && $data.users.length === 0
-  }, $data.loading && $data.users.length === 0 ? {
-    i: common_assets._imports_0
-  } : {}, {
-    j: $data.users.length > 0
+  }, $data.loading && $data.users.length === 0 ? {} : {}, {
+    i: $data.users.length > 0
   }, $data.users.length > 0 ? {
-    k: common_vendor.f($data.users, (user, index, i0) => {
+    j: common_vendor.f($data.users, (user, index, i0) => {
       return common_vendor.e({
         a: user.avatar,
         b: common_vendor.t(user.nickname),
-        c: user.gender === 1 ? "/static/m.png" : "/static/wm.png",
+        c: user.gender === 1 ? "https://minixhs.chugao520.com/makefriends/m.png" : "https://minixhs.chugao520.com/makefriends/wm.png",
         d: user.is_vip
-      }, user.is_vip ? {
-        e: common_assets._imports_1$1
-      } : {}, {
-        f: common_vendor.t(user.age),
-        g: user.age && (user.height || user.education)
+      }, user.is_vip ? {} : {}, {
+        e: common_vendor.t(user.age),
+        f: user.age && (user.height || user.education)
       }, user.age && (user.height || user.education) ? {} : {}, {
-        h: user.height
+        g: user.height
       }, user.height ? {
-        i: common_vendor.t(user.height)
+        h: common_vendor.t(user.height)
       } : {}, {
-        j: user.height && user.education
+        i: user.height && user.education
       }, user.height && user.education ? {} : {}, {
-        k: user.education
+        j: user.education
       }, user.education ? {
-        l: common_vendor.t(user.education)
+        k: common_vendor.t(user.education)
       } : {}, {
-        m: user.is_verified || user.is_realface || user.is_education
+        l: user.is_verified || user.is_realface || user.is_education
       }, user.is_verified || user.is_realface || user.is_education ? common_vendor.e({
-        n: common_assets._imports_3$1,
-        o: user.is_verified
-      }, user.is_verified ? {
-        p: common_assets._imports_3$2
-      } : {}, {
-        q: user.is_realface
-      }, user.is_realface ? {
-        r: common_assets._imports_4$1
-      } : {}, {
-        s: user.is_education
+        m: user.is_verified
+      }, user.is_verified ? {} : {}, {
+        n: user.is_realface
+      }, user.is_realface ? {} : {}, {
+        o: user.is_education
       }, user.is_education ? {} : {}) : {}, {
-        t: user.intro
+        p: user.intro
       }, user.intro ? {
-        v: common_assets._imports_4$2,
-        w: common_vendor.t(user.intro)
+        q: common_vendor.t(user.intro)
       } : {}, {
-        x: user.my_tags && user.my_tags.length > 0
+        r: user.my_tags && user.my_tags.length > 0
       }, user.my_tags && user.my_tags.length > 0 ? {
-        y: common_assets._imports_9$1,
-        z: common_vendor.f($options.filterTags(user.my_tags), (tag, idx, i1) => {
+        s: common_vendor.f($options.filterTags(user.my_tags), (tag, idx, i1) => {
           return {
             a: common_vendor.t(tag),
             b: idx
           };
         })
       } : {}, {
-        A: user.job
+        t: user.job
       }, user.job ? {
-        B: common_vendor.t(user.job)
+        v: common_vendor.t(user.job)
       } : {}, {
-        C: user.company
+        w: user.company
       }, user.company ? {
-        D: common_vendor.t(user.company)
+        x: common_vendor.t(user.company)
       } : {}, {
-        E: user.school
+        y: user.school
       }, user.school ? {
-        F: common_vendor.t(user.school)
+        z: common_vendor.t(user.school)
       } : {}, {
-        G: user.hometown_city
+        A: user.hometown_city
       }, user.hometown_city ? {
-        H: common_vendor.t(user.hometown_province_t),
-        I: common_vendor.t(user.hometown_city_t)
+        B: common_vendor.t(user.hometown_province_t),
+        C: common_vendor.t(user.hometown_city_t)
       } : {}, {
-        J: common_vendor.t(user.has_car ? "是" : "否"),
-        K: common_vendor.t(user.has_house ? "是" : "否"),
-        L: user.images && user.images.length > 0
+        D: common_vendor.t(user.has_car ? "是" : "否"),
+        E: common_vendor.t(user.has_house ? "是" : "否"),
+        F: user.images && user.images.length > 0
       }, user.images && user.images.length > 0 ? {
-        M: common_assets._imports_7,
-        N: common_vendor.f(user.images, (img, idx, i1) => {
+        G: common_vendor.f(user.images, (img, idx, i1) => {
           return {
             a: idx,
             b: img,
@@ -460,9 +445,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           };
         })
       } : {}, {
-        O: user.soul_answers && user.soul_answers.length > 0
+        H: user.soul_answers && user.soul_answers.length > 0
       }, user.soul_answers && user.soul_answers.length > 0 ? {
-        P: common_vendor.f(user.soul_answers, (item, idx, i1) => {
+        I: common_vendor.f(user.soul_answers, (item, idx, i1) => {
           return {
             a: common_vendor.t(item.question),
             b: common_vendor.t(item.answer),
@@ -470,50 +455,43 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
           };
         })
       } : {}, {
-        Q: user.ideal_intro || user.ideal_tags && user.ideal_tags.length > 0
+        J: user.ideal_intro || user.ideal_tags && user.ideal_tags.length > 0
       }, user.ideal_intro || user.ideal_tags && user.ideal_tags.length > 0 ? common_vendor.e({
-        R: common_assets._imports_8,
-        S: user.ideal_intro
+        K: user.ideal_intro
       }, user.ideal_intro ? {
-        T: common_vendor.t(user.ideal_intro)
+        L: common_vendor.t(user.ideal_intro)
       } : {}, {
-        U: $options.filterTags(user.ideal_tags).length > 0
+        M: $options.filterTags(user.ideal_tags).length > 0
       }, $options.filterTags(user.ideal_tags).length > 0 ? {
-        V: common_vendor.f($options.filterTags(user.ideal_tags), (tag, idx, i1) => {
+        N: common_vendor.f($options.filterTags(user.ideal_tags), (tag, idx, i1) => {
           return {
             a: common_vendor.t(tag),
             b: idx
           };
         })
       } : {}) : {}, !$options.hasEnoughContent ? {} : {}, {
-        W: user.id || index
+        O: user.id || index
       });
     }),
-    l: common_assets._imports_3$1,
-    m: !$options.hasEnoughContent,
-    n: $data.currentIndex,
-    o: common_vendor.o((...args) => $options.onCardSwiperChange && $options.onCardSwiperChange(...args), "a7"),
-    p: common_vendor.o((...args) => $options.onCardSwiperAnimationFinish && $options.onCardSwiperAnimationFinish(...args), "dd")
+    k: !$options.hasEnoughContent,
+    l: $data.currentIndex,
+    m: common_vendor.o((...args) => $options.onCardSwiperChange && $options.onCardSwiperChange(...args), "c6"),
+    n: common_vendor.o((...args) => $options.onCardSwiperAnimationFinish && $options.onCardSwiperAnimationFinish(...args), "85")
   } : {}, {
-    q: !$data.loading && $data.users.length === 0
+    o: !$data.loading && $data.users.length === 0
   }, !$data.loading && $data.users.length === 0 ? {
-    r: common_assets._imports_0,
-    s: common_vendor.o((...args) => $options.loadRecommendList && $options.loadRecommendList(...args), "24")
+    p: common_vendor.o((...args) => $options.loadRecommendList && $options.loadRecommendList(...args), "de")
   } : {}, {
-    t: $data.users.length > 0 && $options.currentUser
+    q: $data.users.length > 0 && $options.currentUser
   }, $data.users.length > 0 && $options.currentUser ? {
-    v: $options.currentUser.is_followed ? "/static/ygz.png" : "/static/Frame 1420074377.png",
-    w: $options.currentUser.is_followed ? 1 : "",
-    x: common_vendor.o((...args) => $options.handleFollow && $options.handleFollow(...args), "bb"),
-    y: common_assets._imports_9,
-    z: common_vendor.o((...args) => $options.handleContact && $options.handleContact(...args), "67"),
-    A: common_assets._imports_10,
-    B: common_vendor.o((...args) => $options.handleServiceContact && $options.handleServiceContact(...args), "5e")
+    r: $options.currentUser.is_followed ? "https://minixhs.chugao520.com/makefriends/ygz.png" : "https://minixhs.chugao520.com/makefriends/Frame 1420074377.png",
+    s: $options.currentUser.is_followed ? 1 : "",
+    t: common_vendor.o((...args) => $options.handleFollow && $options.handleFollow(...args), "14"),
+    v: common_vendor.o((...args) => $options.handleContact && $options.handleContact(...args), "86"),
+    w: common_vendor.o((...args) => $options.handleServiceContact && $options.handleServiceContact(...args), "9d")
   } : {}, {
-    C: $data.users.length > 0
-  }, $data.users.length > 0 ? {
-    D: common_assets._imports_11
-  } : {});
+    x: $data.users.length > 0
+  }, $data.users.length > 0 ? {} : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-1cf27b2a"]]);
 _sfc_main.__runtimeHooks = 2;

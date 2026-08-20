@@ -1,7 +1,6 @@
 "use strict";
 const common_vendor = require("../common/vendor.js");
 const api_index = require("../api/index.js");
-const common_assets = require("../common/assets.js");
 const _sfc_main = {
   name: "VipPopup",
   props: {
@@ -104,12 +103,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: $props.visible
   }, $props.visible ? {
-    b: common_assets._imports_0$9,
-    c: common_vendor.o((...args) => $options.handleClose && $options.handleClose(...args), "fc"),
-    d: common_assets._imports_1$8,
-    e: common_assets._imports_2$3,
-    f: common_assets._imports_3$3,
-    g: common_vendor.f($data.packages, (pkg, index, i0) => {
+    b: common_vendor.o((...args) => $options.handleClose && $options.handleClose(...args), "fc"),
+    c: common_vendor.f($data.packages, (pkg, index, i0) => {
       return common_vendor.e({
         a: common_vendor.t(pkg.title),
         b: common_vendor.t(pkg.value),
@@ -125,13 +120,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         g: common_vendor.o(($event) => $options.selectPackage(index), index)
       });
     }),
-    h: common_vendor.o((...args) => $options.handlePay && $options.handlePay(...args), "85"),
-    i: $data.agreeProtocol ? "/static/images/checked.png" : "/static/images/unchecked.png",
-    j: common_vendor.o((...args) => $options.toggleProtocol && $options.toggleProtocol(...args), "c2"),
-    k: common_vendor.o((...args) => $options.openProtocol && $options.openProtocol(...args), "dc"),
-    l: common_vendor.o(() => {
+    d: common_vendor.o((...args) => $options.handlePay && $options.handlePay(...args), "81"),
+    e: $data.agreeProtocol ? "https://minixhs.chugao520.com/makefriends/images/checked.png" : "https://minixhs.chugao520.com/makefriends/images/unchecked.png",
+    f: common_vendor.o((...args) => $options.toggleProtocol && $options.toggleProtocol(...args), "45"),
+    g: common_vendor.o((...args) => $options.openProtocol && $options.openProtocol(...args), "df"),
+    h: common_vendor.o(() => {
     }, "18"),
-    m: common_vendor.o((...args) => $options.handleClose && $options.handleClose(...args), "a6")
+    i: common_vendor.o((...args) => $options.handleClose && $options.handleClose(...args), "a6")
   } : {});
 }
 const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-fba9f1e2"]]);

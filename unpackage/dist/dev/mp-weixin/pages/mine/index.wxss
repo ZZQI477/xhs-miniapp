@@ -299,7 +299,7 @@
 
 /* 4. 脱单币区 */
 .coin-section.data-v-569e925a {
-  background-image: url('../../static/位图7.png');
+  background-image: url('https://minixhs.chugao520.com/makefriends/位图7.png');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

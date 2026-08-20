@@ -9,28 +9,33 @@
         
         <!-- 小红书环境：显示授权按钮 -->
         <!-- #ifdef MP-XHS -->
-        <button 
+		<!-- // 取消在线聊天功能 -->
+        <!-- <button 
           class="share-register-btn auth-btn" 
           open-type="getUserInfo"
           @getuserinfo="handleGetUserInfoForGuest"
         >
           暂不登录，先聊聊
-        </button>
+        </button> -->
+		<button class="share-register-btn" @click="goRegister">立即注册匹配</button>
         <!-- #endif -->
         
         <!-- 非小红书环境：普通按钮 -->
         <!-- #ifndef MP-XHS -->
-        <button class="share-register-btn" @click="startGuestChat">暂不登录，先聊聊</button>
+        <button class="share-register-btn" @click="goRegister">立即注册匹配</button>
+		<!-- // 取消在线聊天功能 -->
+        <!-- <button class="share-register-btn" @click="startGuestChat">暂不登录，先聊聊</button> -->
         <!-- #endif -->
         
-        <view class="guest-chat-enter" @click="goRegister">立即注册匹配</view>
+		<!-- // 取消在线聊天功能 -->
+        <!-- <view class="guest-chat-enter" @click="goRegister">立即注册匹配</view> -->
       </view>
     </view>
 
     <!-- 用户不存在/已删除提示 -->
     <view v-if="userNotFound" class="user-not-found-wrapper">
       <view class="user-not-found-content">
-        <image class="not-found-icon" src="/static/images/empty.png" mode="aspectFit"></image>
+        <image class="not-found-icon" src="https://minixhs.chugao520.com/makefriends/images/empty.png" mode="aspectFit"></image>
         <text class="not-found-title">{{ userDeletedMsg || '该用户不存在或已注销' }}</text>
         <text class="not-found-desc">去看看其他嘉宾吧</text>
         <button class="goto-btn" @click="gotoSingle">前往单身广场</button>
@@ -49,10 +54,10 @@
     <view v-else class="detail-content">
       <!-- 顶部广告栏（可关闭） -->
 <!--      <view v-if="showTopAd" class="top-ad" :style="{ top: navBarHeight + 'px' }">-->
-<!--        <image class="close-icon" src="/static/icons/close.png" @click="closeTopAd"></image>-->
+<!--        <image class="close-icon" src="https://minixhs.chugao520.com/makefriends/icons/close.png" @click="closeTopAd"></image>-->
 <!--        <view class="ad-content" @click="gotoSingle">-->
 <!--          <text class="ad-text">前往单身广场</text>-->
-<!--          <image class="arrow-icon" src="/static/icons/arrow-right.png"></image>-->
+<!--          <image class="arrow-icon" src="https://minixhs.chugao520.com/makefriends/icons/arrow-right.png"></image>-->
 <!--        </view>-->
 <!--      </view>-->
 
@@ -97,7 +102,7 @@
                 ></image>
                 <image
                   v-else
-                  :src="userInfo.gender === '男' ? '/static/icons/male-default.png' : '/static/icons/female-default.png'"
+                  :src="userInfo.gender === '男' ? 'https://minixhs.chugao520.com/makefriends/icons/male-default.png' : 'https://minixhs.chugao520.com/makefriends/icons/female-default.png'"
                   class="default-avatar"
                 ></image>
                 <view class="want-see-btn" @click="wantSee('photo')">
@@ -109,14 +114,14 @@
               <view class="user-basic">
                 <view class="name-row">
                   <text class="nickname">{{ userInfo.name }}</text>
-                  <image class="gender-icon" :src="userInfo.gender === '男' ? '/static/m.png' : '/static/wm.png'" mode="aspectFit"></image>
+                  <image class="gender-icon" :src="userInfo.gender === '男' ? 'https://minixhs.chugao520.com/makefriends/m.png' : 'https://minixhs.chugao520.com/makefriends/wm.png'" mode="aspectFit"></image>
                   <image
                     v-if="userInfo.is_vip"
                     class="vip-badge-small"
-                    src="/static/images/vip-badge.png"
+                    src="https://minixhs.chugao520.com/makefriends/images/vip-badge.png"
                     mode="aspectFit"
                   ></image>
-                  <image v-if="userInfo.isRealName" class="verify-icon" src="/static/icons/verified.png"></image>
+                  <image v-if="userInfo.isRealName" class="verify-icon" src="https://minixhs.chugao520.com/makefriends/icons/verified.png"></image>
                 </view>
                 <view class="info-row">
                   <text class="info-text">{{ userInfo.birthday }}岁</text>
@@ -133,7 +138,7 @@
           <!-- 3. 认证信息卡片（未认证时显示） -->
           <view v-if="!isAdSource" class="auth-card card">
             <view class="card-title">
-              <image class="title-icon" src="/static/Frame(2).png" mode="aspectFit"></image>
+              <image class="title-icon" src="https://minixhs.chugao520.com/makefriends/Frame(2).png" mode="aspectFit"></image>
               <text>我的认证</text>
             </view>
             <view class="auth-list">
@@ -149,7 +154,7 @@
                 ></image>
                 <view v-if="userInfo.isRealName" class="auth-title">{{ item.titleAuth }}</view>
                 <view v-else class="unauth-wrapper">
-                  <!-- <image class="warning-icon" src="/static/icons/warning.png"></image> -->
+                  <!-- <image class="warning-icon" src="https://minixhs.chugao520.com/makefriends/icons/warning.png"></image> -->
                   <view class="auth-title">{{ item.titleUnauth }}</view>
                   <view class="auth-subtitle">请仔细甄别</view>
                 </view>
@@ -161,7 +166,7 @@
 		  <!-- 详细信息 -->
 		  <view class="section">
 		    <view class="section-title">
-		      <image class="section-icon" src="/static/Frame(2).png" mode="aspectFit"></image>
+		      <image class="section-icon" src="https://minixhs.chugao520.com/makefriends/Frame(2).png" mode="aspectFit"></image>
 		      <text>详细信息</text>
 		    </view>
 		    <view class="detail-grid">
@@ -195,7 +200,7 @@
           <!-- 5. 自我介绍卡片 -->
           <view class="introduce-card card">
             <view class="card-title">
-              <image class="title-icon" src="/static/Frame(2).png" mode="aspectFit"></image>
+              <image class="title-icon" src="https://minixhs.chugao520.com/makefriends/Frame(2).png" mode="aspectFit"></image>
               <text>自我介绍</text>
             </view>
             <view v-if="userInfo.introduce" class="introduce-content">
@@ -211,7 +216,7 @@
           <!-- 6. 个人标签卡片 -->
           <view v-if="!isAdSource" class="tags-card card">
             <view class="card-title">
-              <image class="title-icon" src="/static/Frame (3).png" mode="aspectFit"></image>
+              <image class="title-icon" src="https://minixhs.chugao520.com/makefriends/Frame (3).png" mode="aspectFit"></image>
               <text>{{ userInfo.gender === '男' ? '他' : '她' }}的标签</text>
             </view>
             <view v-if="filterTags(userInfo.tags).length" class="tags-wrapper">
@@ -229,7 +234,7 @@
           <!-- 7. 灵魂问答卡片 -->
           <view v-if="userInfo.questionAnswer && userInfo.questionAnswer.length" class="qa-card card">
             <view class="card-title">
-              <image class="title-icon" src="/static/Frame(1).png" mode="aspectFit"></image>
+              <image class="title-icon" src="https://minixhs.chugao520.com/makefriends/Frame(1).png" mode="aspectFit"></image>
               <text>灵魂问答</text>
             </view>
             <view class="question-list">
@@ -245,11 +250,11 @@
 
           <!-- 8. 好友印象卡片 -->
           <view v-if="userInfo.friends_impression && userInfo.friends_impression.length" class="impression-card card">
-			  <image class="title-icon" src="/static/Frame(5).png" mode="aspectFit"></image>
+			  <image class="title-icon" src="https://minixhs.chugao520.com/makefriends/Frame(5).png" mode="aspectFit"></image>
             <view class="card-title">好友印象</view>
             <view v-for="(item, index) in userInfo.friends_impression" :key="index" class="impression-item">
               <view class="friend-label">
-                <image class="friend-icon" src="/static/icons/friend.png"></image>
+                <image class="friend-icon" src="https://minixhs.chugao520.com/makefriends/icons/friend.png"></image>
                 <text>好友{{ friendLabels[index] }}</text>
               </view>
               <view class="impression-content">{{ item }}</view>
@@ -259,7 +264,7 @@
           <!-- 9. 理想对象卡片 -->
           <view class="ideal-partner-card card">
             <view class="card-title">
-              <image class="title-icon" src="/static/Frame(7).png" mode="aspectFit"></image>
+              <image class="title-icon" src="https://minixhs.chugao520.com/makefriends/Frame(7).png" mode="aspectFit"></image>
               <text>理想对象</text>
             </view>
             <view v-if="hasIdealPartner">
@@ -283,11 +288,11 @@
           <view class="privacy-card card" style="border-bottom: 0rpx solid #F0F0F0;">
             <view class="privacy-header">
               <view class="card-title">
-                <image class="title-icon" src="/static/Frame(2).png" mode="aspectFit"></image>
+                <image class="title-icon" src="https://minixhs.chugao520.com/makefriends/Frame(2).png" mode="aspectFit"></image>
                 <text>隐私信息</text>
               </view>
               <view v-if="!isAdSource" class="report-btn" @click="gotoReport">
-                <image class="report-icon" src="/static/icons/report.png"></image>
+                <image class="report-icon" src="https://minixhs.chugao520.com/makefriends/icons/report.png"></image>
                 <text>投诉/举报</text>
               </view>
             </view>
@@ -310,7 +315,7 @@
                   <text>{{ userInfo.privacyInfo.wechatNo }}</text>
                   <image
                     class="copy-icon"
-                    src="/static/icons/copy.png"
+                    src="https://minixhs.chugao520.com/makefriends/icons/copy.png"
                     @click="copyWechat(userInfo.privacyInfo.wechatNo)"
                   ></image>
                 </view>
@@ -348,13 +353,13 @@
       <view v-if="!isBindMode" class="bottom-bar">
         <button class="share-btn" open-type="share" @click="handleShare">
           <view class="btn-content">
-            <image class="btn-icon" src="/static/icons/share.png"></image>
+            <image class="btn-icon" src="https://minixhs.chugao520.com/makefriends/icons/share.png"></image>
             <text class="btn-text">分享</text>
           </view>
         </button>
         <button class="wechat-btn" @click="handleGetWechat">
           <view class="btn-content">
-            <image class="btn-icon" src="/static/icons/wechat.png"></image>
+            <image class="btn-icon" src="https://minixhs.chugao520.com/makefriends/icons/wechat.png"></image>
             <text class="btn-text">获取微信</text>
           </view>
         </button>
@@ -371,7 +376,7 @@
 
       <!-- 13. 右侧浮动按钮 -->
       <view v-if="!isBindMode" class="right-btns" @click="handleFollow">
-          <image class="follow-btn" :src="userInfo.isFollow ? '/static/ygz.png' : '/static/Frame 1420074377.png'"></image>
+          <image class="follow-btn" :src="userInfo.isFollow ? 'https://minixhs.chugao520.com/makefriends/ygz.png' : 'https://minixhs.chugao520.com/makefriends/Frame 1420074377.png'"></image>
       </view>
 
       <!-- 居中弹框 -->
@@ -416,15 +421,15 @@ export default {
       // 认证项配置
       authItems: [
         {
-          iconAuth: '/static/images/identify-id-green.png',
-          iconUnauth: '/static/images/identify-id-grey.png',
+          iconAuth: 'https://minixhs.chugao520.com/makefriends/images/identify-id-green.png',
+          iconUnauth: 'https://minixhs.chugao520.com/makefriends/images/identify-id-grey.png',
           titleAuth: '实名认证',
           titleUnauth: '实名认证',
           bgColorAuth: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
         },
         {
-          iconAuth: '/static/images/identify-real-blue.png',
-          iconUnauth: '/static/images/identify-real-grey.png',
+          iconAuth: 'https://minixhs.chugao520.com/makefriends/images/identify-real-blue.png',
+          iconUnauth: 'https://minixhs.chugao520.com/makefriends/images/identify-real-grey.png',
           titleAuth: '真人认证',
           titleUnauth: '真人认证',
           bgColorAuth: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
@@ -842,8 +847,9 @@ export default {
       if (!await this.checkProfileComplete()) {
         return
       }
+	  // 26.08.08 注销认证校验
 	// 检查是否完成认证
-	 if (!this.checkAuthComplete()) return
+	 // if (!this.checkAuthComplete()) return
 
       if (this.userInfo.isBuy) {
         uni.showToast({

@@ -3,13 +3,13 @@
     <!-- 脱单币余额 -->
     <view class="coin-balance" @click="showRecharge">
       <view class="coin-icon-container">
-        <image class="coin-icon" src="/static/位图.png" mode="aspectFit"></image>
+        <image class="coin-icon" src="https://minixhs.chugao520.com/makefriends/位图.png" mode="aspectFit"></image>
       </view>
       <view class="balance-info">
         <text class="balance-label">我的脱单币</text>
         <text class="balance-amount">{{ coinBalance }}</text>
       </view>
-      <view class="get-more-btn">获取更多 <image class="more-icon" src="/static/round_right_fill.png" mode="aspectFit"></image></view>
+      <view class="get-more-btn">获取更多 <image class="more-icon" src="https://minixhs.chugao520.com/makefriends/round_right_fill.png" mode="aspectFit"></image></view>
     </view>
 
     <!-- 底部火箭图标 -->
@@ -210,7 +210,7 @@ export default {
 }
 
 .coin-balance {
-  background-image: url('/static/位图5.png');
+  background-image: url('https://minixhs.chugao520.com/makefriends/位图5.png');
   background-size: cover;
   background-position: center;
   margin: 30rpx;

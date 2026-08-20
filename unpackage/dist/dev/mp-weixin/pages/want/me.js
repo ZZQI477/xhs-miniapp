@@ -174,13 +174,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_vendor.p({
       title: "想看我的",
-      backgroundImage: "/static/bg3.png"
+      backgroundImage: "https://minixhs.chugao520.com/makefriends/bg3.png"
     }),
     b: !$data.loading && $data.list.length === 0
   }, !$data.loading && $data.list.length === 0 ? {} : {
     c: common_vendor.f($data.list, (item, k0, i0) => {
       return common_vendor.e({
-        a: item.user.avatar || "/static/logo.png",
+        a: item.user.avatar || "https://minixhs.chugao520.com/makefriends/logo.png",
         b: common_vendor.t(item.user.nickname || "匿名用户"),
         c: common_vendor.t(item.user.gender == 1 ? "♂" : "♀"),
         d: item.user.gender == 2 ? 1 : "",
@@ -204,27 +204,27 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   }, $data.list.length > 0 ? common_vendor.e({
     e: $data.loading
   }, $data.loading ? {} : $data.noMore ? {} : {
-    g: common_vendor.o((...args) => $options.loadMore && $options.loadMore(...args), "29")
+    g: common_vendor.o((...args) => $options.loadMore && $options.loadMore(...args), "ab")
   }, {
     f: $data.noMore
   }) : {}, {
     h: $data.showPopup
   }, $data.showPopup ? {
-    i: common_vendor.o((...args) => $options.closePopup && $options.closePopup(...args), "bb")
+    i: common_vendor.o((...args) => $options.closePopup && $options.closePopup(...args), "08")
   } : {}, {
     j: $data.showPopup
   }, $data.showPopup ? common_vendor.e({
-    k: common_vendor.o((...args) => $options.closePopup && $options.closePopup(...args), "01"),
+    k: common_vendor.o((...args) => $options.closePopup && $options.closePopup(...args), "0f"),
     l: $data.currentItem
   }, $data.currentItem ? {
-    m: $data.currentItem.user.avatar || "/static/logo.png",
-    n: common_vendor.o(($event) => $options.goDetail($data.currentItem.user.id), "22"),
+    m: $data.currentItem.user.avatar || "https://minixhs.chugao520.com/makefriends/logo.png",
+    n: common_vendor.o(($event) => $options.goDetail($data.currentItem.user.id), "4b"),
     o: common_vendor.t($data.currentItem.user.nickname),
     p: common_vendor.t($data.currentItem.user.gender == 1 ? "♂" : "♀"),
     q: $data.currentItem.user.gender == 2 ? 1 : "",
     r: common_vendor.t($data.currentItem.user.height || "?"),
     s: common_vendor.t($data.currentItem.user.age),
-    t: common_vendor.o(($event) => $options.goDetail($data.currentItem.user.id), "6a")
+    t: common_vendor.o(($event) => $options.goDetail($data.currentItem.user.id), "bf")
   } : {}, {
     v: common_vendor.t($data.currentItem && $options.getWantTypeText($data.currentItem.want_type)),
     w: $data.currentItem && $data.currentItem.status !== "pending"
@@ -234,8 +234,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   } : {}, {
     z: $data.currentItem && $data.currentItem.status === "pending"
   }, $data.currentItem && $data.currentItem.status === "pending" ? {
-    A: common_vendor.o(($event) => $options.handleAction("rejected"), "c0"),
-    B: common_vendor.o(($event) => $options.handleAction("accepted"), "16")
+    A: common_vendor.o(($event) => $options.handleAction("rejected"), "a7"),
+    B: common_vendor.o(($event) => $options.handleAction("accepted"), "34")
   } : {}) : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-886e8b32"]]);

@@ -101,7 +101,7 @@
 			"path": "pages/signup/guide",
 			"style": {
 				"navigationBarTitleText": "编辑资料",
-				"navigationStyle": "default"
+				"navigationStyle": "default" 
 			}
 		},
 		{
@@ -232,20 +232,6 @@
 				"navigationBarTitleText": "线下活动",
 				"navigationStyle": "custom"
 			}
-		},
-		{
-			"path": "pages/chat/list",
-			"style": {
-				"navigationBarTitleText": "聊天",
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/chat/detail",
-			"style": {
-				"navigationBarTitleText": "聊天详情",
-				"navigationStyle": "custom"
-			}
 		}
 	],
 	"globalStyle": {
@@ -273,22 +259,16 @@
 				"selectedIconPath": "/static/Frame@2x(1).png"
 			},
 			{
-				"pagePath": "pages/mine/index",
-				"text": "我的",
-				"iconPath": "/static/Frame@2x(7).png",
-				"selectedIconPath": "/static/Frame@2x(3).png"
-			},
-			{
 				"pagePath": "pages/request/index",
 				"text": "申请",
 				"iconPath": "/static/Frame@2x(6).png",
 				"selectedIconPath": "/static/Frame@2x(2).png"
 			},
 			{
-				"pagePath": "pages/chat/list",
-				"text": "消息",
-				"iconPath": "/static/Frame@2x(6).png",
-				"selectedIconPath": "/static/Frame@2x(2).png"
+				"pagePath": "pages/mine/index",
+				"text": "我的",
+				"iconPath": "/static/Frame@2x(7).png",
+				"selectedIconPath": "/static/Frame@2x(3).png"
 			}
 		]
 	}

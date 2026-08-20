@@ -10,6 +10,20 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "qiniu": "^7.15.2",
     "sharp": "^0.34.5"
+  },
+  "uni-app": {
+    "scripts": {
+      "mp-bili": {
+        "title": "哔哩哔哩小程序",
+        "env": {
+          "UNI_PLATFORM": "mp-weixin"
+        },
+        "define": {
+          "MP-BILI": true
+        }
+      }
+    }
   }
 }

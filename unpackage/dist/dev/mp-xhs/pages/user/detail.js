@@ -27,15 +27,15 @@ const _sfc_main = {
       // 认证项配置
       authItems: [
         {
-          iconAuth: "/static/images/identify-id-green.png",
-          iconUnauth: "/static/images/identify-id-grey.png",
+          iconAuth: "https://minixhs.chugao520.com/makefriends/images/identify-id-green.png",
+          iconUnauth: "https://minixhs.chugao520.com/makefriends/images/identify-id-grey.png",
           titleAuth: "实名认证",
           titleUnauth: "实名认证",
           bgColorAuth: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
         },
         {
-          iconAuth: "/static/images/identify-real-blue.png",
-          iconUnauth: "/static/images/identify-real-grey.png",
+          iconAuth: "https://minixhs.chugao520.com/makefriends/images/identify-real-blue.png",
+          iconUnauth: "https://minixhs.chugao520.com/makefriends/images/identify-real-grey.png",
           titleAuth: "真人认证",
           titleUnauth: "真人认证",
           bgColorAuth: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
@@ -392,8 +392,6 @@ const _sfc_main = {
       if (!await this.checkProfileComplete()) {
         return;
       }
-      if (!this.checkAuthComplete())
-        return;
       if (this.userInfo.isBuy) {
         common_vendor.index.showToast({
           title: "已购买",
@@ -651,21 +649,19 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: $data.showShareRegisterPopup
   }, $data.showShareRegisterPopup ? {
-    b: common_vendor.o((...args) => $options.closeShareRegisterPopup && $options.closeShareRegisterPopup(...args), "75"),
-    c: common_vendor.o((...args) => $options.handleGetUserInfoForGuest && $options.handleGetUserInfoForGuest(...args), "80"),
-    d: common_vendor.o((...args) => $options.goRegister && $options.goRegister(...args), "78")
+    b: common_vendor.o((...args) => $options.closeShareRegisterPopup && $options.closeShareRegisterPopup(...args), "5b"),
+    c: common_vendor.o((...args) => $options.goRegister && $options.goRegister(...args), "64")
   } : {}, {
-    e: $data.userNotFound
+    d: $data.userNotFound
   }, $data.userNotFound ? {
-    f: common_assets._imports_0,
-    g: common_vendor.t($data.userDeletedMsg || "该用户不存在或已注销"),
-    h: common_vendor.o((...args) => $options.gotoSingle && $options.gotoSingle(...args), "ba")
+    e: common_vendor.t($data.userDeletedMsg || "该用户不存在或已注销"),
+    f: common_vendor.o((...args) => $options.gotoSingle && $options.gotoSingle(...args), "5e")
   } : $data.userInfo.isLogout ? {
-    j: common_vendor.o((...args) => $options.gotoSingle && $options.gotoSingle(...args), "ca")
+    h: common_vendor.o((...args) => $options.gotoSingle && $options.gotoSingle(...args), "14")
   } : common_vendor.e({
-    k: $data.userInfo.imgList && $data.userInfo.imgList.length > 0
+    i: $data.userInfo.imgList && $data.userInfo.imgList.length > 0
   }, $data.userInfo.imgList && $data.userInfo.imgList.length > 0 ? {
-    l: common_vendor.f($data.userInfo.imgList, (img, index, i0) => {
+    j: common_vendor.f($data.userInfo.imgList, (img, index, i0) => {
       return {
         a: img,
         b: common_vendor.o(($event) => $options.previewImage(index), index),
@@ -674,43 +670,38 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       };
     })
   } : common_vendor.e({
-    m: $data.userInfo.avatar
+    k: $data.userInfo.avatar
   }, $data.userInfo.avatar ? {
-    n: $data.userInfo.avatar,
-    o: common_vendor.o((...args) => $options.handleAvatarError && $options.handleAvatarError(...args), "d4")
+    l: $data.userInfo.avatar,
+    m: common_vendor.o((...args) => $options.handleAvatarError && $options.handleAvatarError(...args), "d0")
   } : {
-    p: $data.userInfo.gender === "男" ? "/static/icons/male-default.png" : "/static/icons/female-default.png"
+    n: $data.userInfo.gender === "男" ? "https://minixhs.chugao520.com/makefriends/icons/male-default.png" : "https://minixhs.chugao520.com/makefriends/icons/female-default.png"
   }, {
-    q: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
-    r: common_vendor.o(($event) => $options.wantSee("photo"), "be")
+    o: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
+    p: common_vendor.o(($event) => $options.wantSee("photo"), "fd")
   }), {
-    s: common_vendor.t($data.userInfo.name),
-    t: $data.userInfo.gender === "男" ? "/static/m.png" : "/static/wm.png",
-    v: $data.userInfo.is_vip
-  }, $data.userInfo.is_vip ? {
-    w: common_assets._imports_1$1
-  } : {}, {
-    x: $data.userInfo.isRealName
-  }, $data.userInfo.isRealName ? {
-    y: common_assets._imports_2$2
-  } : {}, {
-    z: common_vendor.t($data.userInfo.birthday),
-    A: $data.userInfo.birthday && ($data.userInfo.height || $data.userInfo.education)
+    q: common_vendor.t($data.userInfo.name),
+    r: $data.userInfo.gender === "男" ? "https://minixhs.chugao520.com/makefriends/m.png" : "https://minixhs.chugao520.com/makefriends/wm.png",
+    s: $data.userInfo.is_vip
+  }, $data.userInfo.is_vip ? {} : {}, {
+    t: $data.userInfo.isRealName
+  }, $data.userInfo.isRealName ? {} : {}, {
+    v: common_vendor.t($data.userInfo.birthday),
+    w: $data.userInfo.birthday && ($data.userInfo.height || $data.userInfo.education)
   }, $data.userInfo.birthday && ($data.userInfo.height || $data.userInfo.education) ? {} : {}, {
-    B: $data.userInfo.height
+    x: $data.userInfo.height
   }, $data.userInfo.height ? {
-    C: common_vendor.t($data.userInfo.height)
+    y: common_vendor.t($data.userInfo.height)
   } : {}, {
-    D: $data.userInfo.height && $data.userInfo.education
+    z: $data.userInfo.height && $data.userInfo.education
   }, $data.userInfo.height && $data.userInfo.education ? {} : {}, {
-    E: $data.userInfo.education
+    A: $data.userInfo.education
   }, $data.userInfo.education ? {
-    F: common_vendor.t($data.userInfo.education)
+    B: common_vendor.t($data.userInfo.education)
   } : {}, {
-    G: !$data.isAdSource
+    C: !$data.isAdSource
   }, !$data.isAdSource ? {
-    H: common_assets._imports_3$1,
-    I: common_vendor.f($data.authItems, (item, index, i0) => {
+    D: common_vendor.f($data.authItems, (item, index, i0) => {
       return common_vendor.e({
         a: $data.userInfo.isRealName ? item.iconAuth : item.iconUnauth
       }, $data.userInfo.isRealName ? {
@@ -722,60 +713,56 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         e: $data.userInfo.isRealName ? item.bgColorAuth : "#fcfcfc"
       });
     }),
-    J: $data.userInfo.isRealName
+    E: $data.userInfo.isRealName
   } : {}, {
-    K: common_assets._imports_3$1,
-    L: $data.userInfo.job
+    F: $data.userInfo.job
   }, $data.userInfo.job ? {
-    M: common_vendor.t($data.userInfo.job)
+    G: common_vendor.t($data.userInfo.job)
   } : {}, {
-    N: $data.userInfo.company
+    H: $data.userInfo.company
   }, $data.userInfo.company ? {
-    O: common_vendor.t($data.userInfo.company)
+    I: common_vendor.t($data.userInfo.company)
   } : {}, {
-    P: $data.userInfo.school
+    J: $data.userInfo.school
   }, $data.userInfo.school ? {
-    Q: common_vendor.t($data.userInfo.school)
+    K: common_vendor.t($data.userInfo.school)
   } : {}, {
-    R: $data.userInfo.hometown
+    L: $data.userInfo.hometown
   }, $data.userInfo.hometown ? {
-    S: common_vendor.t($data.userInfo.hometown_t)
+    M: common_vendor.t($data.userInfo.hometown_t)
   } : {}, {
-    T: common_vendor.t($data.userInfo.has_car ? "是" : "否"),
-    U: common_vendor.t($data.userInfo.has_house ? "是" : "否"),
-    V: common_assets._imports_3$1,
-    W: $data.userInfo.introduce
+    N: common_vendor.t($data.userInfo.has_car ? "是" : "否"),
+    O: common_vendor.t($data.userInfo.has_house ? "是" : "否"),
+    P: $data.userInfo.introduce
   }, $data.userInfo.introduce ? {
-    X: common_vendor.t($options.formatIntroduce)
+    Q: common_vendor.t($options.formatIntroduce)
   } : !$data.isAdSource ? {
-    Z: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
-    aa: common_vendor.o(($event) => $options.wantSee("introduce"), "e5")
+    S: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
+    T: common_vendor.o(($event) => $options.wantSee("introduce"), "25")
   } : {}, {
-    Y: !$data.isAdSource,
-    ab: !$data.isAdSource
+    R: !$data.isAdSource,
+    U: !$data.isAdSource
   }, !$data.isAdSource ? common_vendor.e({
-    ac: common_assets._imports_4$2,
-    ad: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
-    ae: $options.filterTags($data.userInfo.tags).length
+    V: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
+    W: $options.filterTags($data.userInfo.tags).length
   }, $options.filterTags($data.userInfo.tags).length ? {
-    af: common_vendor.f($options.filterTags($data.userInfo.tags), (tag, index, i0) => {
+    X: common_vendor.f($options.filterTags($data.userInfo.tags), (tag, index, i0) => {
       return {
         a: common_vendor.t(tag),
         b: index
       };
     })
   } : {
-    ag: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
-    ah: common_vendor.o(($event) => $options.wantSee("tag"), "55")
+    Y: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
+    Z: common_vendor.o(($event) => $options.wantSee("tag"), "49")
   }) : {}, {
-    ai: $data.userInfo.questionAnswer && $data.userInfo.questionAnswer.length
+    aa: $data.userInfo.questionAnswer && $data.userInfo.questionAnswer.length
   }, $data.userInfo.questionAnswer && $data.userInfo.questionAnswer.length ? {
-    aj: common_assets._imports_5$1,
-    ak: common_vendor.f($data.userInfo.questionAnswer, (item, index, i0) => {
+    ab: common_vendor.f($data.userInfo.questionAnswer, (item, index, i0) => {
       return common_vendor.e({
         a: item.question && item.answer
       }, item.question && item.answer ? {
-        b: common_assets._imports_6$1,
+        b: common_assets._imports_0$2,
         c: common_vendor.t(item.question)
       } : {}, {
         d: item.answer
@@ -786,66 +773,60 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       });
     })
   } : {}, {
-    al: $data.userInfo.friends_impression && $data.userInfo.friends_impression.length
+    ac: $data.userInfo.friends_impression && $data.userInfo.friends_impression.length
   }, $data.userInfo.friends_impression && $data.userInfo.friends_impression.length ? {
-    am: common_assets._imports_7$2,
-    an: common_vendor.f($data.userInfo.friends_impression, (item, index, i0) => {
+    ad: common_vendor.f($data.userInfo.friends_impression, (item, index, i0) => {
       return {
         a: common_vendor.t($data.friendLabels[index]),
         b: common_vendor.t(item),
         c: index
       };
-    }),
-    ao: common_assets._imports_8$2
+    })
   } : {}, {
-    ap: common_assets._imports_9$1,
-    aq: $options.hasIdealPartner
+    ae: $options.hasIdealPartner
   }, $options.hasIdealPartner ? common_vendor.e({
-    ar: $data.userInfo.idealPartner.introduce
+    af: $data.userInfo.idealPartner.introduce
   }, $data.userInfo.idealPartner.introduce ? {
-    as: common_vendor.t($options.formatIdealPartner)
+    ag: common_vendor.t($options.formatIdealPartner)
   } : {}, {
-    at: $data.userInfo.idealPartner.tags && $options.filterTags($data.userInfo.idealPartner.tags).length
+    ah: $data.userInfo.idealPartner.tags && $options.filterTags($data.userInfo.idealPartner.tags).length
   }, $data.userInfo.idealPartner.tags && $options.filterTags($data.userInfo.idealPartner.tags).length ? {
-    av: common_vendor.f($options.filterTags($data.userInfo.idealPartner.tags), (tag, index, i0) => {
+    ai: common_vendor.f($options.filterTags($data.userInfo.idealPartner.tags), (tag, index, i0) => {
       return {
         a: common_vendor.t(tag),
         b: index
       };
     })
   } : {}) : !$data.isAdSource ? {
-    ax: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
-    ay: common_vendor.o(($event) => $options.wantSee("idealPartner"), "c4")
+    ak: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
+    al: common_vendor.o(($event) => $options.wantSee("idealPartner"), "fb")
   } : {}, {
-    aw: !$data.isAdSource,
-    az: common_assets._imports_3$1,
-    aA: !$data.isAdSource
+    aj: !$data.isAdSource,
+    am: !$data.isAdSource
   }, !$data.isAdSource ? {
-    aB: common_assets._imports_10$2,
-    aC: common_vendor.o((...args) => $options.gotoReport && $options.gotoReport(...args), "f1")
+    an: common_vendor.o((...args) => $options.gotoReport && $options.gotoReport(...args), "e3")
   } : {}, {
-    aD: $data.userInfo.privacyInfo
+    ao: $data.userInfo.privacyInfo
   }, $data.userInfo.privacyInfo ? common_vendor.e({
-    aE: $data.userInfo.privacyInfo.income
+    ap: $data.userInfo.privacyInfo.income
   }, $data.userInfo.privacyInfo.income ? {
-    aF: common_vendor.t($data.userInfo.privacyInfo.income)
+    aq: common_vendor.t($data.userInfo.privacyInfo.income)
   } : {}, {
-    aG: $data.userInfo.privacyInfo.familyBackground
+    ar: $data.userInfo.privacyInfo.familyBackground
   }, $data.userInfo.privacyInfo.familyBackground ? {
-    aH: common_vendor.t($data.userInfo.privacyInfo.familyBackground.replace(/\\n/g, "\n"))
+    as: common_vendor.t($data.userInfo.privacyInfo.familyBackground.replace(/\\n/g, "\n"))
   } : {}, {
-    aI: !$data.isAdSource
+    at: !$data.isAdSource
   }, !$data.isAdSource ? common_vendor.e({
-    aJ: common_vendor.t($data.contactFieldName),
-    aK: $data.userInfo.isBuy
+    av: common_vendor.t($data.contactFieldName),
+    aw: $data.userInfo.isBuy
   }, $data.userInfo.isBuy ? {
-    aL: common_vendor.t($data.userInfo.privacyInfo.wechatNo),
-    aM: common_assets._imports_11$2,
-    aN: common_vendor.o(($event) => $options.copyWechat($data.userInfo.privacyInfo.wechatNo), "5d")
+    ax: common_vendor.t($data.userInfo.privacyInfo.wechatNo),
+    ay: common_vendor.o(($event) => $options.copyWechat($data.userInfo.privacyInfo.wechatNo), "53")
   } : {}) : {}) : {}, {
-    aO: !$data.isAdSource && $data.recommendList.length
+    az: !$data.isAdSource && $data.recommendList.length
   }, !$data.isAdSource && $data.recommendList.length ? {
-    aP: common_vendor.f($data.recommendList, (item, index, i0) => {
+    aA: common_vendor.f($data.recommendList, (item, index, i0) => {
       return {
         a: item.avatar,
         b: common_vendor.t(item.name),
@@ -857,28 +838,26 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       };
     })
   } : {}, {
-    aQ: $data.scrollIntoView,
-    aR: !$data.isBindMode
+    aB: $data.scrollIntoView,
+    aC: !$data.isBindMode
   }, !$data.isBindMode ? {
-    aS: common_assets._imports_12,
-    aT: common_vendor.o((...args) => $options.handleShare && $options.handleShare(...args), "64"),
-    aU: common_assets._imports_13,
-    aV: common_vendor.o((...args) => $options.handleGetWechat && $options.handleGetWechat(...args), "cd")
+    aD: common_vendor.o((...args) => $options.handleShare && $options.handleShare(...args), "bd"),
+    aE: common_vendor.o((...args) => $options.handleGetWechat && $options.handleGetWechat(...args), "85")
   } : {}, {
-    aW: $data.isBindMode
+    aF: $data.isBindMode
   }, $data.isBindMode ? {
-    aX: common_vendor.o((...args) => $options.handleBind && $options.handleBind(...args), "b5")
+    aG: common_vendor.o((...args) => $options.handleBind && $options.handleBind(...args), "70")
   } : {}, {
-    aY: !$data.isBindMode
+    aH: !$data.isBindMode
   }, !$data.isBindMode ? {
-    aZ: $data.userInfo.isFollow ? "/static/ygz.png" : "/static/Frame 1420074377.png",
-    ba: common_vendor.o((...args) => $options.handleFollow && $options.handleFollow(...args), "37")
+    aI: $data.userInfo.isFollow ? "https://minixhs.chugao520.com/makefriends/ygz.png" : "https://minixhs.chugao520.com/makefriends/Frame 1420074377.png",
+    aJ: common_vendor.o((...args) => $options.handleFollow && $options.handleFollow(...args), "08")
   } : {}, {
-    bb: common_vendor.j({
-      "confirm": common_vendor.o($options.onCenterModalConfirm, "45"),
-      "cancel": common_vendor.o($options.onCenterModalCancel, "3b")
+    aK: common_vendor.j({
+      "confirm": common_vendor.o($options.onCenterModalConfirm, "d3"),
+      "cancel": common_vendor.o($options.onCenterModalCancel, "61")
     }),
-    bc: common_vendor.p({
+    aL: common_vendor.p({
       visible: $data.showCenterModal,
       title: $data.centerModalTitle,
       content: $data.centerModalContent,
@@ -886,7 +865,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       ["cancel-text"]: $data.centerModalCancelText
     })
   }), {
-    i: $data.userInfo.isLogout
+    g: $data.userInfo.isLogout
   });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-51f45e2f"]]);

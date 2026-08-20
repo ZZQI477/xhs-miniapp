@@ -1,7 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const api_index = require("../../api/index.js");
-const common_assets = require("../../common/assets.js");
 const _sfc_main = {
   data() {
     return {
@@ -108,14 +107,12 @@ const _sfc_main = {
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
-    a: common_assets._imports_0$4,
-    b: common_vendor.t($data.coinBalance),
-    c: common_assets._imports_1$4,
-    d: common_vendor.o((...args) => $options.showRecharge && $options.showRecharge(...args), "ed"),
-    e: $data.isRechargeVisible
+    a: common_vendor.t($data.coinBalance),
+    b: common_vendor.o((...args) => $options.showRecharge && $options.showRecharge(...args), "ed"),
+    c: $data.isRechargeVisible
   }, $data.isRechargeVisible ? {
-    f: common_vendor.o((...args) => $options.hideRecharge && $options.hideRecharge(...args), "8b"),
-    g: common_vendor.f($data.packages, (pkg, k0, i0) => {
+    d: common_vendor.o((...args) => $options.hideRecharge && $options.hideRecharge(...args), "cc"),
+    e: common_vendor.f($data.packages, (pkg, k0, i0) => {
       return common_vendor.e({
         a: pkg.is_hot
       }, pkg.is_hot ? {} : {}, {
@@ -126,11 +123,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         f: common_vendor.o(($event) => $options.selectPackage(pkg), pkg.id)
       });
     }),
-    h: !$data.isAgreed || !$data.selectedPackage,
-    i: common_vendor.o((...args) => $options.confirmRecharge && $options.confirmRecharge(...args), "5f"),
-    j: $data.isAgreed,
-    k: common_vendor.o((...args) => $options.onAgreementChange && $options.onAgreementChange(...args), "a9"),
-    l: common_vendor.o((...args) => $options.toggleAgreement && $options.toggleAgreement(...args), "00")
+    f: !$data.isAgreed || !$data.selectedPackage,
+    g: common_vendor.o((...args) => $options.confirmRecharge && $options.confirmRecharge(...args), "0a"),
+    h: $data.isAgreed,
+    i: common_vendor.o((...args) => $options.onAgreementChange && $options.onAgreementChange(...args), "56"),
+    j: common_vendor.o((...args) => $options.toggleAgreement && $options.toggleAgreement(...args), "13")
   } : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-aab969b6"]]);

@@ -12,9 +12,9 @@
         <slot name="left">
           <!-- 支付宝自定义还是有返回按钮 -->
           <template v-if="isShowBack">
-            <image v-if="isFirstPage" :src="homeIcon || '/static/images/home.png'" class="img">
+            <image v-if="isFirstPage" :src="homeIcon || 'https://minixhs.chugao520.com/makefriends/images/home.png'" class="img">
             </image>
-            <image v-else :src="backIcon || '/static/back.png'" class="img"></image>
+            <image v-else :src="backIcon || 'https://minixhs.chugao520.com/makefriends/back.png'" class="img"></image>
           </template>
         </slot>
       </view>

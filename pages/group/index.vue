@@ -3,7 +3,7 @@
     <!-- 顶部标题栏 -->
     <custom-nav-bar
       title="同城单身群"
-      backgroundImage="/static/bg3.png"
+      backgroundImage="https://minixhs.chugao520.com/makefriends/bg3.png"
     />
 
     <!-- 导航栏占位 -->
@@ -18,7 +18,7 @@
     <scroll-view scroll-y class="group-scroll" v-if="list.length > 0">
       <view class="group-item" v-for="(item, index) in list" :key="index" @click="onGroupTap(item)">
         <view class="group-icon">
-          <image :src="item.qrcode || '/static/logo.png'" mode="aspectFill" class="group-img"></image>
+          <image :src="item.qrcode || 'https://minixhs.chugao520.com/makefriends/logo.png'" mode="aspectFill" class="group-img"></image>
         </view>
         <view class="group-content">
           
@@ -26,7 +26,7 @@
             <view class="group-row">
 				<text class="group-msg">{{ item.member_count || 0 }}人已加入</text>
 				<view class="city-container">
-					<image class="city-icon" src="/static/Frame@2x(13).png" mode="aspectFit"></image>
+					<image class="city-icon" src="https://minixhs.chugao520.com/makefriends/Frame@2x(13).png" mode="aspectFit"></image>
 					<text class="group-time">{{ item.city }}</text>
 				</view>
           </view>
@@ -134,7 +134,7 @@ export default {
 
 <style scoped>
 .container {
-  /* background-image: url('/static/bg2.png'); */
+  /* background-image: url('https://minixhs.chugao520.com/makefriends/bg2.png'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

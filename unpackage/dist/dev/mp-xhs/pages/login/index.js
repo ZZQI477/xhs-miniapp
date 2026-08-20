@@ -3,7 +3,6 @@ const common_vendor = require("../../common/vendor.js");
 const api_index = require("../../api/index.js");
 const utils_profileCheck = require("../../utils/profileCheck.js");
 const utils_xhsLogin = require("../../utils/xhsLogin.js");
-const common_assets = require("../../common/assets.js");
 const _sfc_main = {
   data() {
     return {
@@ -402,46 +401,41 @@ const _sfc_main = {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: $data.checkingLogin
-  }, $data.checkingLogin ? {} : $data.showXhsPhoneAuth && $data.isXhsEnv ? common_vendor.e({
-    c: common_assets._imports_1,
-    d: common_vendor.o((...args) => $options.handleXhsPhoneAuth && $options.handleXhsPhoneAuth(...args), "1a"),
-    e: $data.xhsPhoneLoading,
-    f: common_vendor.o((...args) => $options.skipXhsPhoneAuth && $options.skipXhsPhoneAuth(...args), "7f"),
-    g: $data.agreedToTerms
+  }, $data.checkingLogin ? {} : $data.showXhsPhoneAuth && $data.isXhsEnv && false ? common_vendor.e({
+    c: common_vendor.o((...args) => $options.handleXhsPhoneAuth && $options.handleXhsPhoneAuth(...args), "5f"),
+    d: $data.xhsPhoneLoading,
+    e: common_vendor.o((...args) => $options.skipXhsPhoneAuth && $options.skipXhsPhoneAuth(...args), "69"),
+    f: $data.agreedToTerms
   }, $data.agreedToTerms ? {} : {}, {
-    h: $data.agreedToTerms ? 1 : "",
-    i: common_vendor.o((...args) => $options.toggleAgreement && $options.toggleAgreement(...args), "10"),
-    j: common_vendor.o((...args) => $options.openUserAgreement && $options.openUserAgreement(...args), "59"),
-    k: common_vendor.o((...args) => $options.openPrivacyPolicy && $options.openPrivacyPolicy(...args), "58")
+    g: $data.agreedToTerms ? 1 : "",
+    h: common_vendor.o((...args) => $options.toggleAgreement && $options.toggleAgreement(...args), "1d"),
+    i: common_vendor.o((...args) => $options.openUserAgreement && $options.openUserAgreement(...args), "75"),
+    j: common_vendor.o((...args) => $options.openPrivacyPolicy && $options.openPrivacyPolicy(...args), "00")
   }) : common_vendor.e({
-    l: common_assets._imports_1,
-    m: common_assets._imports_2,
-    n: $data.areaCode === 852 ? 8 : 11,
-    o: $data.formData.mobile,
-    p: common_vendor.o(($event) => $data.formData.mobile = $event.detail.value, "e5"),
-    q: common_assets._imports_3,
-    r: common_vendor.o([($event) => $data.formData.captcha = $event.detail.value, (...args) => $options.onCodeInput && $options.onCodeInput(...args)], "86"),
-    s: $data.formData.captcha,
-    t: common_vendor.t($data.codeText),
-    v: !$data.canSendCode ? 1 : "",
-    w: common_vendor.o((...args) => $options.sendCode && $options.sendCode(...args), "ad"),
-    x: !$data.agreedToTerms && $data.showAgreementTip
+    k: $data.areaCode === 852 ? 8 : 11,
+    l: $data.formData.mobile,
+    m: common_vendor.o(($event) => $data.formData.mobile = $event.detail.value, "21"),
+    n: common_vendor.o([($event) => $data.formData.captcha = $event.detail.value, (...args) => $options.onCodeInput && $options.onCodeInput(...args)], "86"),
+    o: $data.formData.captcha,
+    p: common_vendor.t($data.codeText),
+    q: !$data.canSendCode ? 1 : "",
+    r: common_vendor.o((...args) => $options.sendCode && $options.sendCode(...args), "ce"),
+    s: !$data.agreedToTerms && $data.showAgreementTip
   }, !$data.agreedToTerms && $data.showAgreementTip ? {
-    y: $data.isShaking ? 1 : ""
+    t: $data.isShaking ? 1 : ""
   } : {}, {
-    z: !$options.canLogin ? 1 : "",
-    A: $data.loading,
-    B: common_vendor.o((...args) => $options.handleLogin && $options.handleLogin(...args), "b9"),
-    C: $data.agreedToTerms
+    v: !$options.canLogin ? 1 : "",
+    w: $data.loading,
+    x: common_vendor.o((...args) => $options.handleLogin && $options.handleLogin(...args), "17"),
+    y: $data.agreedToTerms
   }, $data.agreedToTerms ? {} : {}, {
-    D: $data.agreedToTerms ? 1 : "",
-    E: common_vendor.o((...args) => $options.toggleAgreement && $options.toggleAgreement(...args), "f7"),
-    F: common_vendor.o((...args) => $options.openUserAgreement && $options.openUserAgreement(...args), "8c"),
-    G: common_vendor.o((...args) => $options.openPrivacyPolicy && $options.openPrivacyPolicy(...args), "75"),
-    H: common_assets._imports_4,
-    I: common_vendor.o((...args) => $options.handleXiaohongshuLogin && $options.handleXiaohongshuLogin(...args), "a7")
+    z: $data.agreedToTerms ? 1 : "",
+    A: common_vendor.o((...args) => $options.toggleAgreement && $options.toggleAgreement(...args), "41"),
+    B: common_vendor.o((...args) => $options.openUserAgreement && $options.openUserAgreement(...args), "ed"),
+    C: common_vendor.o((...args) => $options.openPrivacyPolicy && $options.openPrivacyPolicy(...args), "bf"),
+    D: common_vendor.o((...args) => $options.handleXiaohongshuLogin && $options.handleXiaohongshuLogin(...args), "ea")
   }), {
-    b: $data.showXhsPhoneAuth && $data.isXhsEnv
+    b: $data.showXhsPhoneAuth && $data.isXhsEnv && false
   });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-d08ef7d4"]]);

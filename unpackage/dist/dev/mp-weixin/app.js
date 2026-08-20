@@ -40,8 +40,6 @@ if (!Math) {
   "./pages/party/detail.js";
   "./pages/cases/detail.js";
   "./pages/action/index.js";
-  "./pages/chat/list.js";
-  "./pages/chat/detail.js";
 }
 const _sfc_main = {
   onLaunch: function() {

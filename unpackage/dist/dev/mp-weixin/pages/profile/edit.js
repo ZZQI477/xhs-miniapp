@@ -258,23 +258,23 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_vendor.p({
       title: "编辑资料",
-      backgroundImage: "/static/bg3.png"
+      backgroundImage: "https://minixhs.chugao520.com/makefriends/bg3.png"
     }),
     b: $data.currentStep / 4 * 100 + "%",
     c: $data.currentStep === 1
   }, $data.currentStep === 1 ? {
     d: $data.form.nickname,
-    e: common_vendor.o(($event) => $data.form.nickname = $event.detail.value, "cf"),
+    e: common_vendor.o(($event) => $data.form.nickname = $event.detail.value, "e7"),
     f: $data.form.wechat,
-    g: common_vendor.o(($event) => $data.form.wechat = $event.detail.value, "10"),
+    g: common_vendor.o(($event) => $data.form.wechat = $event.detail.value, "ec"),
     h: $data.form.xiaohongshu,
-    i: common_vendor.o(($event) => $data.form.xiaohongshu = $event.detail.value, "3b"),
+    i: common_vendor.o(($event) => $data.form.xiaohongshu = $event.detail.value, "00"),
     j: !$data.form.has_house && !$data.form.has_car ? 1 : "",
-    k: common_vendor.o(($event) => $options.selectProperty("none"), "ad"),
+    k: common_vendor.o(($event) => $options.selectProperty("none"), "ee"),
     l: $data.form.has_house ? 1 : "",
-    m: common_vendor.o(($event) => $options.selectProperty("house"), "5f"),
+    m: common_vendor.o(($event) => $options.selectProperty("house"), "3d"),
     n: $data.form.has_car ? 1 : "",
-    o: common_vendor.o(($event) => $options.selectProperty("car"), "25")
+    o: common_vendor.o(($event) => $options.selectProperty("car"), "2b")
   } : {}, {
     p: $data.currentStep === 2
   }, $data.currentStep === 2 ? common_vendor.e({
@@ -284,10 +284,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   } : {}, {
     s: $data.form.avatar
   }, $data.form.avatar ? {
-    t: common_assets._imports_0$5,
-    v: common_vendor.o((...args) => $options.deleteAvatar && $options.deleteAvatar(...args), "c5")
+    t: common_assets._imports_0$1,
+    v: common_vendor.o((...args) => $options.deleteAvatar && $options.deleteAvatar(...args), "c9")
   } : {}, {
-    w: common_vendor.o((...args) => $options.chooseAvatar && $options.chooseAvatar(...args), "32"),
+    w: common_vendor.o((...args) => $options.chooseAvatar && $options.chooseAvatar(...args), "79"),
     x: common_vendor.f($options.displayImages, (img, index, i0) => {
       return common_vendor.e({
         a: img
@@ -298,7 +298,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       }, {
         d: img
       }, img ? {
-        e: common_assets._imports_0$5,
+        e: common_assets._imports_0$1,
         f: common_vendor.o(($event) => $options.deleteImage(index), index)
       } : {}, {
         g: index,
@@ -309,11 +309,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     y: $data.currentStep === 3
   }, $data.currentStep === 3 ? {
     z: $data.form.intro,
-    A: common_vendor.o(($event) => $data.form.intro = $event.detail.value, "44"),
+    A: common_vendor.o(($event) => $data.form.intro = $event.detail.value, "8f"),
     B: common_vendor.t(($data.form.intro || "").length),
     C: $options.exampleAvatar,
     D: common_vendor.t($options.exampleName),
-    E: common_assets._imports_1$5,
+    E: common_assets._imports_1$1,
     F: common_vendor.t($options.exampleIntro),
     G: common_vendor.f($data.allTags, (tag, k0, i0) => {
       return {
@@ -327,11 +327,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     H: $data.currentStep === 4
   }, $data.currentStep === 4 ? {
     I: $data.form.ideal_intro,
-    J: common_vendor.o(($event) => $data.form.ideal_intro = $event.detail.value, "4f"),
+    J: common_vendor.o(($event) => $data.form.ideal_intro = $event.detail.value, "d1"),
     K: common_vendor.t(($data.form.ideal_intro || "").length),
     L: $options.exampleAvatar,
     M: common_vendor.t($options.exampleName),
-    N: common_assets._imports_1$5,
+    N: common_assets._imports_1$1,
     O: common_vendor.t($options.exampleIdealIntro),
     P: common_vendor.f($data.allTags, (tag, k0, i0) => {
       return {
@@ -344,11 +344,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   } : {}, {
     Q: $data.currentStep > 1
   }, $data.currentStep > 1 ? {
-    R: common_vendor.o((...args) => $options.prevStep && $options.prevStep(...args), "d0")
+    R: common_vendor.o((...args) => $options.prevStep && $options.prevStep(...args), "73")
   } : {}, {
     S: common_vendor.t($data.currentStep === 4 ? "完成" : "下一步"),
     T: $data.currentStep === 1 ? 1 : "",
-    U: common_vendor.o((...args) => $options.nextStep && $options.nextStep(...args), "e9")
+    U: common_vendor.o((...args) => $options.nextStep && $options.nextStep(...args), "12")
   });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-ead3e541"]]);

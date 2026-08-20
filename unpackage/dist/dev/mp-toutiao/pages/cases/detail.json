@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "案例详情",
-  "navigationStyle": "custom",
+  "navigationStyle": "default",
   "usingComponents": {
     "custom-nav-bar": "../../components/custom-nav-bar"
   }

@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "单身库",
-  "navigationStyle": "custom",
+  "navigationStyle": "default",
   "usingComponents": {
     "profile-check-modal": "../../components/profile-check-modal",
     "filter-modal": "../../components/filter-modal",

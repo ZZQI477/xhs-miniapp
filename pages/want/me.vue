@@ -3,7 +3,7 @@
     <!-- 顶部标题栏 -->
     <custom-nav-bar
       title="想看我的"
-      backgroundImage="/static/bg3.png"
+      backgroundImage="https://minixhs.chugao520.com/makefriends/bg3.png"
     />
 
     <!-- 导航栏占位 -->
@@ -20,7 +20,7 @@
     <!-- 列表 -->
     <view class="list" v-else>
       <view class="list-item" v-for="item in list" :key="item.id" @click="showDetail(item)">
-        <image class="avatar" :src="item.user.avatar || '/static/logo.png'" mode="aspectFill"></image>
+        <image class="avatar" :src="item.user.avatar || 'https://minixhs.chugao520.com/makefriends/logo.png'" mode="aspectFill"></image>
         <view class="info">
           <view class="info-top">
             <text class="nickname">{{ item.user.nickname || '匿名用户' }}</text>
@@ -63,7 +63,7 @@
       </view>
 
       <view class="popup-user" v-if="currentItem">
-        <image class="popup-avatar" :src="currentItem.user.avatar || '/static/logo.png'" mode="aspectFill" @click="goDetail(currentItem.user.id)"></image>
+        <image class="popup-avatar" :src="currentItem.user.avatar || 'https://minixhs.chugao520.com/makefriends/logo.png'" mode="aspectFill" @click="goDetail(currentItem.user.id)"></image>
         <view class="popup-info">
           <view class="popup-name-row">
             <text class="popup-name">{{ currentItem.user.nickname }}</text>

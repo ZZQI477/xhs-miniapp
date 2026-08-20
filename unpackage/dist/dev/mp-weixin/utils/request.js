@@ -64,6 +64,12 @@ const request = (options) => {
             });
             reject(data);
           }
+        } else if (res.statusCode === 401) {
+          removeToken();
+          removeUserInfo();
+          common_vendor.index.removeStorageSync("xhs_openid");
+          common_vendor.index.setStorageSync("is_guest_mode", true);
+          reject({ statusCode: 401, _isAuthError: true });
         } else {
           common_vendor.index.showToast({
             title: "网络请求失败",

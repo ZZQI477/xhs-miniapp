@@ -2,21 +2,21 @@
   <view class="container" style="">
     <!-- 顶部导航栏 -->
     <!-- <custom-nav-bar title="活动" :isShowBack="true" fontColor="#FFFFFF" backgroundColor="transparent" /> -->
-	<!-- <custom-nav-bar title="活动" :isShowBack="true" backgroundImage="/static/bg3.png" fontColor="#6853F0" backgroundColor="#DEDEFF" /> -->
+	<!-- <custom-nav-bar title="活动" :isShowBack="true" backgroundImage="https://minixhs.chugao520.com/makefriends/bg3.png" fontColor="#6853F0" backgroundColor="#DEDEFF" /> -->
 	<custom-nav-bar title="活动" :isShowBack="true" fontColor="black" backgroundColor="transparent" />
 
 	<view class="nav-bar-placeholder"></view>
 
     <!-- Banner 区域 - 使用背景图 --> 
     <view class="banner-section">
-      <!-- <image class="banner-bg" src="/static/images/首页背景图@2x.png" mode="aspectFit" /> -->
+      <!-- <image class="banner-bg" src="https://minixhs.chugao520.com/makefriends/images/首页背景图@2x.png" mode="aspectFit" /> -->
     </view>
 
     <!-- 入口卡片区域 -->
     <view class="entry-section">
       <!-- 线下活动入口 -->
       <view class="entry-card1" @click="switchTab(0)">
-        <image class="entry-image" src="/static/images/线下活动@2x.png" mode="aspectFill" />
+        <image class="entry-image" src="https://minixhs.chugao520.com/makefriends/images/线下活动@2x.png" mode="aspectFill" />
 		<view class="card-item">
 			<view class="card-title">线下破圈活动</view>
 			<view class="card-btn">
@@ -27,7 +27,7 @@
       
       <!-- 成功案例入口 -->
       <view class="entry-card2" @click="switchTab(1)">
-        <image class="entry-image" src="/static/images/成功案例@2x.png" mode="aspectFill" style="height: 356rpx;" />
+        <image class="entry-image" src="https://minixhs.chugao520.com/makefriends/images/成功案例@2x.png" mode="aspectFill" style="height: 356rpx;" />
 		<view class="card-item">
 			<view class="card-title">线下成功案例</view>
 			<view class="card-btn">

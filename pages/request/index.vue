@@ -4,7 +4,7 @@
     <custom-nav-bar
       title="好友申请"
       :isShowBack="false"
-      backgroundImage="/static/bg3.png"
+      backgroundImage="https://minixhs.chugao520.com/makefriends/bg3.png"
     />
 
     <!-- 导航栏占位 -->
@@ -46,11 +46,11 @@
     <view class="list" v-if="currentTab === 'received' && list.length > 0">
       <view class="list-item" v-for="item in list" :key="item.id">
         <view class="item-main" @click="goDetail(item.from_user.id)">
-          <image class="avatar" :src="item.from_user.avatar || '/static/logo.png'" mode="aspectFill"></image>
+          <image class="avatar" :src="item.from_user.avatar || 'https://minixhs.chugao520.com/makefriends/logo.png'" mode="aspectFill"></image>
           <view class="info">
             <view class="info-top">
               <text class="nickname">{{ item.from_user.nickname || '匿名用户' }}</text> 
-			  <image  class="gender-icon" :src="item.from_user.gender == 1 ? '/static/m.png' : '/static/wm.png' " mode=""></image>
+			  <image  class="gender-icon" :src="item.from_user.gender == 1 ? 'https://minixhs.chugao520.com/makefriends/m.png' : 'https://minixhs.chugao520.com/makefriends/wm.png' " mode=""></image>
             </view>
             <text class="desc">
               {{ item.from_user.age +'岁' || ' ' }} · {{ item.from_user.height +'cm' || ' ' }} · {{ item.from_user.city || '--' }}
@@ -76,7 +76,7 @@
     <view class="list" v-if="currentTab === 'sent' && list.length > 0">
       <view class="list-item" v-for="item in list" :key="item.id">
         <view class="item-main" @click="goDetail(item.target_user.id)">
-          <image class="avatar" :src="item.target_user.avatar || '/static/logo.png'" mode="aspectFill"></image>
+          <image class="avatar" :src="item.target_user.avatar || 'https://minixhs.chugao520.com/makefriends/logo.png'" mode="aspectFill"></image>
           <view class="info">
             <view class="info-top">
               <text class="nickname">{{ item.target_user.nickname || '匿名用户' }}</text>
@@ -368,7 +368,7 @@ export default {
 
 <style scoped>
 .container {
-  /* background-image: url('/static/bg1.png'); */
+  /* background-image: url('https://minixhs.chugao520.com/makefriends/bg1.png'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -6,11 +6,11 @@ ququ<template>
       <text class="loading-text">正在登录...</text>
     </view>
 
-    <!-- 小红书手机号授权阶段 -->
-    <view v-else-if="showXhsPhoneAuth && isXhsEnv" class="xhs-phone-auth-section">
+    <!-- 小红书手机号授权阶段  // 26.08.12 添加第三个固定false强制都走手动输入手机号流程-->
+    <view v-else-if="showXhsPhoneAuth && isXhsEnv && false" class="xhs-phone-auth-section">
       <!-- 标题区域 -->
       <view class="xhs-title-area">
-        <image class="title-image" src="/static/Frame 1890183229@2x.png" mode="aspectFit"></image>
+        <image class="title-image" src="https://minixhs.chugao520.com/makefriends/Frame 1890183229@2x.png" mode="aspectFit"></image>
       </view>
 
       <!-- 按钮区域 -->
@@ -55,12 +55,12 @@ ququ<template>
     <view v-else>
       <!-- 标题区域 -->
       <view class="title-section">
-        <image class="title-image" src="/static/Frame 1890183229@2x.png" mode="aspectFit"></image>
+        <image class="title-image" src="https://minixhs.chugao520.com/makefriends/Frame 1890183229@2x.png" mode="aspectFit"></image>
       </view>
 
       <!-- 手机号输入 -->
       <view class="input-wrapper">
-        <image class="input-icon" src="/static/Frame@2x (2).png" mode="aspectFit"></image>
+        <image class="input-icon" src="https://minixhs.chugao520.com/makefriends/Frame@2x (2).png" mode="aspectFit"></image>
         <input
           class="phone-input"
           type="number"
@@ -72,7 +72,7 @@ ququ<template>
 
       <!-- 验证码输入 -->
       <view class="input-wrapper code-input-wrapper">
-        <image class="input-icon" src="/static/Frame@2x(8).png" mode="aspectFit"></image>
+        <image class="input-icon" src="https://minixhs.chugao520.com/makefriends/Frame@2x(8).png" mode="aspectFit"></image>
         <input
           class="code-input"
           type="number"
@@ -131,7 +131,7 @@ ququ<template>
           <view class="divider-line"></view>
         </view>
         <view class="xiaohongshu-btn" @click="handleXiaohongshuLogin">
-          <image class="xiaohongshu-icon" src="/static/Frame (1).png" mode="aspectFit"></image>
+          <image class="xiaohongshu-icon" src="https://minixhs.chugao520.com/makefriends/Frame (1).png" mode="aspectFit"></image>
         </view>
       </view>
     </view>

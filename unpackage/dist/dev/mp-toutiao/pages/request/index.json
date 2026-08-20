@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "好友申请",
-  "navigationStyle": "custom",
+  "navigationStyle": "default",
   "usingComponents": {
     "custom-nav-bar": "../../components/custom-nav-bar"
   }

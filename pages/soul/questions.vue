@@ -3,7 +3,7 @@
     <!-- 顶部标题栏 -->
     <custom-nav-bar
       title="灵魂三问"
-      backgroundImage="/static/bg4.png"
+      backgroundImage="https://minixhs.chugao520.com/makefriends/bg4.png"
     />
 
     <!-- 导航栏占位 -->
@@ -15,7 +15,7 @@
         <text class="banner-title">请认真回答！</text>
         <text class="banner-subtitle">你的答案将会展示在个人主页上，同时也会增加你的匹配精准度。</text>
       </view>
-      <image class="banner-image" src="/static/Frame 1890184003.png" mode="aspectFit"></image>
+      <image class="banner-image" src="https://minixhs.chugao520.com/makefriends/Frame 1890184003.png" mode="aspectFit"></image>
     </view>
 
     <!-- 说明文字 -->
@@ -27,7 +27,7 @@
     <!-- 灵魂问答列表 -->
     <view class="question-section" v-for="(item, index) in soulAnswers" :key="index">
       <view class="question-title">
-        <image class="question-icon" src="/static/Frame.png" mode="aspectFit"></image>
+        <image class="question-icon" src="https://minixhs.chugao520.com/makefriends/Frame.png" mode="aspectFit"></image>
         <text class="question-number">灵魂{{ ['一', '二', '三'][index] }}问</text>
       </view>
       <view class="question-select" @click="showQuestionPicker(index)">
@@ -35,7 +35,7 @@
         <text class="select-arrow">▼</text>
       </view>
       <view class="answer-title">
-        <image class="answer-icon" src="/static/Frame(1).png" mode="aspectFit"></image>
+        <image class="answer-icon" src="https://minixhs.chugao520.com/makefriends/Frame(1).png" mode="aspectFit"></image>
         <text>我的回答</text>
       </view>
       <textarea class="answer-input" v-model="item.answer" placeholder="请输入你的回答" placeholder-style="color: #999999;"></textarea>

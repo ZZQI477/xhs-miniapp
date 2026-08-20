@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "我想看的",
-  "navigationStyle": "custom",
+  "navigationStyle": "default",
   "usingComponents": {
     "custom-nav-bar": "../../components/custom-nav-bar"
   }

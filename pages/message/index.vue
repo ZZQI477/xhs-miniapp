@@ -74,7 +74,7 @@
 
           <!-- 来源用户 -->
           <view class="from-user" v-if="item.from_user" @click.stop="goUserDetail(item.from_user.id)">
-            <image class="from-avatar" :src="item.from_user.avatar || '/static/logo.png'" mode="aspectFill"></image>
+            <image class="from-avatar" :src="item.from_user.avatar || 'https://minixhs.chugao520.com/makefriends/logo.png'" mode="aspectFill"></image>
             <text class="from-name">{{ item.from_user.nickname }}</text>
             <text class="view-btn">查看 →</text>
           </view>

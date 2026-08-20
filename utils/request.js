@@ -93,6 +93,13 @@ const request = (options) => {
             })
             reject(data)
           }
+        } else if (res.statusCode === 401) {
+          // HTTP 401：token过期或无效，清除登录态降级为游客
+          removeToken()
+          removeUserInfo()
+          uni.removeStorageSync('xhs_openid')
+          uni.setStorageSync('is_guest_mode', true)
+          reject({ statusCode: 401, _isAuthError: true })
         } else {
           // HTTP错误
           uni.showToast({

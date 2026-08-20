@@ -123,9 +123,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   }, $props.isShowBack ? common_vendor.e({
     f: $data.isFirstPage
   }, $data.isFirstPage ? {
-    g: $props.homeIcon || "/static/images/home.png"
+    g: $props.homeIcon || "https://minixhs.chugao520.com/makefriends/images/home.png"
   } : {
-    h: $props.backIcon || "/static/back.png"
+    h: $props.backIcon || "https://minixhs.chugao520.com/makefriends/back.png"
   }) : {}, {
     i: $data.menuButtonRect.width + "px",
     j: common_vendor.o((...args) => $options.handleBack && $options.handleBack(...args), "2d")

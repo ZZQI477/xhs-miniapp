@@ -27,15 +27,15 @@ const _sfc_main = {
       // 认证项配置
       authItems: [
         {
-          iconAuth: "/static/images/identify-id-green.png",
-          iconUnauth: "/static/images/identify-id-grey.png",
+          iconAuth: "https://minixhs.chugao520.com/makefriends/images/identify-id-green.png",
+          iconUnauth: "https://minixhs.chugao520.com/makefriends/images/identify-id-grey.png",
           titleAuth: "实名认证",
           titleUnauth: "实名认证",
           bgColorAuth: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
         },
         {
-          iconAuth: "/static/images/identify-real-blue.png",
-          iconUnauth: "/static/images/identify-real-grey.png",
+          iconAuth: "https://minixhs.chugao520.com/makefriends/images/identify-real-blue.png",
+          iconUnauth: "https://minixhs.chugao520.com/makefriends/images/identify-real-grey.png",
           titleAuth: "真人认证",
           titleUnauth: "真人认证",
           bgColorAuth: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
@@ -144,11 +144,11 @@ const _sfc_main = {
   },
   onShareAppMessage() {
     var _a;
-    common_vendor.index.__f__("log", "at pages/user/detail.vue:541", "头像", this.userInfo.blur_avatar);
+    common_vendor.index.__f__("log", "at pages/user/detail.vue:546", "头像", this.userInfo.blur_avatar);
     const loginUser = common_vendor.index.getStorageSync("userinfo") || {};
     const inviterId = loginUser.id || "";
     let shareImageUrl = this.userInfo.avatar ? this.userInfo.blur_avatar : utils_config.config.curlRef + "/uploads/sharecover.jpg";
-    common_vendor.index.__f__("log", "at pages/user/detail.vue:550", "[ShareDebug] 分享卡片配置:", {
+    common_vendor.index.__f__("log", "at pages/user/detail.vue:555", "[ShareDebug] 分享卡片配置:", {
       title: `我发现一个不错的人：${this.userInfo.name}`,
       imageUrl: shareImageUrl,
       imgListLength: ((_a = this.userInfo.imgList) == null ? void 0 : _a.length) || 0,
@@ -175,34 +175,34 @@ const _sfc_main = {
       try {
         this.loading = true;
         const res = await api_index.getUserDetail(this.userId);
-        common_vendor.index.__f__("log", "at pages/user/detail.vue:577", "用户详情API返回:", res);
+        common_vendor.index.__f__("log", "at pages/user/detail.vue:582", "用户详情API返回:", res);
         if (res && res.data && res.data.user) {
-          common_vendor.index.__f__("log", "at pages/user/detail.vue:579", "用户数据:", res.data.user);
-          common_vendor.index.__f__("log", "at pages/user/detail.vue:580", "用户图片:", res.data.user.images);
-          common_vendor.index.__f__("log", "at pages/user/detail.vue:581", "用户头像:", res.data.user.avatar);
+          common_vendor.index.__f__("log", "at pages/user/detail.vue:584", "用户数据:", res.data.user);
+          common_vendor.index.__f__("log", "at pages/user/detail.vue:585", "用户图片:", res.data.user.images);
+          common_vendor.index.__f__("log", "at pages/user/detail.vue:586", "用户头像:", res.data.user.avatar);
           this.userInfo = this.transformUserData(res.data.user);
-          common_vendor.index.__f__("log", "at pages/user/detail.vue:583", "转换后的userInfo:", this.userInfo);
-          common_vendor.index.__f__("log", "at pages/user/detail.vue:584", "图片列表imgList:", this.userInfo.imgList);
+          common_vendor.index.__f__("log", "at pages/user/detail.vue:588", "转换后的userInfo:", this.userInfo);
+          common_vendor.index.__f__("log", "at pages/user/detail.vue:589", "图片列表imgList:", this.userInfo.imgList);
           this.debugCheckImage(this.userInfo.avatar, "头像");
           if (this.userInfo.imgList.length > 0) {
             this.debugCheckImage(this.userInfo.imgList[0], "照片墙第1张");
           }
         }
       } catch (error) {
-        common_vendor.index.__f__("error", "at pages/user/detail.vue:604", "加载用户详情失败:", error);
+        common_vendor.index.__f__("error", "at pages/user/detail.vue:609", "加载用户详情失败:", error);
         const isUserNotFound = error.code === 404 || error.code === 0 || error.msg && /用户不存在|用户已删除|用户已注销|not found/i.test(error.msg);
         const isAuthError = error._isAuthError || error.code === 401;
         if (isUserNotFound) {
           this.userNotFound = true;
           this.userDeletedMsg = error.msg || "该用户不存在或已注销";
-          common_vendor.index.__f__("log", "at pages/user/detail.vue:615", "[Detail] 用户不存在，切换为游客态浏览");
+          common_vendor.index.__f__("log", "at pages/user/detail.vue:620", "[Detail] 用户不存在，切换为游客态浏览");
         } else if (isAuthError) {
           common_vendor.index.removeStorageSync("token");
           common_vendor.index.removeStorageSync("userinfo");
           common_vendor.index.removeStorageSync("userInfo");
           common_vendor.index.removeStorageSync("xhs_openid");
           common_vendor.index.setStorageSync("is_guest_mode", true);
-          common_vendor.index.__f__("log", "at pages/user/detail.vue:623", "[Detail] 登录状态过期，已清除本地存储，降级为游客态");
+          common_vendor.index.__f__("log", "at pages/user/detail.vue:628", "[Detail] 登录状态过期，已清除本地存储，降级为游客态");
           if (this.isShareVisitor) {
             this.showShareRegisterPopup = true;
           }
@@ -228,11 +228,11 @@ const _sfc_main = {
               imgList = parsed.filter((img) => img && typeof img === "string" && img.length > 0);
             }
           } catch (e) {
-            common_vendor.index.__f__("error", "at pages/user/detail.vue:655", "解析图片JSON失败:", e);
+            common_vendor.index.__f__("error", "at pages/user/detail.vue:660", "解析图片JSON失败:", e);
           }
         }
       }
-      common_vendor.index.__f__("log", "at pages/user/detail.vue:660", "处理后的图片列表:", imgList);
+      common_vendor.index.__f__("log", "at pages/user/detail.vue:665", "处理后的图片列表:", imgList);
       return {
         isFollow: user.is_followed || false,
         isBuy: user.can_view_wechat || false,
@@ -295,30 +295,30 @@ const _sfc_main = {
       }
     },
     handleImageError(e) {
-      common_vendor.index.__f__("error", "at pages/user/detail.vue:736", "[ImageDebug] 图片加载失败:", e);
+      common_vendor.index.__f__("error", "at pages/user/detail.vue:741", "[ImageDebug] 图片加载失败:", e);
     },
     handleAvatarError(e) {
-      common_vendor.index.__f__("error", "at pages/user/detail.vue:740", "[ImageDebug] 头像加载失败，清空avatar使用默认图标:", e);
+      common_vendor.index.__f__("error", "at pages/user/detail.vue:745", "[ImageDebug] 头像加载失败，清空avatar使用默认图标:", e);
       this.userInfo.avatar = "";
     },
     // 调试用：验证图片URL是否可访问
     debugCheckImage(url, label = "图片") {
       if (!url) {
-        common_vendor.index.__f__("warn", "at pages/user/detail.vue:747", `[ImageDebug] ${label}: URL为空`);
+        common_vendor.index.__f__("warn", "at pages/user/detail.vue:752", `[ImageDebug] ${label}: URL为空`);
         return;
       }
-      common_vendor.index.__f__("log", "at pages/user/detail.vue:750", `[ImageDebug] ${label} URL:`, url);
+      common_vendor.index.__f__("log", "at pages/user/detail.vue:755", `[ImageDebug] ${label} URL:`, url);
       if (url.startsWith("/static/")) {
-        common_vendor.index.__f__("log", "at pages/user/detail.vue:754", `[ImageDebug] ${label}: 本地图片，路径正确`);
+        common_vendor.index.__f__("log", "at pages/user/detail.vue:759", `[ImageDebug] ${label}: 本地图片，路径正确`);
         return;
       }
       common_vendor.index.getImageInfo({
         src: url,
         success: (res) => {
-          common_vendor.index.__f__("log", "at pages/user/detail.vue:762", `[ImageDebug] ${label} 验证成功:`, res.width + "x" + res.height, res.type);
+          common_vendor.index.__f__("log", "at pages/user/detail.vue:767", `[ImageDebug] ${label} 验证成功:`, res.width + "x" + res.height, res.type);
         },
         fail: (err) => {
-          common_vendor.index.__f__("error", "at pages/user/detail.vue:765", `[ImageDebug] ${label} 验证失败:`, err.errMsg, "URL:", url);
+          common_vendor.index.__f__("error", "at pages/user/detail.vue:770", `[ImageDebug] ${label} 验证失败:`, err.errMsg, "URL:", url);
         }
       });
     },
@@ -354,7 +354,7 @@ const _sfc_main = {
           icon: "none"
         });
       } catch (error) {
-        common_vendor.index.__f__("error", "at pages/user/detail.vue:802", "想看操作失败:", error);
+        common_vendor.index.__f__("error", "at pages/user/detail.vue:807", "想看操作失败:", error);
         common_vendor.index.showToast({
           title: error.msg || "操作失败",
           icon: "none"
@@ -379,7 +379,7 @@ const _sfc_main = {
           });
         }
       } catch (error) {
-        common_vendor.index.__f__("error", "at pages/user/detail.vue:830", "关注操作失败:", error);
+        common_vendor.index.__f__("error", "at pages/user/detail.vue:835", "关注操作失败:", error);
         common_vendor.index.showToast({
           title: error.msg || "操作失败",
           icon: "none"
@@ -392,8 +392,6 @@ const _sfc_main = {
       if (!await this.checkProfileComplete()) {
         return;
       }
-      if (!this.checkAuthComplete())
-        return;
       if (this.userInfo.isBuy) {
         common_vendor.index.showToast({
           title: "已购买",
@@ -443,7 +441,7 @@ const _sfc_main = {
       return true;
     },
     handleShare() {
-      common_vendor.index.__f__("log", "at pages/user/detail.vue:901", "分享");
+      common_vendor.index.__f__("log", "at pages/user/detail.vue:907", "分享");
     },
     closeShareRegisterPopup() {
       this.showShareRegisterPopup = false;
@@ -459,14 +457,14 @@ const _sfc_main = {
     async handleGetUserInfoForGuest(e) {
       try {
         if (e.detail.errMsg !== "getUserInfo:ok") {
-          common_vendor.index.__f__("warn", "at pages/user/detail.vue:922", "[GuestChat] 用户拒绝授权用户信息，使用匿名模式");
+          common_vendor.index.__f__("warn", "at pages/user/detail.vue:928", "[GuestChat] 用户拒绝授权用户信息，使用匿名模式");
           await this.createGuestAndNavigate();
           return;
         }
         common_vendor.index.showLoading({ title: "创建身份..." });
         const inviterId = common_vendor.index.getStorageSync("share_inviter_id") || "";
         const guestInfo = await utils_guestAuth.getOrCreateGuestId(inviterId ? { inviter_id: inviterId } : {});
-        common_vendor.index.__f__("log", "at pages/user/detail.vue:933", "[GuestChat] 游客身份创建成功", guestInfo);
+        common_vendor.index.__f__("log", "at pages/user/detail.vue:939", "[GuestChat] 游客身份创建成功", guestInfo);
         const userInfo = e.detail.userInfo;
         if (userInfo) {
           await utils_guestAuth.updateGuestUserInfo({
@@ -474,7 +472,7 @@ const _sfc_main = {
             nickName: userInfo.nickName || userInfo.nickname,
             gender: userInfo.gender
           });
-          common_vendor.index.__f__("log", "at pages/user/detail.vue:943", "[GuestChat] 游客用户信息已更新", userInfo);
+          common_vendor.index.__f__("log", "at pages/user/detail.vue:949", "[GuestChat] 游客用户信息已更新", userInfo);
         }
         common_vendor.index.hideLoading();
         this.showShareRegisterPopup = false;
@@ -483,7 +481,7 @@ const _sfc_main = {
         });
       } catch (e2) {
         common_vendor.index.hideLoading();
-        common_vendor.index.__f__("error", "at pages/user/detail.vue:955", "[GuestChat] 创建游客身份失败", e2);
+        common_vendor.index.__f__("error", "at pages/user/detail.vue:961", "[GuestChat] 创建游客身份失败", e2);
         common_vendor.index.showToast({
           title: "请稍后重试",
           icon: "none"
@@ -495,13 +493,13 @@ const _sfc_main = {
       try {
         const inviterId = common_vendor.index.getStorageSync("share_inviter_id") || "";
         const guestInfo = await utils_guestAuth.getOrCreateGuestId(inviterId ? { inviter_id: inviterId } : {});
-        common_vendor.index.__f__("log", "at pages/user/detail.vue:969", "[GuestChat] 游客身份创建成功", guestInfo);
+        common_vendor.index.__f__("log", "at pages/user/detail.vue:975", "[GuestChat] 游客身份创建成功", guestInfo);
         this.showShareRegisterPopup = false;
         common_vendor.index.navigateTo({
           url: `/pages/chat/detail?to_user_id=${this.userId}&guest=1`
         });
       } catch (e) {
-        common_vendor.index.__f__("error", "at pages/user/detail.vue:977", "[GuestChat] 创建游客身份失败", e);
+        common_vendor.index.__f__("error", "at pages/user/detail.vue:983", "[GuestChat] 创建游客身份失败", e);
         common_vendor.index.showToast({
           title: "请稍后重试",
           icon: "none"
@@ -514,9 +512,9 @@ const _sfc_main = {
     },
     async handleBind() {
       try {
-        common_vendor.index.__f__("log", "at pages/user/detail.vue:993", "执行绑定");
+        common_vendor.index.__f__("log", "at pages/user/detail.vue:999", "执行绑定");
       } catch (error) {
-        common_vendor.index.__f__("error", "at pages/user/detail.vue:995", "绑定失败:", error);
+        common_vendor.index.__f__("error", "at pages/user/detail.vue:1001", "绑定失败:", error);
       }
     },
     copyWechat(wechat) {
@@ -540,7 +538,7 @@ const _sfc_main = {
           return false;
         }
         const userInfo = common_vendor.index.getStorageSync("userinfo") || common_vendor.index.getStorageSync("userInfo") || {};
-        common_vendor.index.__f__("log", "at pages/user/detail.vue:1024", "用户资料:", userInfo);
+        common_vendor.index.__f__("log", "at pages/user/detail.vue:1030", "用户资料:", userInfo);
         const requiredFields = [
           // { key: 'birthday', name: '出生年份', altKeys: ['birthday'] },
           // { key: 'marital_status', name: '婚况', altKeys: ['marital_status', 'maritalStatus', 'marriage'] },
@@ -576,12 +574,12 @@ const _sfc_main = {
               break;
             }
           }
-          common_vendor.index.__f__("log", "at pages/user/detail.vue:1063", `${field.name}: ${value}`);
+          common_vendor.index.__f__("log", "at pages/user/detail.vue:1069", `${field.name}: ${value}`);
           if (value === null || value === void 0 || value === "") {
             missingFields.push(field.name);
           }
         }
-        common_vendor.index.__f__("log", "at pages/user/detail.vue:1070", "缺少的字段:", missingFields);
+        common_vendor.index.__f__("log", "at pages/user/detail.vue:1076", "缺少的字段:", missingFields);
         if (missingFields.length > 0) {
           this.centerModalTitle = "资料完善提醒";
           this.centerModalContent = `请先完善以下资料：${missingFields.join("、")}
@@ -598,7 +596,7 @@ const _sfc_main = {
         }
         return true;
       } catch (error) {
-        common_vendor.index.__f__("error", "at pages/user/detail.vue:1089", "检查资料失败:", error);
+        common_vendor.index.__f__("error", "at pages/user/detail.vue:1095", "检查资料失败:", error);
         common_vendor.index.showToast({
           title: "检查资料失败",
           icon: "none"
@@ -651,21 +649,19 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: $data.showShareRegisterPopup
   }, $data.showShareRegisterPopup ? {
-    b: common_vendor.o((...args) => $options.closeShareRegisterPopup && $options.closeShareRegisterPopup(...args), "75"),
-    c: common_vendor.o((...args) => $options.startGuestChat && $options.startGuestChat(...args), "e4"),
-    d: common_vendor.o((...args) => $options.goRegister && $options.goRegister(...args), "7c")
+    b: common_vendor.o((...args) => $options.closeShareRegisterPopup && $options.closeShareRegisterPopup(...args), "5b"),
+    c: common_vendor.o((...args) => $options.goRegister && $options.goRegister(...args), "4d")
   } : {}, {
-    e: $data.userNotFound
+    d: $data.userNotFound
   }, $data.userNotFound ? {
-    f: common_assets._imports_0,
-    g: common_vendor.t($data.userDeletedMsg || "该用户不存在或已注销"),
-    h: common_vendor.o((...args) => $options.gotoSingle && $options.gotoSingle(...args), "b6")
+    e: common_vendor.t($data.userDeletedMsg || "该用户不存在或已注销"),
+    f: common_vendor.o((...args) => $options.gotoSingle && $options.gotoSingle(...args), "e9")
   } : $data.userInfo.isLogout ? {
-    j: common_vendor.o((...args) => $options.gotoSingle && $options.gotoSingle(...args), "37")
+    h: common_vendor.o((...args) => $options.gotoSingle && $options.gotoSingle(...args), "31")
   } : common_vendor.e({
-    k: $data.userInfo.imgList && $data.userInfo.imgList.length > 0
+    i: $data.userInfo.imgList && $data.userInfo.imgList.length > 0
   }, $data.userInfo.imgList && $data.userInfo.imgList.length > 0 ? {
-    l: common_vendor.f($data.userInfo.imgList, (img, index, i0) => {
+    j: common_vendor.f($data.userInfo.imgList, (img, index, i0) => {
       return {
         a: img,
         b: common_vendor.o(($event) => $options.previewImage(index), index),
@@ -674,43 +670,38 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       };
     })
   } : common_vendor.e({
-    m: $data.userInfo.avatar
+    k: $data.userInfo.avatar
   }, $data.userInfo.avatar ? {
-    n: $data.userInfo.avatar,
-    o: common_vendor.o((...args) => $options.handleAvatarError && $options.handleAvatarError(...args), "58")
+    l: $data.userInfo.avatar,
+    m: common_vendor.o((...args) => $options.handleAvatarError && $options.handleAvatarError(...args), "d4")
   } : {
-    p: $data.userInfo.gender === "男" ? "/static/icons/male-default.png" : "/static/icons/female-default.png"
+    n: $data.userInfo.gender === "男" ? "https://minixhs.chugao520.com/makefriends/icons/male-default.png" : "https://minixhs.chugao520.com/makefriends/icons/female-default.png"
   }, {
-    q: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
-    r: common_vendor.o(($event) => $options.wantSee("photo"), "93")
+    o: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
+    p: common_vendor.o(($event) => $options.wantSee("photo"), "f4")
   }), {
-    s: common_vendor.t($data.userInfo.name),
-    t: $data.userInfo.gender === "男" ? "/static/m.png" : "/static/wm.png",
-    v: $data.userInfo.is_vip
-  }, $data.userInfo.is_vip ? {
-    w: common_assets._imports_1$1
-  } : {}, {
-    x: $data.userInfo.isRealName
-  }, $data.userInfo.isRealName ? {
-    y: common_assets._imports_2$2
-  } : {}, {
-    z: common_vendor.t($data.userInfo.birthday),
-    A: $data.userInfo.birthday && ($data.userInfo.height || $data.userInfo.education)
+    q: common_vendor.t($data.userInfo.name),
+    r: $data.userInfo.gender === "男" ? "https://minixhs.chugao520.com/makefriends/m.png" : "https://minixhs.chugao520.com/makefriends/wm.png",
+    s: $data.userInfo.is_vip
+  }, $data.userInfo.is_vip ? {} : {}, {
+    t: $data.userInfo.isRealName
+  }, $data.userInfo.isRealName ? {} : {}, {
+    v: common_vendor.t($data.userInfo.birthday),
+    w: $data.userInfo.birthday && ($data.userInfo.height || $data.userInfo.education)
   }, $data.userInfo.birthday && ($data.userInfo.height || $data.userInfo.education) ? {} : {}, {
-    B: $data.userInfo.height
+    x: $data.userInfo.height
   }, $data.userInfo.height ? {
-    C: common_vendor.t($data.userInfo.height)
+    y: common_vendor.t($data.userInfo.height)
   } : {}, {
-    D: $data.userInfo.height && $data.userInfo.education
+    z: $data.userInfo.height && $data.userInfo.education
   }, $data.userInfo.height && $data.userInfo.education ? {} : {}, {
-    E: $data.userInfo.education
+    A: $data.userInfo.education
   }, $data.userInfo.education ? {
-    F: common_vendor.t($data.userInfo.education)
+    B: common_vendor.t($data.userInfo.education)
   } : {}, {
-    G: !$data.isAdSource
+    C: !$data.isAdSource
   }, !$data.isAdSource ? {
-    H: common_assets._imports_3$1,
-    I: common_vendor.f($data.authItems, (item, index, i0) => {
+    D: common_vendor.f($data.authItems, (item, index, i0) => {
       return common_vendor.e({
         a: $data.userInfo.isRealName ? item.iconAuth : item.iconUnauth
       }, $data.userInfo.isRealName ? {
@@ -722,60 +713,56 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         e: $data.userInfo.isRealName ? item.bgColorAuth : "#fcfcfc"
       });
     }),
-    J: $data.userInfo.isRealName
+    E: $data.userInfo.isRealName
   } : {}, {
-    K: common_assets._imports_3$1,
-    L: $data.userInfo.job
+    F: $data.userInfo.job
   }, $data.userInfo.job ? {
-    M: common_vendor.t($data.userInfo.job)
+    G: common_vendor.t($data.userInfo.job)
   } : {}, {
-    N: $data.userInfo.company
+    H: $data.userInfo.company
   }, $data.userInfo.company ? {
-    O: common_vendor.t($data.userInfo.company)
+    I: common_vendor.t($data.userInfo.company)
   } : {}, {
-    P: $data.userInfo.school
+    J: $data.userInfo.school
   }, $data.userInfo.school ? {
-    Q: common_vendor.t($data.userInfo.school)
+    K: common_vendor.t($data.userInfo.school)
   } : {}, {
-    R: $data.userInfo.hometown
+    L: $data.userInfo.hometown
   }, $data.userInfo.hometown ? {
-    S: common_vendor.t($data.userInfo.hometown_t)
+    M: common_vendor.t($data.userInfo.hometown_t)
   } : {}, {
-    T: common_vendor.t($data.userInfo.has_car ? "是" : "否"),
-    U: common_vendor.t($data.userInfo.has_house ? "是" : "否"),
-    V: common_assets._imports_3$1,
-    W: $data.userInfo.introduce
+    N: common_vendor.t($data.userInfo.has_car ? "是" : "否"),
+    O: common_vendor.t($data.userInfo.has_house ? "是" : "否"),
+    P: $data.userInfo.introduce
   }, $data.userInfo.introduce ? {
-    X: common_vendor.t($options.formatIntroduce)
+    Q: common_vendor.t($options.formatIntroduce)
   } : !$data.isAdSource ? {
-    Z: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
-    aa: common_vendor.o(($event) => $options.wantSee("introduce"), "1f")
+    S: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
+    T: common_vendor.o(($event) => $options.wantSee("introduce"), "d9")
   } : {}, {
-    Y: !$data.isAdSource,
-    ab: !$data.isAdSource
+    R: !$data.isAdSource,
+    U: !$data.isAdSource
   }, !$data.isAdSource ? common_vendor.e({
-    ac: common_assets._imports_4$2,
-    ad: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
-    ae: $options.filterTags($data.userInfo.tags).length
+    V: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
+    W: $options.filterTags($data.userInfo.tags).length
   }, $options.filterTags($data.userInfo.tags).length ? {
-    af: common_vendor.f($options.filterTags($data.userInfo.tags), (tag, index, i0) => {
+    X: common_vendor.f($options.filterTags($data.userInfo.tags), (tag, index, i0) => {
       return {
         a: common_vendor.t(tag),
         b: index
       };
     })
   } : {
-    ag: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
-    ah: common_vendor.o(($event) => $options.wantSee("tag"), "a0")
+    Y: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
+    Z: common_vendor.o(($event) => $options.wantSee("tag"), "88")
   }) : {}, {
-    ai: $data.userInfo.questionAnswer && $data.userInfo.questionAnswer.length
+    aa: $data.userInfo.questionAnswer && $data.userInfo.questionAnswer.length
   }, $data.userInfo.questionAnswer && $data.userInfo.questionAnswer.length ? {
-    aj: common_assets._imports_5$1,
-    ak: common_vendor.f($data.userInfo.questionAnswer, (item, index, i0) => {
+    ab: common_vendor.f($data.userInfo.questionAnswer, (item, index, i0) => {
       return common_vendor.e({
         a: item.question && item.answer
       }, item.question && item.answer ? {
-        b: common_assets._imports_6$1,
+        b: common_assets._imports_0$2,
         c: common_vendor.t(item.question)
       } : {}, {
         d: item.answer
@@ -786,66 +773,60 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       });
     })
   } : {}, {
-    al: $data.userInfo.friends_impression && $data.userInfo.friends_impression.length
+    ac: $data.userInfo.friends_impression && $data.userInfo.friends_impression.length
   }, $data.userInfo.friends_impression && $data.userInfo.friends_impression.length ? {
-    am: common_assets._imports_7$2,
-    an: common_vendor.f($data.userInfo.friends_impression, (item, index, i0) => {
+    ad: common_vendor.f($data.userInfo.friends_impression, (item, index, i0) => {
       return {
         a: common_vendor.t($data.friendLabels[index]),
         b: common_vendor.t(item),
         c: index
       };
-    }),
-    ao: common_assets._imports_8$2
+    })
   } : {}, {
-    ap: common_assets._imports_9$1,
-    aq: $options.hasIdealPartner
+    ae: $options.hasIdealPartner
   }, $options.hasIdealPartner ? common_vendor.e({
-    ar: $data.userInfo.idealPartner.introduce
+    af: $data.userInfo.idealPartner.introduce
   }, $data.userInfo.idealPartner.introduce ? {
-    as: common_vendor.t($options.formatIdealPartner)
+    ag: common_vendor.t($options.formatIdealPartner)
   } : {}, {
-    at: $data.userInfo.idealPartner.tags && $options.filterTags($data.userInfo.idealPartner.tags).length
+    ah: $data.userInfo.idealPartner.tags && $options.filterTags($data.userInfo.idealPartner.tags).length
   }, $data.userInfo.idealPartner.tags && $options.filterTags($data.userInfo.idealPartner.tags).length ? {
-    av: common_vendor.f($options.filterTags($data.userInfo.idealPartner.tags), (tag, index, i0) => {
+    ai: common_vendor.f($options.filterTags($data.userInfo.idealPartner.tags), (tag, index, i0) => {
       return {
         a: common_vendor.t(tag),
         b: index
       };
     })
   } : {}) : !$data.isAdSource ? {
-    ax: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
-    ay: common_vendor.o(($event) => $options.wantSee("idealPartner"), "61")
+    ak: common_vendor.t($data.userInfo.gender === "男" ? "他" : "她"),
+    al: common_vendor.o(($event) => $options.wantSee("idealPartner"), "20")
   } : {}, {
-    aw: !$data.isAdSource,
-    az: common_assets._imports_3$1,
-    aA: !$data.isAdSource
+    aj: !$data.isAdSource,
+    am: !$data.isAdSource
   }, !$data.isAdSource ? {
-    aB: common_assets._imports_10$2,
-    aC: common_vendor.o((...args) => $options.gotoReport && $options.gotoReport(...args), "50")
+    an: common_vendor.o((...args) => $options.gotoReport && $options.gotoReport(...args), "12")
   } : {}, {
-    aD: $data.userInfo.privacyInfo
+    ao: $data.userInfo.privacyInfo
   }, $data.userInfo.privacyInfo ? common_vendor.e({
-    aE: $data.userInfo.privacyInfo.income
+    ap: $data.userInfo.privacyInfo.income
   }, $data.userInfo.privacyInfo.income ? {
-    aF: common_vendor.t($data.userInfo.privacyInfo.income)
+    aq: common_vendor.t($data.userInfo.privacyInfo.income)
   } : {}, {
-    aG: $data.userInfo.privacyInfo.familyBackground
+    ar: $data.userInfo.privacyInfo.familyBackground
   }, $data.userInfo.privacyInfo.familyBackground ? {
-    aH: common_vendor.t($data.userInfo.privacyInfo.familyBackground.replace(/\\n/g, "\n"))
+    as: common_vendor.t($data.userInfo.privacyInfo.familyBackground.replace(/\\n/g, "\n"))
   } : {}, {
-    aI: !$data.isAdSource
+    at: !$data.isAdSource
   }, !$data.isAdSource ? common_vendor.e({
-    aJ: common_vendor.t($data.contactFieldName),
-    aK: $data.userInfo.isBuy
+    av: common_vendor.t($data.contactFieldName),
+    aw: $data.userInfo.isBuy
   }, $data.userInfo.isBuy ? {
-    aL: common_vendor.t($data.userInfo.privacyInfo.wechatNo),
-    aM: common_assets._imports_11$2,
-    aN: common_vendor.o(($event) => $options.copyWechat($data.userInfo.privacyInfo.wechatNo), "fd")
+    ax: common_vendor.t($data.userInfo.privacyInfo.wechatNo),
+    ay: common_vendor.o(($event) => $options.copyWechat($data.userInfo.privacyInfo.wechatNo), "b9")
   } : {}) : {}) : {}, {
-    aO: !$data.isAdSource && $data.recommendList.length
+    az: !$data.isAdSource && $data.recommendList.length
   }, !$data.isAdSource && $data.recommendList.length ? {
-    aP: common_vendor.f($data.recommendList, (item, index, i0) => {
+    aA: common_vendor.f($data.recommendList, (item, index, i0) => {
       return {
         a: item.avatar,
         b: common_vendor.t(item.name),
@@ -857,26 +838,24 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       };
     })
   } : {}, {
-    aQ: $data.scrollIntoView,
-    aR: !$data.isBindMode
+    aB: $data.scrollIntoView,
+    aC: !$data.isBindMode
   }, !$data.isBindMode ? {
-    aS: common_assets._imports_12,
-    aT: common_vendor.o((...args) => $options.handleShare && $options.handleShare(...args), "61"),
-    aU: common_assets._imports_13,
-    aV: common_vendor.o((...args) => $options.handleGetWechat && $options.handleGetWechat(...args), "1e")
+    aD: common_vendor.o((...args) => $options.handleShare && $options.handleShare(...args), "42"),
+    aE: common_vendor.o((...args) => $options.handleGetWechat && $options.handleGetWechat(...args), "a8")
   } : {}, {
-    aW: $data.isBindMode
+    aF: $data.isBindMode
   }, $data.isBindMode ? {
-    aX: common_vendor.o((...args) => $options.handleBind && $options.handleBind(...args), "70")
+    aG: common_vendor.o((...args) => $options.handleBind && $options.handleBind(...args), "47")
   } : {}, {
-    aY: !$data.isBindMode
+    aH: !$data.isBindMode
   }, !$data.isBindMode ? {
-    aZ: $data.userInfo.isFollow ? "/static/ygz.png" : "/static/Frame 1420074377.png",
-    ba: common_vendor.o((...args) => $options.handleFollow && $options.handleFollow(...args), "33")
+    aI: $data.userInfo.isFollow ? "https://minixhs.chugao520.com/makefriends/ygz.png" : "https://minixhs.chugao520.com/makefriends/Frame 1420074377.png",
+    aJ: common_vendor.o((...args) => $options.handleFollow && $options.handleFollow(...args), "14")
   } : {}, {
-    bb: common_vendor.o($options.onCenterModalConfirm, "9c"),
-    bc: common_vendor.o($options.onCenterModalCancel, "e2"),
-    bd: common_vendor.p({
+    aK: common_vendor.o($options.onCenterModalConfirm, "2d"),
+    aL: common_vendor.o($options.onCenterModalCancel, "93"),
+    aM: common_vendor.p({
       visible: $data.showCenterModal,
       title: $data.centerModalTitle,
       content: $data.centerModalContent,
@@ -884,7 +863,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       ["cancel-text"]: $data.centerModalCancelText
     })
   }), {
-    i: $data.userInfo.isLogout
+    g: $data.userInfo.isLogout
   });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-51f45e2f"]]);

@@ -247,7 +247,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       } : {}, {
         l: item.from_user
       }, item.from_user ? {
-        m: item.from_user.avatar || "/static/logo.png",
+        m: item.from_user.avatar || "https://minixhs.chugao520.com/makefriends/logo.png",
         n: common_vendor.t(item.from_user.nickname),
         o: common_vendor.o(($event) => $options.goUserDetail(item.from_user.id), item.id)
       } : {}, {
@@ -263,7 +263,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   }, $data.list.length > 0 ? common_vendor.e({
     h: $data.loading
   }, $data.loading ? {} : $data.noMore ? {} : {
-    j: common_vendor.o((...args) => $options.loadMore && $options.loadMore(...args), "af")
+    j: common_vendor.o((...args) => $options.loadMore && $options.loadMore(...args), "c5")
   }, {
     i: $data.noMore
   }) : {});

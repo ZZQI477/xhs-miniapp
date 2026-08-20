@@ -1,7 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const api_index = require("../../api/index.js");
-const common_assets = require("../../common/assets.js");
 const CustomNavBar = () => "../../components/custom-nav-bar.js";
 const _sfc_main = {
   components: {
@@ -123,10 +122,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_vendor.p({
       title: "灵魂三问",
-      backgroundImage: "/static/bg4.png"
+      backgroundImage: "https://minixhs.chugao520.com/makefriends/bg4.png"
     }),
-    b: common_assets._imports_0$3,
-    c: common_vendor.f($data.soulAnswers, (item, index, i0) => {
+    b: common_vendor.f($data.soulAnswers, (item, index, i0) => {
       return {
         a: common_vendor.t(["一", "二", "三"][index]),
         b: common_vendor.t(item.question || "点击选择问题"),
@@ -136,22 +134,20 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         f: index
       };
     }),
-    d: common_assets._imports_1$3,
-    e: common_assets._imports_5$1,
-    f: common_vendor.o((...args) => $options.saveSoul && $options.saveSoul(...args), "be"),
-    g: $data.pickerVisible
+    c: common_vendor.o((...args) => $options.saveSoul && $options.saveSoul(...args), "2a"),
+    d: $data.pickerVisible
   }, $data.pickerVisible ? {
-    h: common_vendor.o((...args) => $options.hideQuestionPicker && $options.hideQuestionPicker(...args), "44"),
-    i: common_vendor.o((...args) => $options.hideQuestionPicker && $options.hideQuestionPicker(...args), "22"),
-    j: common_vendor.o((...args) => $options.confirmQuestion && $options.confirmQuestion(...args), "4a"),
-    k: common_vendor.f($data.questions, (q, idx, i0) => {
+    e: common_vendor.o((...args) => $options.hideQuestionPicker && $options.hideQuestionPicker(...args), "b6"),
+    f: common_vendor.o((...args) => $options.hideQuestionPicker && $options.hideQuestionPicker(...args), "3d"),
+    g: common_vendor.o((...args) => $options.confirmQuestion && $options.confirmQuestion(...args), "8d"),
+    h: common_vendor.f($data.questions, (q, idx, i0) => {
       return {
         a: common_vendor.t(q.title),
         b: idx
       };
     }),
-    l: $data.pickerValue,
-    m: common_vendor.o((...args) => $options.pickerChange && $options.pickerChange(...args), "49")
+    i: $data.pickerValue,
+    j: common_vendor.o((...args) => $options.pickerChange && $options.pickerChange(...args), "fc")
   } : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-de60bf8e"]]);

@@ -144,40 +144,29 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     d: !$data.isLoggedIn
   }, !$data.isLoggedIn ? {
-    e: common_assets._imports_0$2,
-    f: common_vendor.o((...args) => $options.goLogin && $options.goLogin(...args), "3e")
+    e: common_vendor.o((...args) => $options.goLogin && $options.goLogin(...args), "9c")
   } : {
-    g: $data.userInfo.avatar || "/static/logo.png",
-    h: common_assets._imports_1$2,
-    i: common_assets._imports_2$1,
-    j: $data.userInfo.avatar || "/static/logo.png",
-    k: common_vendor.o((...args) => $options.changeAvatar && $options.changeAvatar(...args), "0f"),
-    l: common_vendor.t($data.stats.visit_count || 0),
-    m: common_vendor.t($data.stats.fans_count || 0),
-    n: common_vendor.t($data.stats.follow_count || 0),
-    o: common_vendor.t($data.userInfo.nickname || "未设置昵称"),
-    p: $data.userInfo.gender === 1 ? "/static/m.png" : "/static/wm.png",
-    q: common_assets._imports_8$1,
-    r: common_vendor.t($data.userInfo.city ? this.getCityName($data.userInfo.city) : "未设置城市"),
-    s: common_vendor.t($data.userInfo.age || "未设置年龄"),
-    t: common_vendor.t($data.userInfo.xiaohongshu || "未设置"),
-    v: common_assets._imports_4$3,
-    w: common_vendor.f($data.userTags, (tag, index, i0) => {
+    f: $data.userInfo.avatar || "https://minixhs.chugao520.com/makefriends/logo.png",
+    g: common_assets._imports_0,
+    h: common_assets._imports_1,
+    i: $data.userInfo.avatar || "https://minixhs.chugao520.com/makefriends/logo.png",
+    j: common_vendor.o((...args) => $options.changeAvatar && $options.changeAvatar(...args), "5d"),
+    k: common_vendor.t($data.stats.visit_count || 0),
+    l: common_vendor.t($data.stats.fans_count || 0),
+    m: common_vendor.t($data.stats.follow_count || 0),
+    n: common_vendor.t($data.userInfo.nickname || "未设置昵称"),
+    o: $data.userInfo.gender === 1 ? "https://minixhs.chugao520.com/makefriends/m.png" : "https://minixhs.chugao520.com/makefriends/wm.png",
+    p: common_vendor.t($data.userInfo.city ? this.getCityName($data.userInfo.city) : "未设置城市"),
+    q: common_vendor.t($data.userInfo.age || "未设置年龄"),
+    r: common_vendor.t($data.userInfo.xiaohongshu || "未设置"),
+    s: common_assets._imports_2,
+    t: common_vendor.f($data.userTags, (tag, index, i0) => {
       return {
         a: common_vendor.t(tag),
         b: index
       };
     }),
-    x: common_vendor.t($data.userInfo.score || 0),
-    y: common_assets._imports_5,
-    z: common_assets._imports_6,
-    A: common_assets._imports_7$1,
-    B: common_assets._imports_8$1,
-    C: common_assets._imports_9$2,
-    D: common_assets._imports_10$1,
-    E: common_assets._imports_9$2,
-    F: common_assets._imports_11$1,
-    G: common_assets._imports_9$2
+    v: common_vendor.t($data.userInfo.score || 0)
   });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-569e925a"]]);

@@ -1,7 +1,7 @@
 {
   "setting": {
     "minified": true,
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "postcss": true,
     "uglifyFileName": false,

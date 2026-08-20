@@ -2,7 +2,7 @@
   <view class="container">
     <!-- 顶部导航栏 -->
     <custom-nav-bar title="成功案例" :isShowBack="true" fontColor="#6853F0" backgroundColor="transparent" />
-    <!-- <custom-nav-bar title="成功案例" :isShowBack="true" backgroundImage="/static/bg3.png" fontColor="#6853F0" backgroundColor="transparent" /> -->
+    <!-- <custom-nav-bar title="成功案例" :isShowBack="true" backgroundImage="https://minixhs.chugao520.com/makefriends/bg3.png" fontColor="#6853F0" backgroundColor="transparent" /> -->
 
     <!-- 导航栏占位 -->
     <view class="nav-bar-placeholder"></view>

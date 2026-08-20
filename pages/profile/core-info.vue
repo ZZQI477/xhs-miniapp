@@ -4,7 +4,7 @@
 	<custom-nav-bar
 	  title="核心资料"
 	  :isShowBack="true"
-	  backgroundImage="/static/bg3.png"
+	  backgroundImage="https://minixhs.chugao520.com/makefriends/bg3.png"
 	/>
     <!-- 占位元素，防止导航栏遮挡内容 -->
     <view style="height: 170rpx;"></view>

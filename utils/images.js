@@ -3,7 +3,7 @@
  * 统一管理项目中使用的所有图片和图标资源
  */
 
-const BASE_PATH = '/static/images/'
+const BASE_PATH = 'https://minixhs.chugao520.com/makefriends/images/'
 
 export default {
   // TabBar 图标

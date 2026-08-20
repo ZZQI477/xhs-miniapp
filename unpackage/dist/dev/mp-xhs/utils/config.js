@@ -1,6 +1,8 @@
 "use strict";
 const config = {
   // 接口基础地址
+  // baseUrl: 'http://miniapp.zquest.top/api',
+  // curlRef: 'http://miniapp.zquest.top',
   baseUrl: "https://xhscms.zquest.top/api",
   curlRef: "https://xhscms.zquest.top",
   // baseUrl: 'http://www.hy.com/api',
@@ -12,9 +14,11 @@ const config = {
     "Content-Type": "application/json"
   },
   // WebSocket配置
-  // wsUrl: 'ws://127.0.0.1:2345',  // WebSocket服务地址
-  wsUrl: "wss://xhscms.zquest.top/ws",
+  wsUrl: "",
   // WebSocket服务地址
+  // wsUrl: 'ws://127.0.0.1:2345',  // WebSocket服务地址
+  // wsUrl: 'wss://xhscms.zquest.top/ws',  // WebSocket服务地址
+  // wsUrl: 'ws://miniapp.zquest.top/ws',  // WebSocket服务地址
   wsHeartbeatInterval: 3e4,
   // 心跳间隔（毫秒）
   wsReconnectMaxDelay: 3e4,

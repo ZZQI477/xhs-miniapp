@@ -13,7 +13,7 @@
     <view class="not-login" v-if="!isLoggedIn">
     <!-- <view class="not-login" v-if="!isLoggedIn"> -->
       <view class="login-prompt">
-        <image class="prompt-icon" src="/static/logo.png" mode="aspectFit"></image>
+        <image class="prompt-icon" src="https://minixhs.chugao520.com/makefriends/logo.png" mode="aspectFit"></image>
         <text class="prompt-title">登录后查看更多内容</text>
         <text class="prompt-desc">登录后可查看个人信息、互动消息等</text>
         <button class="login-btn" @click="goLogin">立即登录</button>
@@ -25,11 +25,11 @@
       <!-- 用户信息区 -->
       <view class="user-section">
         <!-- 背景图片 -->
-        <image class="background-image" :src="userInfo.avatar || '/static/logo.png'" mode="aspectFill"></image>
+        <image class="background-image" :src="userInfo.avatar || 'https://minixhs.chugao520.com/makefriends/logo.png'" mode="aspectFill"></image>
         
         <!-- 左上角：返回按钮 -->
         <!-- <view class="back-btn">
-          <image class="back-icon" src="/static/back.png" mode="aspectFit"></image>
+          <image class="back-icon" src="https://minixhs.chugao520.com/makefriends/back.png" mode="aspectFit"></image>
         </view> -->
         
         <!-- 右上角：设置和消息图标 -->
@@ -43,7 +43,7 @@
         <view class="info-section">
           <!-- 头像 -->
           <view class="avatar-container" @click="changeAvatar">
-            <image class="avatar" :src="userInfo.avatar || '/static/logo.png'" mode="aspectFill"></image>
+            <image class="avatar" :src="userInfo.avatar || 'https://minixhs.chugao520.com/makefriends/logo.png'" mode="aspectFill"></image>
           </view>
           <!-- 昵称和基本信息 -->
           <view class="basic-info">
@@ -77,11 +77,11 @@
             <view class="name-row">
 				<view class="user-tags">
 					<text class="user-name">{{ userInfo.nickname || '未设置昵称' }}</text>
-					<image class="gender-icon" :src="userInfo.gender === 1 ? '/static/m.png' : '/static/wm.png'" mode="aspectFit"></image>
+					<image class="gender-icon" :src="userInfo.gender === 1 ? 'https://minixhs.chugao520.com/makefriends/m.png' : 'https://minixhs.chugao520.com/makefriends/wm.png'" mode="aspectFit"></image>
 				</view>
            
               <navigator class="edit-profile-btn" url="/pages/profile/edit">
-                <image class="edit-profile-icon" src="/static/Frame 1890182609@2x.png" mode="aspectFit"></image>
+                <image class="edit-profile-icon" src="https://minixhs.chugao520.com/makefriends/Frame 1890182609@2x.png" mode="aspectFit"></image>
               </navigator>
             </view>
             
@@ -103,7 +103,7 @@
 
       <!-- 资料完善提醒条 -->
  <!--     <view class="profile-tip" v-if="stats.profile_percent < 100">
-        <image class="floating-image" src="/static/位图(5).png" mode="aspectFit"></image>
+        <image class="floating-image" src="https://minixhs.chugao520.com/makefriends/位图(5).png" mode="aspectFit"></image>
         <text class="tip-text">资料完善度{{ stats.profile_percent }}%,完善资料获得曝光</text>
         <navigator class="tip-btn" url="/pages/profile/edit" > <text class="menu-arrow" decode>去完善 &gt;</text></navigator>
       </view> -->
@@ -124,19 +124,19 @@
       <!-- 功能图标区 -->
       <view class="feature-grid-section">
         <navigator class="feature-grid-item" url="/pages/want/my">
-          <image class="feature-grid-icon" src="/static/Frame@2x(9).png" mode="aspectFit"></image>
+          <image class="feature-grid-icon" src="https://minixhs.chugao520.com/makefriends/Frame@2x(9).png" mode="aspectFit"></image>
           <text class="feature-grid-text">我想看的</text>
         </navigator>
         <navigator class="feature-grid-item" url="/pages/want/me">
-          <image class="feature-grid-icon" src="/static/Frame@2x(10).png" mode="aspectFit"></image>
+          <image class="feature-grid-icon" src="https://minixhs.chugao520.com/makefriends/Frame@2x(10).png" mode="aspectFit"></image>
           <text class="feature-grid-text">想看我的</text>
         </navigator>
         <navigator class="feature-grid-item" url="/pages/soul/questions">
-          <image class="feature-grid-icon" src="/static/Frame@2x(11).png" mode="aspectFit"></image>
+          <image class="feature-grid-icon" src="https://minixhs.chugao520.com/makefriends/Frame@2x(11).png" mode="aspectFit"></image>
           <text class="feature-grid-text">灵魂三问</text>
         </navigator>
         <!-- <navigator class="feature-grid-item" url="/pages/group/index">
-          <image class="feature-grid-icon" src="/static/Frame@2x(12).png" mode="aspectFit"></image>
+          <image class="feature-grid-icon" src="https://minixhs.chugao520.com/makefriends/Frame@2x(12).png" mode="aspectFit"></image>
           <text class="feature-grid-text">同城单身群</text>
         </navigator> -->
       </view>
@@ -145,38 +145,38 @@
       <view class="setting-section">
         <navigator class="setting-item" url="/pages/profile/core-info">
           <view class="setting-left">
-            <image class="setting-icon" src="/static/Frame 1890182609@2x.png" mode="aspectFit"></image>
+            <image class="setting-icon" src="https://minixhs.chugao520.com/makefriends/Frame 1890182609@2x.png" mode="aspectFit"></image>
             <text class="setting-text">完善基本资料</text>
           </view>
-          <image class="arrow-icon" src="/static/右.png" mode="aspectFit"></image>
+          <image class="arrow-icon" src="https://minixhs.chugao520.com/makefriends/右.png" mode="aspectFit"></image>
         </navigator>
         <navigator class="setting-item" url="/pages/setting/index">
           <view class="setting-left">
-            <image class="setting-icon" src="/static/Frame@2x (3).png" mode="aspectFit"></image>
+            <image class="setting-icon" src="https://minixhs.chugao520.com/makefriends/Frame@2x (3).png" mode="aspectFit"></image>
             <text class="setting-text">设置</text>
           </view>
-          <image class="arrow-icon" src="/static/右.png" mode="aspectFit"></image>
+          <image class="arrow-icon" src="https://minixhs.chugao520.com/makefriends/右.png" mode="aspectFit"></image>
         </navigator>
         <navigator class="setting-item" url="/pages/auth/index">
           <view class="setting-left">
-            <image class="setting-icon" src="/static/Frame@2x (1).png" mode="aspectFit"></image>
+            <image class="setting-icon" src="https://minixhs.chugao520.com/makefriends/Frame@2x (1).png" mode="aspectFit"></image>
             <text class="setting-text">认证</text>
           </view>
-          <image class="arrow-icon" src="/static/右.png" mode="aspectFit"></image>
+          <image class="arrow-icon" src="https://minixhs.chugao520.com/makefriends/右.png" mode="aspectFit"></image>
         </navigator>
         <!-- <navigator class="setting-item" url="/pages/party/index">
           <view class="setting-left">
-            <image class="setting-icon" src="/static/Frame@2x(14).png" mode="aspectFit"></image>
+            <image class="setting-icon" src="https://minixhs.chugao520.com/makefriends/Frame@2x(14).png" mode="aspectFit"></image>
             <text class="setting-text">线下活动</text>
           </view>
-          <image class="arrow-icon" src="/static/右.png" mode="aspectFit"></image>
+          <image class="arrow-icon" src="https://minixhs.chugao520.com/makefriends/右.png" mode="aspectFit"></image>
         </navigator>
 		<navigator class="setting-item" url="/pages/cases/index">
           <view class="setting-left">
-            <image class="setting-icon" src="/static/Frame@2x(14).png" mode="aspectFit"></image>
+            <image class="setting-icon" src="https://minixhs.chugao520.com/makefriends/Frame@2x(14).png" mode="aspectFit"></image>
             <text class="setting-text">成功案例</text>
           </view>
-          <image class="arrow-icon" src="/static/右.png" mode="aspectFit"></image>
+          <image class="arrow-icon" src="https://minixhs.chugao520.com/makefriends/右.png" mode="aspectFit"></image>
         </navigator> -->
       </view>
     </view>
@@ -654,7 +654,7 @@ export default {
 
 /* 4. 脱单币区 */
 .coin-section {
-  background-image: url('/static/位图7.png');
+  background-image: url('https://minixhs.chugao520.com/makefriends/位图7.png');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

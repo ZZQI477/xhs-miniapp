@@ -3,7 +3,7 @@
     <view class="vip-popup-container" @click.stop>
       <!-- 关闭按钮 -->
       <view class="close-btn" @click="handleClose">
-        <image src="/static/images/close-white.png" class="close-icon" />
+        <image src="https://minixhs.chugao520.com/makefriends/images/close-white.png" class="close-icon" />
       </view>
 
       <!-- 标题 -->
@@ -12,7 +12,7 @@
       <!-- 功能介绍面板 -->
       <view class="feature-panel">
         <view class="feature-item">
-          <image src="/static/images/vip.png" class="feature-icon" />
+          <image src="https://minixhs.chugao520.com/makefriends/images/vip.png" class="feature-icon" />
           <view class="feature-content">
             <text class="feature-title">查看喜欢我的人</text>
             <view class="feature-desc">
@@ -23,7 +23,7 @@
         </view>
 
         <view class="feature-item">
-          <image src="/static/images/filter.png" class="feature-icon" />
+          <image src="https://minixhs.chugao520.com/makefriends/images/filter.png" class="feature-icon" />
           <view class="feature-content">
             <text class="feature-title">高级筛选功能</text>
             <text class="feature-desc">根据收入、学历、购房等条件筛选嘉宾</text>
@@ -31,7 +31,7 @@
         </view>
 
         <view class="feature-item">
-          <image src="/static/images/lock-red.png" class="feature-icon" />
+          <image src="https://minixhs.chugao520.com/makefriends/images/lock-red.png" class="feature-icon" />
           <view class="feature-content">
             <text class="feature-title">查看所有嘉宾</text>
             <text class="feature-desc">查看全站嘉宾，不包含微信解锁</text>
@@ -62,7 +62,7 @@
       <!-- 协议勾选 -->
       <view class="protocol">
         <image
-          :src="agreeProtocol ? '/static/images/checked.png' : '/static/images/unchecked.png'"
+          :src="agreeProtocol ? 'https://minixhs.chugao520.com/makefriends/images/checked.png' : 'https://minixhs.chugao520.com/makefriends/images/unchecked.png'"
           class="checkbox-icon"
           @click="toggleProtocol"
         />

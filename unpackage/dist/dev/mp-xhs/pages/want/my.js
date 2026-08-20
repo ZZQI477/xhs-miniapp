@@ -103,15 +103,15 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_vendor.p({
       title: "我想看的",
-      backgroundImage: "/static/bg3.png"
+      backgroundImage: "https://minixhs.chugao520.com/makefriends/bg3.png"
     }),
     b: !$data.loading && $data.list.length === 0
   }, !$data.loading && $data.list.length === 0 ? {} : {
     c: common_vendor.f($data.list, (item, k0, i0) => {
       return {
-        a: item.avatar || "/static/logo.png",
+        a: item.avatar || "https://minixhs.chugao520.com/makefriends/logo.png",
         b: common_vendor.t(item.nickname || "匿名用户"),
-        c: item.gender == 1 ? "/static/m.png" : "/static/wm.png",
+        c: item.gender == 1 ? "https://minixhs.chugao520.com/makefriends/m.png" : "https://minixhs.chugao520.com/makefriends/wm.png",
         d: common_vendor.t(item.age || "?"),
         e: common_vendor.t(item.height || "?"),
         f: common_vendor.t(item.city || "未知"),
@@ -127,7 +127,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   }, $data.list.length > 0 ? common_vendor.e({
     e: $data.loading
   }, $data.loading ? {} : $data.noMore ? {} : {
-    g: common_vendor.o((...args) => $options.loadMore && $options.loadMore(...args), "45")
+    g: common_vendor.o((...args) => $options.loadMore && $options.loadMore(...args), "9f")
   }, {
     f: $data.noMore
   }) : {});

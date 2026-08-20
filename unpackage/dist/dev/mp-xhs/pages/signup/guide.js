@@ -1,7 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const api_index = require("../../api/index.js");
-const common_assets = require("../../common/assets.js");
 const CustomPicker = () => "../../components/custom-picker.js";
 const _sfc_main = {
   components: {
@@ -16,6 +15,8 @@ const _sfc_main = {
       showLocationPopup: false,
       showSuccessPopup: false,
       // 是否显示提交成功弹框
+      pickerOpen: false,
+      // 选择器是否打开
       form: {
         gender: "",
         birthday: "",
@@ -464,14 +465,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: $data.showSuccessPopup
   }, $data.showSuccessPopup ? {
-    b: common_assets._imports_0$6,
-    c: common_vendor.o((...args) => $options.handleSuccessConfirm && $options.handleSuccessConfirm(...args), "fd"),
+    b: common_vendor.o((...args) => $options.handleSuccessConfirm && $options.handleSuccessConfirm(...args), "b0"),
+    c: common_vendor.o(() => {
+    }, "39"),
     d: common_vendor.o(() => {
-    }, "b6"),
-    e: common_vendor.o(() => {
-    }, "24")
+    }, "b9")
   } : {}, {
-    f: common_vendor.f($data.totalSteps, (step, k0, i0) => {
+    e: common_vendor.f($data.totalSteps, (step, k0, i0) => {
       return {
         a: step,
         b: common_vendor.n({
@@ -480,32 +480,34 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         c: common_vendor.o(($event) => $options.handleStepClick(step), step)
       };
     }),
-    g: $data.currentStep === 1
+    f: $data.currentStep === 1
   }, $data.currentStep === 1 ? common_vendor.e({
-    h: !$data.form.gender ? 1 : "",
-    i: $data.form.gender === "male"
+    g: !$data.form.gender ? 1 : "",
+    h: $data.form.gender === "male"
   }, $data.form.gender === "male" ? {} : {}, {
-    j: common_vendor.n({
+    i: common_vendor.n({
       "selected": $data.form.gender === "male"
     }),
-    k: $data.form.gender === "male" ? 1 : "",
-    l: common_vendor.o(($event) => $options.selectGender("male"), "ff"),
-    m: $data.form.gender === "female"
+    j: $data.form.gender === "male" ? 1 : "",
+    k: common_vendor.o(($event) => $options.selectGender("male"), "7b"),
+    l: $data.form.gender === "female"
   }, $data.form.gender === "female" ? {} : {}, {
-    n: common_vendor.n({
+    m: common_vendor.n({
       "selected": $data.form.gender === "female"
     }),
-    o: $data.form.gender === "female" ? 1 : "",
-    p: common_vendor.o(($event) => $options.selectGender("female"), "53"),
-    q: common_vendor.n({
+    n: $data.form.gender === "female" ? 1 : "",
+    o: common_vendor.o(($event) => $options.selectGender("female"), "55"),
+    p: common_vendor.n({
       "shaking": $data.showShaking && !$data.form.gender
     }),
-    r: $data.form.nickName,
-    s: common_vendor.o(($event) => $data.form.nickName = $event.detail.value, "78"),
-    t: common_vendor.j({
-      "change": common_vendor.o($options.onBirthdayChange, "b4")
+    q: $data.form.nickName,
+    r: common_vendor.o(($event) => $data.form.nickName = $event.detail.value, "d2"),
+    s: common_vendor.j({
+      "change": common_vendor.o($options.onBirthdayChange, "59"),
+      "open": common_vendor.o(($event) => $data.pickerOpen = true, "74"),
+      "close": common_vendor.o(($event) => $data.pickerOpen = false, "55")
     }),
-    v: common_vendor.p({
+    t: common_vendor.p({
       title: "选择出生年份",
       columns: [$options.birthdayOptions],
       value: [$options.birthdayIndex],
@@ -513,10 +515,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       placeholder: "请选择"
     })
   }) : {}, {
-    w: $data.currentStep === 2
+    v: $data.currentStep === 2
   }, $data.currentStep === 2 ? {
-    x: !$data.form.education ? 1 : "",
-    y: common_vendor.f($data.educationOptions, (edu, k0, i0) => {
+    w: !$data.form.education ? 1 : "",
+    x: common_vendor.f($data.educationOptions, (edu, k0, i0) => {
       return {
         a: common_vendor.t(edu),
         b: edu,
@@ -526,25 +528,29 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: common_vendor.o(($event) => $options.selectEducation(edu), edu)
       };
     }),
-    z: common_vendor.n({
+    y: common_vendor.n({
       "shaking": $data.showShaking && !$data.form.education
     }),
-    A: $data.form.position,
-    B: common_vendor.o(($event) => $data.form.position = $event.detail.value, "2d"),
-    C: common_vendor.j({
-      "change": common_vendor.o($options.onIncomeChange, "be")
+    z: $data.form.position,
+    A: common_vendor.o(($event) => $data.form.position = $event.detail.value, "58"),
+    B: common_vendor.j({
+      "change": common_vendor.o($options.onIncomeChange, "18"),
+      "open": common_vendor.o(($event) => $data.pickerOpen = true, "b9"),
+      "close": common_vendor.o(($event) => $data.pickerOpen = false, "f2")
     }),
-    D: common_vendor.p({
+    C: common_vendor.p({
       title: "选择年收入",
       columns: [$data.incomeOptions],
       value: [$data.form.income !== "" ? $data.form.income : 0],
       displayText: $data.form.income !== "" ? $data.incomeOptions[$data.form.income] : "",
       placeholder: "请选择"
     }),
-    E: common_vendor.j({
-      "change": common_vendor.o($options.onMaritalStatusChange, "e6")
+    D: common_vendor.j({
+      "change": common_vendor.o($options.onMaritalStatusChange, "5a"),
+      "open": common_vendor.o(($event) => $data.pickerOpen = true, "56"),
+      "close": common_vendor.o(($event) => $data.pickerOpen = false, "2e")
     }),
-    F: common_vendor.p({
+    E: common_vendor.p({
       title: "选择婚况",
       columns: [$data.maritalStatusOptions],
       value: [$options.maritalStatusIndex],
@@ -552,20 +558,22 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       placeholder: "请选择"
     })
   } : {}, {
-    G: $data.currentStep === 3
+    F: $data.currentStep === 3
   }, $data.currentStep === 3 ? {
-    H: $data.form.ideal_intro,
-    I: common_vendor.o(($event) => $data.form.ideal_intro = $event.detail.value, "dd"),
-    J: common_vendor.t(($data.form.ideal_intro || "").length),
-    K: $data.form.phone_time,
-    L: common_vendor.o(($event) => $data.form.phone_time = $event.detail.value, "9d"),
-    M: $data.form.wechat,
-    N: common_vendor.o(($event) => $data.form.wechat = $event.detail.value, "d2"),
-    O: common_vendor.j({
-      "columnchange": common_vendor.o($options.onCityColumnChange, "c9"),
-      "change": common_vendor.o($options.onCityChange, "d0")
+    G: $data.form.ideal_intro,
+    H: common_vendor.o(($event) => $data.form.ideal_intro = $event.detail.value, "5d"),
+    I: common_vendor.t(($data.form.ideal_intro || "").length),
+    J: $data.form.phone_time,
+    K: common_vendor.o(($event) => $data.form.phone_time = $event.detail.value, "d3"),
+    L: $data.form.wechat,
+    M: common_vendor.o(($event) => $data.form.wechat = $event.detail.value, "b1"),
+    N: common_vendor.j({
+      "columnchange": common_vendor.o($options.onCityColumnChange, "9d"),
+      "change": common_vendor.o($options.onCityChange, "b2"),
+      "open": common_vendor.o(($event) => $data.pickerOpen = true, "50"),
+      "close": common_vendor.o(($event) => $data.pickerOpen = false, "b8")
     }),
-    P: common_vendor.p({
+    O: common_vendor.p({
       title: "选择居住城市",
       columns: $data.cityColumns,
       value: $data.cityValue,
@@ -574,6 +582,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       labelKey: "name"
     })
   } : {}, {
+    P: !$data.pickerOpen
+  }, !$data.pickerOpen ? common_vendor.e({
     Q: $data.currentStep === 1
   }, $data.currentStep === 1 ? {} : {}, {
     R: $data.currentStep === 2
@@ -583,16 +593,16 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     T: common_vendor.t($options.buttonText),
     U: common_vendor.t($data.currentStep),
     V: common_vendor.t($data.totalSteps),
-    W: common_vendor.o((...args) => $options.handleNext && $options.handleNext(...args), "0f"),
-    X: $data.isSubmitting,
+    W: common_vendor.o((...args) => $options.handleNext && $options.handleNext(...args), "75"),
+    X: $data.isSubmitting
+  }) : {}, {
     Y: $data.showLocationPopup
   }, $data.showLocationPopup ? {
-    Z: common_assets._imports_1$6,
-    aa: common_vendor.o((...args) => $options.rejectLocation && $options.rejectLocation(...args), "43"),
-    ab: common_vendor.o((...args) => $options.allowLocation && $options.allowLocation(...args), "18"),
-    ac: common_vendor.o(() => {
-    }, "4e"),
-    ad: common_vendor.o((...args) => $options.closeLocationPopup && $options.closeLocationPopup(...args), "50")
+    Z: common_vendor.o((...args) => $options.rejectLocation && $options.rejectLocation(...args), "bf"),
+    aa: common_vendor.o((...args) => $options.allowLocation && $options.allowLocation(...args), "1d"),
+    ab: common_vendor.o(() => {
+    }, "70"),
+    ac: common_vendor.o((...args) => $options.closeLocationPopup && $options.closeLocationPopup(...args), "50")
   } : {});
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-dd3414a9"]]);
